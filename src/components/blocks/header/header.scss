@@ -1,0 +1,22 @@
+.header {
+	height: 128px;
+	background-color: var(--color-main);
+	position: relative;
+
+	&__basket {
+		position: absolute;
+		right: 5%;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	&__link-home {
+		position: absolute;
+		left: 5%;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+	}
+	&__link{
+		color: black;
+	}
+}

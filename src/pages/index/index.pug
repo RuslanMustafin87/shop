@@ -1,0 +1,12 @@
+extends ../../templates/main.pug
+
+block var
+    - var title = 'Магазин'
+
+block content
+    ul.products
+    select.sort-products(name='sort-products')
+        option(value='sortIncreasedPrice' selected) По возростающей цене
+        option(value='sortDecreasedPrice' ) По убывающей цене
+        option(value='sortAlphabet') По алфавиту
+    

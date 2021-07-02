@@ -1,0 +1,29 @@
+extends ../../templates/main.pug
+
+block var
+    - var title = 'Тестовый стенд'
+
+block content
+    include ../../components/moduls/slider/mySlider
+    .item2.ter(data-toolkit='hello')
+        .item3.ter(data-toolkit='hello1')
+    .ball
+    .field
+        .ball2
+    #grid
+            div.header2 1
+            //div.header 2
+            //div.header 3
+            div.fer 4
+            div.fer 5
+            div.fer 6
+            div.fer 7
+            div.fer 8
+            div.fer 9
+    button#but.button-modal Модальное окно
+    .modal-cover
+    form.modal2(name='modal2')
+        input(type='text' name='modalInput')
+        button(type='submit' name='modalSubmit') ОК
+        button(type='' name='modalCancel') Отменаa(href="")
+    

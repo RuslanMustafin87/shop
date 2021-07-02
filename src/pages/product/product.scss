@@ -1,0 +1,36 @@
+.product-page{
+    padding-top: 1.875rem;
+    padding-left: 3.75rem;
+}
+
+.product__pictures{
+    width: 18.75rem;
+    height: 25rem;
+    float: left;
+    margin-right: 3.75rem;
+}
+
+.product__name{
+    font-size: 1.5rem;
+    margin-bottom: 1.875rem;
+}
+
+.product__price{
+    margin-bottom: 1.25rem;
+}
+
+.product__button-add{
+    width: 9.375rem;
+    height: 1.875rem;
+}
+.bh{
+    height: 200px;
+    background-color: red;
+    //display: flex;
+    position: absolute;
+    }
+.vg{
+    height: 100%;
+    width: 100px;
+    float: left;
+}

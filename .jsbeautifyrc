@@ -1,0 +1,10 @@
+{
+	"beautify.language": {
+		"js": {
+			"type": ["javascript", "json"]
+		},
+		"css": ["css", "scss"],
+		"html": ["html", "pug"]
+	},
+	"indent_with_tabs": true
+}

@@ -1,0 +1,29 @@
+extends ../../templates/main.pug
+
+block var
+    - var title = 'Админка'
+
+block content
+    main.admin.clearfix
+        form.admin__form.form-product(action="http://localhost:3007/api/products/addproduct" method='post' enctype='multipart/form-data')
+            h1.form-product__title Добавление товара
+            input.form-product__name(type='text' name='name')
+            input.form-product__price(type='text' name='price')
+            input.form-product__bg(type='text' name='bg')
+            input.form-product__image(type='file' name='image')
+            input.form-product__submit(type='submit')
+            input.form-product__reset(type='reset')
+        form.admin__form-delete-product.form-delete-product(action="http://localhost:3007/api/products/deleteproduct" method='get' name='deleteProduct')
+            h1.form-delete-product__title Удаление товара
+            input.form-delete-product__id(type='text' name='id')
+            input.form-delete-product__submit(type='submit')
+            input.form-delete-product__reset(type='reset')
+        form.admin__form-update-product.form-update-product(action="http://localhost:3007/api/products/updateproduct" method='post' name='updateProduct' enctype='multipart/form-data')
+            h1.form-update-product__title Изменение товара
+            input.form-update-product__id(type='text' name='id' placeholder='введите id товара' required)
+            input.form-update-product__name(type='text' name='name')
+            input.form-update-product__price(type='text' name='price')
+            input.form-update-product__bg(type='text' name='background')
+            input.form-update-product__image(type='file' name='image')
+            input.form-update-product__submit(type='submit')
+            input.form-update-product__reset(type='reset')

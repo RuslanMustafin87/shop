@@ -1,0 +1,146 @@
+@import '../../css/mixin.scss';
+
+.header__basket {
+	display: none;
+}
+
+.admin {
+	padding-left: 1.25rem;
+	padding-top: 1.25rem;
+}
+
+.input {
+	width: 12.5rem;
+	height: 1.25rem;
+	margin-bottom: 0.625rem;
+	border-radius: 5px;
+	border: 2px solid var(--color-text);
+	outline: none;
+}
+
+.admin__form{
+	float: left;
+	margin-right: 1.25rem;
+	height: 15rem;
+	@include tablet{
+		float: none;
+	}
+}
+
+.form-product {
+	display: flex;
+	flex-direction: column;
+	
+	&__title{
+		font-size: 1.5rem;
+		margin-bottom: 0.625rem;
+		width: 15.625rem;
+	}
+	&__name {
+		@extend .input;
+	}
+
+	&__price {
+		@extend .input;
+	}
+
+	&__bg {
+		@extend .input;
+	}
+
+	&__image {
+		margin-bottom: 0.625rem;
+	}
+
+	&__submit {
+		@extend .input;
+		cursor: pointer;
+	}
+
+	&__reset {
+		@extend .input;
+		cursor: pointer;
+	}
+}
+
+
+.admin__form-delete-product{
+	float: left;
+	margin-right: 1.25rem;
+	@include tablet{
+		float: none;
+	}
+}
+
+.form-delete-product {
+	display: flex;
+	flex-direction: column;
+	height: 15rem;
+	@include tablet {
+		height: auto;
+	}
+	&__title{
+		font-size: 1.5rem;
+		margin-bottom: 0.625rem;
+		width: 15.625rem;
+	}
+	&__id {
+		@extend .input;
+	}
+
+	&__submit {
+		@extend .input;
+		cursor: pointer;
+	}
+
+	&__reset {
+		@extend .input;
+		cursor: pointer;
+	}
+}
+
+.admin__form-update-product{
+	float: left;
+	@include laptop {
+		float: none;
+	}
+}
+
+.form-update-product {
+	display: flex;
+	flex-direction: column;
+	height: 15rem;
+	&__title{
+		font-size: 1.5rem;
+		margin-bottom: 0.625rem;
+		width: 15.625rem;
+
+	}
+	&__id {
+		@extend .input;
+	}
+	&__name {
+		@extend .input;
+	}
+
+	&__price {
+		@extend .input;
+	}
+
+	&__bg {
+		@extend .input;
+	}
+
+	&__image {
+		margin-bottom: 0.625rem;
+	}
+	&__submit {
+		@extend .input;
+		cursor: pointer;
+	}
+
+	&__reset {
+		@extend .input;
+		cursor: pointer;
+	}
+}
