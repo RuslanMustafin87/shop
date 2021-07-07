@@ -5,7 +5,7 @@ block var
 
 block content
     main.admin.clearfix
-        form.admin__form.form-product(action="http://localhost:3007/api/products/addproduct" method='post' enctype='multipart/form-data')
+        form.admin__form.form-product(action="http://localhost:3007/api/products/addproduct" method='post' name='addProduct' enctype='multipart/form-data')
             h1.form-product__title Добавление товара
             input.form-product__name(type='text' name='name')
             input.form-product__price(type='text' name='price')
@@ -27,3 +27,4 @@ block content
             input.form-update-product__image(type='file' name='image')
             input.form-update-product__submit(type='submit')
             input.form-update-product__reset(type='reset')
+        img#pi

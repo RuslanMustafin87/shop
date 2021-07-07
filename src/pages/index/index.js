@@ -5,6 +5,9 @@ import './index.scss';
 import Sort from '../../js/sort';
 import Basket from '../../components/blocks/basket/basket';
 import '../../js/addProductInBasket';
+import {
+	pink
+} from 'color-name';
 
 const sort = new Sort();
 const basket = new Basket();
@@ -17,21 +20,26 @@ let listProducts = null;
 (async function getDataFromServer() {
 	let data = null;
 	try {
-		let result = await fetch('http://127.0.0.1:3007/api/products', {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json; charset=utf-8',
-			},
-		});
+		let result = await fetch('http://127.0.0.1:3007/api/products');
+		// {
+		// method: 'GET',
+		// headers: {
+		// 'Content-Type': 'application/json; charset=utf-8',
+		// },
+		// });
 
 		data = await result.json();
+
 	} catch (err) {
 		console.log(err);
 	}
 
 	listProducts = data;
-	sort.sortByIncrease(data);
-	createListGoods(data);
+
+	if (data) {
+		sort.sortByIncrease(data);
+		createListGoods(data)
+	};
 })();
 
 // создаем контейнер с товарами
@@ -60,8 +68,16 @@ function createListGoods(data) {
 		elem.dataset.background = item.background;
 
 		elem.firstElementChild.setAttribute('href', `product.html?id=${item._id}`);
-		console.log(item.image);
-		// elem.firstElementChild.nextElementSibling.src = URL.createObjectURL(item.image);
+
+		if (item.image) {
+
+			let imageBlob = new File([item.image.data], item.name);
+			// console.log(imageBlob);
+
+			elem.firstElementChild.nextElementSibling.src = URL.createObjectURL(imageBlob);
+
+		}
+
 		elem.prepend(`${item.name}: ${item.price}`);
 
 		elem.style.backgroundColor = item.background;
