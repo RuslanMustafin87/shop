@@ -1,7 +1,7 @@
-import Basket from '../basket/basket';
-import Modal from '../../moduls/modal/modal';
+import Basket from '../../moduls/myBasket/myBasket';
+import modal from '../../moduls/myModal/myModal';
+
 let basket = new Basket();
-const modal = new Modal();
 
 let formOrder = document.forms.formOrder;
 

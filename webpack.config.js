@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJS = require('./webpack/terserJS');
 const babel = require('./webpack/babel');
@@ -17,17 +17,16 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const PATHS = {
 	source: path.join(__dirname, 'src'),
-	build: path.join(__dirname, 'dist')
+	build: path.join(__dirname, 'dist/assets')
 };
 
 const common = merge([
 	{
 		entry: {
 			'index': PATHS.source + '/pages/index/index.js',
-			'basket': PATHS.source + '/pages/basket/basket-page.js',
+			'basket': PATHS.source + '/pages/basket/basket.js',
 			'product': PATHS.source + '/pages/product/product.js',
 			'admin': PATHS.source + '/pages/admin/admin.js',
-			'testStand': PATHS.source + '/pages/testStand/testStand.js',
 		},
 		output: {
 			path: PATHS.build,
@@ -59,7 +58,7 @@ const common = merge([
 				filename: 'basket.html',
 				chunks: ['basket',
 					'common'],
-				template: PATHS.source + '/pages/basket/basket-page.pug'
+				template: PATHS.source + '/pages/basket/basket.pug'
 			}),
 			new HtmlWebpackPlugin({
 				filename: 'product.html',
@@ -73,22 +72,11 @@ const common = merge([
 					'common'],
 				template: PATHS.source + '/pages/admin/admin.pug'
 			}),
-			new HtmlWebpackPlugin({
-				filename: 'testStand.html',
-				chunks: ['testStand',
-					'common'],
-				template: PATHS.source + '/pages/testStand/testStand.pug'
-			}),
 			new FriendlyErrorsWebpackPlugin(),
-			new MiniCssExtractPlugin({
-				filename: '[name].css',
-			}),
-			// new webpack.ProvidePlugin({
-			// 	$: 'jquery',
-			// 	jQuery: 'jquery',
-			// 	'window.jQuery': 'jquery'
-			// })
-			// new CleanWebpackPlugin(),
+			// new MiniCssExtractPlugin({
+				// filename: '[name].css',
+			// }),
+			new CleanWebpackPlugin(),
 			// new RuntimeAnalyzerPlugin()
 		],
 	},

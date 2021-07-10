@@ -1,8 +1,8 @@
 import '../../css/main.scss';
 import './product.scss';
 
-import MySlider from '../../components/moduls/slider/mySlider';
-import Basket from '../../components/blocks/basket/basket';
+import MySlider from '../../components/moduls/mySlider/mySlider';
+import Basket from '../../components/moduls/myBasket/myBasket';
 
 MySlider.init({
 	nav: true,
@@ -15,7 +15,7 @@ MySlider.init({
 });
 
 const basket = new Basket();
-const idProduct = window.location.search.slice(4);
+const idProduct = new URL(window.location.href).searchParams.get('id');
 
 let productPicture = document.querySelector('.product__pictures');
 let productName = document.querySelector('.product__name');

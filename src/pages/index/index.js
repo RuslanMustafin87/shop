@@ -3,7 +3,7 @@ import '../../css/main.scss';
 import './index.scss';
 
 import Sort from '../../js/sort';
-import Basket from '../../components/blocks/basket/basket';
+import Basket from '../../components/moduls/myBasket/myBasket';
 import '../../js/addProductInBasket';
 import {
 	pink
@@ -67,12 +67,12 @@ function createListGoods(data) {
 		elem.dataset.price = item.price;
 		elem.dataset.background = item.background;
 
-		elem.firstElementChild.setAttribute('href', `product.html?id=${item._id}`);
+		elem.firstElementChild.href = `product.html?id=${item._id}`;
 
 		if (item.image) {
 
-			let imageBlob = new File([item.image.data], item.name);
-			// console.log(imageBlob);
+			let imageBlob = new File([new ArrayBuffer(item.image.data)], item.name);
+			console.log(item.image);
 
 			elem.firstElementChild.nextElementSibling.src = URL.createObjectURL(imageBlob);
 
@@ -134,3 +134,4 @@ function clearContainer(container) {
 //	let linkParent = link.closest('li');
 //	location.href = link.getAttribute('href') + `?id=${linkParent.dataset.id}`;
 //});
+

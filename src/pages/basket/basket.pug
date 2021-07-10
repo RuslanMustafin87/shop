@@ -1,0 +1,14 @@
+extends ../../templates/main.pug
+
+block var
+
+    - var title = 'Корзина'
+    - var page = 'basket'
+
+block content
+    main.basket
+        button.button-reset-basket Очистить корзину
+        ul.products
+        .basket__products
+        include ../../components/blocks/form-order/form-order
+        .basket__sum

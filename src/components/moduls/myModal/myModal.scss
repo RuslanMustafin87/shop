@@ -1,0 +1,51 @@
+.modal {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(113, 111, 120, .5);
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	// transform: translate(-50%, -50%);
+	display: none;
+}
+
+.modal__window {
+	color: black;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	width: 19rem;
+	height: 14rem;
+	background-color: #fff;
+	border-radius: .5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal__cross {
+	height: 1.2rem;
+	width: 1.2rem;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	cursor: pointer;
+
+	@include desktop {
+		height: 1.5rem;
+		width: 1.5rem;
+	}
+
+	@include tablet {
+		height: 1.8rem;
+		width: 1.8rem;
+	}
+}
+
+.modal__text {
+	text-align: center;
+	width: 90%;
+	font-size: 1.4rem;
+}

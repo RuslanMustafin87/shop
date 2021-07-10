@@ -1,5 +1,5 @@
 /* eslint-disable no-inner-declarations */
-import Basket from '../components/blocks/basket/basket';
+import Basket from '../components/moduls/myBasket/myBasket';
 const basket = new Basket();
 //let containerProducts = document.querySelector('.products');
 

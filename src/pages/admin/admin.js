@@ -1,12 +1,7 @@
 import '../../css/main.scss';
 import './admin.scss';
 
-import Modal from '../../components/moduls/modal/modal';
-import {
-	pink
-} from 'color-name';
-
-const delProd = document.forms.deleteProduct;
+import Modal from '../../components/moduls/myModal/myModal';
 
 const addProduct = document.forms.addProduct;
 
