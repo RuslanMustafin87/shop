@@ -6,7 +6,7 @@ import '../../components/blocks/form-order/form-order';
 
 const basket = new Basket();
 
-let buttonResetBusket = document.querySelector('.button-reset-basket');
+let buttonResetBusket = document.querySelector('.basket__button-reset');
 let containerProducts = document.querySelector('.products');
 let blockSum =  document.querySelector('.basket__sum');
 
@@ -40,7 +40,7 @@ function createListGoods(data) {
 		elem.style.backgroundColor = item.background;
 		containerProducts.append(elem);
 	});
-	
+
 	blockSum.innerHTML = sumProducts(data);
 }
 
@@ -88,7 +88,7 @@ window.addEventListener('storage', () => {
 		containerProducts.innerHTML = 'Корзина пуста';
 		return;
 	}
-	createListGoods(listProducts); 
+	createListGoods(listProducts);
 });
 
 // функция для подсчета общей суммы товаров

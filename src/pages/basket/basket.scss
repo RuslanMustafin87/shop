@@ -1,3 +1,12 @@
+@import '../../css/mixin.scss';
+
+.basket {
+	&__button-reset {
+		width: 200px;
+		@include button_shop;
+	}
+}
+
 .products {
 	margin: auto;
 	width: 700px;
@@ -11,6 +20,7 @@
 	text-align: center;
 	color: var(--color-text);
 	font-size: 2rem;
+
 	&__item {
 		margin-left: 5px;
 		margin-right: 5px;

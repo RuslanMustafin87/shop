@@ -1,3 +1,5 @@
+@import '../../css/mixin.scss';
+
 .product-page{
     padding-top: 1.875rem;
     padding-left: 3.75rem;
@@ -22,15 +24,5 @@
 .product__button-add{
     width: 9.375rem;
     height: 1.875rem;
-}
-.bh{
-    height: 200px;
-    background-color: red;
-    //display: flex;
-    position: absolute;
-    }
-.vg{
-    height: 100%;
-    width: 100px;
-    float: left;
+	@include button_shop;
 }

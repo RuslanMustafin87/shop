@@ -23,7 +23,7 @@ module.exports = {
 			'before': false,
 			'after': true
 		}],
-		'no-console': 'off',
+		'no-console': 'warn',
 		'no-unused-vars': 'warn'
 	},
 	'globals': {
