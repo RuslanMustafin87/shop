@@ -35,7 +35,7 @@ let listProducts = null;
 })();
 // функция создания элемента продукта
 
-function createElemProduct(){
+function createElemProduct() {
 	let product = document.createElement('li');
 	let link = document.createElement('a');
 	let imgBlock = document.createElement('div');
@@ -68,33 +68,17 @@ function createListProducts(data) {
 		elem.dataset.id = item._id;
 		elem.dataset.name = item.name;
 		elem.dataset.price = item.price;
-		
+
 		elem.firstElementChild.href = `product.html?id=${item._id}`;
 		elem.firstElementChild.children[1].innerHTML = `${item.name[0].toUpperCase() + item.name.slice(1)} ${item.price}`
 
 		if (item.image) {
-			// let imageBlob = new Blob([new ArrayBuffer(item.image.data)], {
-			// type: "image/jpeg"
-			// });
 
-			// const reader = new FileReader();
-			// let imageBlob = new Blob([item.image], {
-			// type: "image/jpeg"
-			// });
-			// reader.readAsDataURL(imageBlob);
+			let imageBlob = new Blob([new Uint8Array(item.image.data)], {
+				type: "image/jpeg"
+			});
 
-			// ser.src = item.image;
-			// console.log(imageBlob);
-			elem.firstElementChild.firstElementChild.firstElementChild.src = item.image;
-
-			// reader.onload = function(){
-			// elem.firstElementChild.nextElementSibling.src = reader.result;
-			// }
-			// console.log(imageBlob);
-			// elem.firstElementChild.href = URL.createObjectURL(imageBlob);
-			// elem.firstElementChild.setAttribute('download', 'img.jpg');
-			// elem.firstElementChild.nextElementSibling.src = window.URL.createObjectURL(imageBlob);
-
+			elem.firstElementChild.firstElementChild.firstElementChild.src = URL.createObjectURL(imageBlob);
 		}
 
 		containerProducts.append(elem);

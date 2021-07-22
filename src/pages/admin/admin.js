@@ -8,26 +8,25 @@ const addProduct = document.forms.addProduct;
 
 addProduct.onsubmit = async function(event) {
 	event.preventDefault();
-
-	let formAddProduct = new FormData(addProduct);
-
-	let reader = new FileReader();
-
-	reader.readAsDataURL(imageProduct.files[0]);
-
-	reader.onload = function() {
-		formAddProduct.set('image', reader.result);
-	}
-
-	await new Promise(resolve => {
-		setTimeout(resolve, 200);
-	})
-
+// 
+	// let reader = new FileReader();
+// 
+	// reader.readAsArrayBuffer(imageProduct.files[0]);
+// 
+	// reader.onload = function() {
+// 
+		// formAddProduct.set('image', new Blob([reader.result], {type: 'image/jpeg'}));
+	// }
+// 
+	// await new Promise(resolve => {
+		// setTimeout(resolve, 100);
+	// })
+	
 	let response;
 	try {
-		response = await fetch('http://localhost:3007/products/addproduct', {
+		response = await fetch('http://localhost:3007/api/products/addproduct', {
 			method: 'POST',
-			body: formAddProduct
+			body: new FormData(addProduct)
 		});
 	} catch {
 		Modal.start('Ошибка');
