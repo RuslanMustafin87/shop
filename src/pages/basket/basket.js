@@ -6,7 +6,7 @@ import '../../components/blocks/form-order/form-order';
 
 const basket = new Basket();
 
-let buttonResetBusket = document.querySelector('.button-reset-basket');
+let buttonResetBusket = document.querySelector('.basket__button-reset');
 let containerProducts = document.querySelector('.products');
 let blockSum =  document.querySelector('.basket__sum');
 
