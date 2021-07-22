@@ -8,7 +8,7 @@ const basket = new Basket();
 
 let buttonResetBusket = document.querySelector('.button-reset-basket');
 let containerProducts = document.querySelector('.products');
-let blockSum =  document.querySelector('.basket-page__sum');
+let blockSum =  document.querySelector('.basket__sum');
 
 // функция очистки контейнера с товарами
 function clearContainer(container) {
@@ -40,7 +40,7 @@ function createListGoods(data) {
 		elem.style.backgroundColor = item.background;
 		containerProducts.append(elem);
 	});
-	console.log(data);
+	
 	blockSum.innerHTML = sumProducts(data);
 }
 
@@ -53,6 +53,7 @@ containerProducts.addEventListener('click', function(event) {
 	//if (!containerProducts.contains(elem)) return;
 
 	basket.deleteProductFromBasket(buttonParent.dataset.id);
+	blockSum.innerHTML = parseInt(blockSum.innerHTML) - buttonParent.dataset.price;
 
 	buttonParent.remove();
 	if (!containerProducts.firstChild) {
@@ -66,6 +67,7 @@ buttonResetBusket.addEventListener('click', () => {
 	clearContainer(containerProducts);
 	basket.resetBasket();
 	containerProducts.innerHTML = 'Корзина пуста';
+	blockSum.innerHTML = 0;
 });
 
 // событие загрузки страницы и создание контейнера товаров
@@ -93,7 +95,7 @@ window.addEventListener('storage', () => {
 function sumProducts(list){
 	let sum = 0;
 	list = Array.from(list);
-	console.log(list);
+
 	list.forEach((item) => {
 		sum += parseInt(item.price);
 	});

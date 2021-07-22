@@ -12,7 +12,7 @@ block content
             input.form-product__name(type='text' name='name')
             input.form-product__price(type='text' name='price')
             input.form-product__bg(type='text' name='bg')
-            input.form-product__image(type='file' name='image')
+            input.form-product__image(type='file' name='image' id='imageProduct')
             input.form-product__submit(type='submit')
             input.form-product__reset(type='reset')
         form.admin__form-delete-product.form-delete-product(action="http://localhost:3007/api/products/deleteproduct" method='get' name='deleteProduct')
@@ -29,4 +29,4 @@ block content
             input.form-update-product__image(type='file' name='image')
             input.form-update-product__submit(type='submit')
             input.form-update-product__reset(type='reset')
-        img#pi
+        #pi

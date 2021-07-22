@@ -5,12 +5,10 @@ import './index.scss';
 import Sort from '../../js/sort';
 import Basket from '../../components/moduls/myBasket/myBasket';
 import '../../js/addProductInBasket';
-import {
-	pink
-} from 'color-name';
 
 const sort = new Sort();
 const basket = new Basket();
+
 
 let containerProducts = document.querySelector('.products');
 
@@ -21,12 +19,6 @@ let listProducts = null;
 	let data = null;
 	try {
 		let result = await fetch('http://127.0.0.1:3007/api/products');
-		// {
-		// method: 'GET',
-		// headers: {
-		// 'Content-Type': 'application/json; charset=utf-8',
-		// },
-		// });
 
 		data = await result.json();
 
@@ -38,49 +30,73 @@ let listProducts = null;
 
 	if (data) {
 		sort.sortByIncrease(data);
-		createListGoods(data)
+		createListProducts(data)
 	};
 })();
+// функция создания элемента продукта
 
-// создаем контейнер с товарами
-function createListGoods(data) {
+function createElemProduct(){
 	let product = document.createElement('li');
 	let link = document.createElement('a');
-	let button = document.createElement('button');
+	let imgBlock = document.createElement('div');
 	let img = document.createElement('img');
+	let name = document.createElement('span');
+	let button = document.createElement('button');
 
 	product.classList.add('product', 'products__item');
 	link.classList.add('product__link');
-	//link.setAttribute('href', 'product.html');
+	imgBlock.classList.add('product__image-block');
+	img.classList.add('product__image');
+	name.classList.add('product__name');
 	button.classList.add('product__button');
 	button.innerHTML = 'Добавить';
 
 	product.append(link);
-	product.append(img);
-	product.append(button);
+	link.append(imgBlock);
+	imgBlock.append(img);
+	link.append(name);
+	link.append(button);
 
+	return product;
+}
+
+// функция создания контейнера с продуктами
+function createListProducts(data) {
 	data.forEach((item) => {
-		let elem = product.cloneNode(true);
+		let elem = createElemProduct().cloneNode(true);
 
 		elem.dataset.id = item._id;
 		elem.dataset.name = item.name;
 		elem.dataset.price = item.price;
-		elem.dataset.background = item.background;
-
+		
 		elem.firstElementChild.href = `product.html?id=${item._id}`;
+		elem.firstElementChild.children[1].innerHTML = `${item.name[0].toUpperCase() + item.name.slice(1)} ${item.price}`
 
 		if (item.image) {
+			// let imageBlob = new Blob([new ArrayBuffer(item.image.data)], {
+			// type: "image/jpeg"
+			// });
 
-			let imageBlob = new File([new ArrayBuffer(item.image.data)], item.name);
-			console.log(item.image);
+			// const reader = new FileReader();
+			// let imageBlob = new Blob([item.image], {
+			// type: "image/jpeg"
+			// });
+			// reader.readAsDataURL(imageBlob);
 
-			elem.firstElementChild.nextElementSibling.src = URL.createObjectURL(imageBlob);
+			// ser.src = item.image;
+			// console.log(imageBlob);
+			elem.firstElementChild.firstElementChild.firstElementChild.src = item.image;
+
+			// reader.onload = function(){
+			// elem.firstElementChild.nextElementSibling.src = reader.result;
+			// }
+			// console.log(imageBlob);
+			// elem.firstElementChild.href = URL.createObjectURL(imageBlob);
+			// elem.firstElementChild.setAttribute('download', 'img.jpg');
+			// elem.firstElementChild.nextElementSibling.src = window.URL.createObjectURL(imageBlob);
 
 		}
 
-		elem.prepend(`${item.name}: ${item.price}`);
-
-		elem.style.backgroundColor = item.background;
 		containerProducts.append(elem);
 	});
 }
@@ -107,15 +123,15 @@ sortProducts.addEventListener('change', event => {
 	switch (event.target.value) {
 		case 'sortIncreasedPrice':
 			sort.sortByIncrease(listProducts);
-			createListGoods(listProducts);
+			createListProducts(listProducts);
 			break;
 		case 'sortDecreasedPrice':
 			sort.sortByDecrease(listProducts);
-			createListGoods(listProducts);
+			createListProducts(listProducts);
 			break;
 		case 'sortAlphabet':
 			sort.sortByAlphabet(listProducts);
-			createListGoods(listProducts);
+			createListProducts(listProducts);
 			break;
 	}
 });
@@ -134,4 +150,3 @@ function clearContainer(container) {
 //	let linkParent = link.closest('li');
 //	location.href = link.getAttribute('href') + `?id=${linkParent.dataset.id}`;
 //});
-
