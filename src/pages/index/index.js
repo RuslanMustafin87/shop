@@ -41,6 +41,7 @@ function createElemProduct() {
 	let imgBlock = document.createElement('div');
 	let img = document.createElement('img');
 	let name = document.createElement('span');
+	let price = document.createElement('span');
 	let button = document.createElement('button');
 
 	product.classList.add('product', 'products__item');
@@ -48,14 +49,16 @@ function createElemProduct() {
 	imgBlock.classList.add('product__image-block');
 	img.classList.add('product__image');
 	name.classList.add('product__name');
+	price.classList.add('product__price');
 	button.classList.add('product__button');
 	button.innerHTML = 'Добавить';
 
 	product.append(link);
 	link.append(imgBlock);
 	imgBlock.append(img);
-	link.append(name);
-	link.append(button);
+	product.append(name);
+	product.append(price);
+	product.append(button);
 
 	return product;
 }
@@ -71,7 +74,8 @@ function createListProducts(data) {
 		elem.dataset.price = item.price;
 
 		elem.firstElementChild.href = `product.html?id=${item._id}`;
-		elem.firstElementChild.children[1].innerHTML = `${item.name[0].toUpperCase() + item.name.slice(1)} ${item.price}`
+		elem.children[1].innerHTML = `${item.name[0].toUpperCase()}${item.name.slice(1)}`;
+		elem.children[2].innerHTML = `${item.price}`;
 
 		if (item.image) {
 

@@ -11,7 +11,7 @@ addProduct.onsubmit = async function(event) {
 
 	let response;
 	try {
-		response = await fetch('http://localhost:3007/products/addproduct', {
+		response = await fetch('http://localhost:3007/api/products/addproduct', {
 			method: 'POST',
 			body: new FormData(addProduct)
 		});
