@@ -19,7 +19,7 @@ let listProducts = null;
 	let data = null;
 	try {
 		let result = await fetch('http://127.0.0.1:3007/api/products');
-		
+
 		data = await result.json();
 
 	} catch (err) {
@@ -33,12 +33,12 @@ let listProducts = null;
 		createListProducts(data)
 	};
 })();
+
 // функция создания элемента продукта
 
 function createElemProduct() {
 	let product = document.createElement('li');
 	let link = document.createElement('a');
-	let imgBlock = document.createElement('div');
 	let img = document.createElement('img');
 	let name = document.createElement('span');
 	let price = document.createElement('span');
@@ -46,7 +46,6 @@ function createElemProduct() {
 
 	product.classList.add('product', 'products__item');
 	link.classList.add('product__link');
-	imgBlock.classList.add('product__image-block');
 	img.classList.add('product__image');
 	name.classList.add('product__name');
 	price.classList.add('product__price');
@@ -54,8 +53,7 @@ function createElemProduct() {
 	button.innerHTML = 'Добавить';
 
 	product.append(link);
-	link.append(imgBlock);
-	imgBlock.append(img);
+	link.append(img);
 	product.append(name);
 	product.append(price);
 	product.append(button);
@@ -66,6 +64,13 @@ function createElemProduct() {
 // функция создания контейнера с продуктами
 function createListProducts(data) {
 
+	let formatter = new Intl.NumberFormat("ru", {
+		style: 'currency',
+		currency: 'RUB',
+		useGrouping: true,
+		maximumFractionDigits: 0
+	});
+
 	data.forEach((item) => {
 		let elem = createElemProduct().cloneNode(true);
 
@@ -73,9 +78,10 @@ function createListProducts(data) {
 		elem.dataset.name = item.name;
 		elem.dataset.price = item.price;
 
+
 		elem.firstElementChild.href = `product.html?id=${item._id}`;
-		elem.children[1].innerHTML = `${item.name[0].toUpperCase()}${item.name.slice(1)}`;
-		elem.children[2].innerHTML = `${item.price}`;
+		elem.children[1].innerHTML = item.name;
+		elem.children[2].innerHTML = formatter.format(item.price);
 
 		if (item.image) {
 
@@ -83,7 +89,7 @@ function createListProducts(data) {
 				type: "image/jpeg"
 			});
 
-			elem.firstElementChild.firstElementChild.firstElementChild.src = URL.createObjectURL(imageBlob);
+			elem.firstElementChild.firstElementChild.src = URL.createObjectURL(imageBlob);
 		}
 
 		containerProducts.append(elem);
