@@ -5,16 +5,22 @@
 
 	&__basket {
 		position: absolute;
-		right: 5%;
+		right: 7.5%;
 		top: 50%;
 		transform: translateY(-50%);
+		@media (max-width: 600px){
+			right: 5%;
+		}
 	}
 	&__link-home {
 		position: absolute;
-		left: 5%;
+		left: 7.5%;
 		top: 50%;
 		transform: translateY(-50%);
 		cursor: pointer;
+		@media (max-width: 600px){
+			left: 5%;
+		}
 	}
 	&__link{
 		color: #fff;

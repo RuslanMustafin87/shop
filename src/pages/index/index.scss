@@ -2,24 +2,20 @@
 
 .products {
 	margin: auto;
-	width: 80%;
-	// min-width: 960px;
-	height: 400px;
-	display: flex;
-	justify-content: space-between;
-	//align-items: center;
-	flex-wrap: wrap;
+	width: 85%;
+	max-width: 1200px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-auto-rows: auto;
+	grid-column-gap: 0.625rem;
+	grid-row-gap: 1.25rem;
 	padding-top: 10px;
-	@media (max-width: 836px){
-		justify-content: space-around;
+	@media (max-width: 600px){
+		width: 90%;
 	}
 
 	&__item {
-		width: 23%;
-		min-width: 219.2px;
-		min-height: 18.75rem;
-		max-height: 25rem;
-		margin-bottom: 10px;
+		height: auto;
 	}
 }
 
