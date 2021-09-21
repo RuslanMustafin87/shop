@@ -10,17 +10,19 @@
 }
 
 .input {
-	width: 12.5rem;
-	height: 1.25rem;
+	width: 100%;
+	height: 30px;
 	margin-bottom: 0.625rem;
+	padding: 0 3px 0 3px;
 	border-radius: 5px;
 	border: 2px solid var(--color-text);
+	box-sizing: border-box;
 	outline: none;
 }
 
-.admin__form{
+.admin__form-add{
 	float: left;
-	margin-right: 1.25rem;
+	margin-right: 2.5rem;
 	height: 15rem;
 	@include tablet{
 		float: none;
@@ -53,12 +55,15 @@
 	}
 
 	&__submit {
-		@extend .input;
+		@include button_shop;
+		margin-bottom: 0.625rem;
+		width: 100%;
 		cursor: pointer;
 	}
 
 	&__reset {
-		@extend .input;
+		@include button_shop;
+		width: 100%;
 		cursor: pointer;
 	}
 }
@@ -66,7 +71,7 @@
 
 .admin__form-delete-product{
 	float: left;
-	margin-right: 1.25rem;
+	margin-right: 2.5rem;
 	@include tablet{
 		float: none;
 	}
@@ -89,13 +94,16 @@
 	}
 
 	&__submit {
-		@extend .input;
+		@include button_shop;
+		margin-bottom: 0.625rem;
 		cursor: pointer;
+		width: 100%;
 	}
 
 	&__reset {
-		@extend .input;
+		@include button_shop;
 		cursor: pointer;
+		width: 100%;
 	}
 }
 
@@ -106,10 +114,10 @@
 	}
 }
 
-.form-update-product {
+.form-update-product{
 	display: flex;
 	flex-direction: column;
-	height: 15rem;
+	// height: 15rem;
 	&__title{
 		font-size: 1.5rem;
 		margin-bottom: 0.625rem;
@@ -135,12 +143,15 @@
 		margin-bottom: 0.625rem;
 	}
 	&__submit {
-		@extend .input;
+		@include button_shop;
+		margin-bottom: 0.625rem;
 		cursor: pointer;
+		width: 100%;
 	}
 
 	&__reset {
-		@extend .input;
+		@include button_shop;
 		cursor: pointer;
+		width: 100%;
 	}
 }

@@ -5,9 +5,10 @@ block var
     - var page = 'index'
 
 block content
-    main.index
-        ul.index__products.products
-        select.main-index__sort.sort-products(name='sort-products')
-            option(value='sortIncreasedPrice' selected) По возростающей цене
-            option(value='sortDecreasedPrice' ) По убывающей цене
-            option(value='sortAlphabet') По алфавиту
+    main.main-index
+        .main-index__wrapper
+            select.main-index__sort.sort-products(name='sort-products')
+                option(value='sortIncreasedPrice' selected) По возростающей цене
+                option(value='sortDecreasedPrice' ) По убывающей цене
+                option(value='sortAlphabet') По алфавиту
+            ul.main-index__products.products

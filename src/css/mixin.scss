@@ -61,10 +61,11 @@
 	height: 30px;
 	border-radius: 0.9375rem;
 	box-shadow: 0 2px 8px 0 var(--color-main);
-	transition: .2s linear;
+	transition: .4s linear;
 
 	&:hover {
 		background-color: var(--color-hover);
 		box-shadow: 0 2px 8px 0 var(--color-hover);
+		transform: scale(1.05);
 	}
 }

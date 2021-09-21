@@ -1,7 +1,9 @@
 .basket {
 	height: 2.1875rem;
 	width: 2.1875rem;
-	background-color: wheat;
+	background: url('../images/icons/basket.svg') no-repeat;
+	background-position: 0%;
+	background-size: cover;
 	cursor: pointer;
 	transition: transform .5s;
 	&__count{
@@ -9,7 +11,7 @@
 		position: absolute;
 		bottom: 0;
 		left:  0;
-		transform: translate(-50%, 50%);
+		transform: translate(-35%, 50%);
 		width: 1.25rem;
 		height: 1.25rem;
 		background-color:red;
