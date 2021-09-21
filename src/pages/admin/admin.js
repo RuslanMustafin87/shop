@@ -34,7 +34,7 @@ addProduct.onsubmit = async function(event) {
 
 // функция форматирования формы
 
-function formaterForm(form){
+function formaterForm(form) {
 	let price = form.get('price');
 	let name = form.get('name');
 
@@ -52,4 +52,17 @@ function formaterForm(form){
 	form.set('name', name);
 
 	return form;
+}
+
+let addImage = document.querySelector('#pic-product');
+let addImageBlock = document.querySelector('.add-pic');
+let addImageSpan = document.querySelector('.add-pic__span')
+addImageSpan.innerHTML = 'Файл не выбран';
+
+addImage.onchange = function(event) {
+	if (this.files.length === 0) {
+		addImageSpan.innerHTML = 'Файл не выбран';
+	} else {
+		addImageSpan.innerHTML = this.files[0].name;
+	}
 }
