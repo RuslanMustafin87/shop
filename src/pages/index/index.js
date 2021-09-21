@@ -9,7 +9,6 @@ import '../../js/addProductInBasket';
 const sort = new Sort();
 const basket = new Basket();
 
-
 let containerProducts = document.querySelector('.products');
 
 // получение данных с сервера
@@ -27,6 +26,8 @@ let listProducts = null;
 	}
 
 	listProducts = data;
+
+	console.log(listProducts);
 
 	if (data) {
 		sort.sortByIncrease(data);
@@ -138,10 +139,24 @@ function clearContainer(container) {
 	}
 }
 
-//document.addEventListener('click', function(){
-//	event.preventDefault();
-//	let link = event.target.closest('.product__link');
-//	if (!link) return;
-//	let linkParent = link.closest('li');
-//	location.href = link.getAttribute('href') + `?id=${linkParent.dataset.id}`;
-//});
+// функция фильтрации по категории товара
+function filterProductsByCategory(list, category) {
+	let listFiltered = list.filter((item) => {
+		return item.category === category;
+	});
+
+	clearContainer(containerProducts);
+	createListProducts(listFiltered);
+}
+
+// событие фильтрации по категории товара
+let sortProductsByCategory = document.querySelector('.sort-products-by-category');
+
+sortProductsByCategory.onchange = function(event) {
+	if (event.target.value === 'all') {
+		clearContainer(containerProducts);
+		createListProducts(listProducts);
+		return;
+	}
+	filterProductsByCategory(listProducts, event.target.value)
+}

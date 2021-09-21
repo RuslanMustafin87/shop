@@ -11,6 +11,9 @@
 		}
 	}
 	&__sort{
+		margin: 0 .625rem .625rem 0;
+	}
+	&__sort-by-category{
 		margin: 0 0 .625rem 0;
 	}
 }
@@ -68,9 +71,19 @@
 }
 
 .sort-products {
+	float: left;
 	cursor: pointer;
 	size: 7.5rem 1.875rem;
-	padding: 0 5px 0 5px;
+	padding: 3px 5px 3px 5px;
+	border: none;
+	outline: none;
+	@include button_shop;
+}
+
+.sort-products-by-category{
+	cursor: pointer;
+	size: 7.5rem 1.875rem;
+	padding: 3px 5px 3px 5px;
 	border: none;
 	outline: none;
 	@include button_shop;

@@ -54,9 +54,29 @@ function formaterForm(form) {
 	return form;
 }
 
-let addImage = document.querySelector('#pic-product');
-let addImageBlock = document.querySelector('.add-pic');
-let addImageSpan = document.querySelector('.add-pic__span')
+let addImageAddPic = document.querySelector('#addImageProduct');
+let addImageSpanAddPic = document.querySelector('#addImageProductSpan')
+let formAddButtonReset = document.querySelector('.form-add-product__reset');
+
+addImageSpanAddPic.innerHTML = 'Файл не выбран';
+
+addImageAddPic.onchange = function(event) {
+	if (this.files.length === 0) {
+		addImageSpanAddPic.innerHTML = 'Файл не выбран';
+	} else {
+		addImageSpanAddPic.innerHTML = this.files[0].name;
+	}
+}
+
+formAddButtonReset.onclick = function(){
+	addImageSpanAddPic.innerHTML = 'Файл не выбран';
+}
+
+
+let addImage = document.querySelector('#addUpdateProduct');
+let addImageSpan = document.querySelector('#addUpdateProductSpan')
+let formUpdateButtonReset = document.querySelector('.form-update-product__reset');
+
 addImageSpan.innerHTML = 'Файл не выбран';
 
 addImage.onchange = function(event) {
@@ -66,3 +86,8 @@ addImage.onchange = function(event) {
 		addImageSpan.innerHTML = this.files[0].name;
 	}
 }
+
+formUpdateButtonReset.onclick = function(){
+	addImageSpan.innerHTML = 'Файл не выбран';
+}
+
