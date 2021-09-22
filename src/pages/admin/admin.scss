@@ -5,8 +5,7 @@
 }
 
 .admin {
-	padding-left: 1.25rem;
-	padding-top: 1.25rem;
+	padding: 1.25rem 1.25rem 0 1.25rem;
 }
 
 .input {
@@ -24,8 +23,8 @@
 	float: left;
 	margin-right: 2.5rem;
 	height: 15rem;
-
 	@include tablet {
+		margin: 0;
 		float: none;
 	}
 }
@@ -87,6 +86,7 @@
 	margin-right: 2.5rem;
 
 	@include tablet {
+		margin: 0;
 		float: none;
 	}
 }
@@ -127,7 +127,8 @@
 .admin__form-update-product {
 	float: left;
 
-	@include laptop {
+	@include tablet {
+		width: 100%;
 		float: none;
 	}
 }
@@ -135,8 +136,11 @@
 .form-update-product {
 	display: flex;
 	flex-direction: column;
-
-	// height: 15rem;
+	width: 15.625rem;
+	@include tablet {
+		min-width: 320px;
+		width: 100%;
+	}
 	&__title {
 		font-size: 1.5rem;
 		margin-bottom: 0.625rem;

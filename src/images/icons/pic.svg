@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" height="35" width="35">
   
 <g transform="matrix(2.5,0,0,2.5,0,0)"><g>
-    <rect x="0.5" y="0.5" width="13" height="13" rx="1" transform="translate(14.01 14) rotate(180)" style="fill: none;stroke: #41bfbb;stroke-linecap: round;stroke-linejoin: round"></rect>
-    <circle cx="9.25" cy="4.75" r="1.75" style="fill: none;stroke: #41bfbb;stroke-linecap: round;stroke-linejoin: round"></circle>
-    <path d="M9.4,13.5A7.36,7.36,0,0,0,2,7.5,7.88,7.88,0,0,0,.5,7.64" style="fill: none;stroke: #41bfbb;stroke-linecap: round;stroke-linejoin: round"></path>
-    <path d="M13.5,9.91A7.8,7.8,0,0,0,11,9.5a7.89,7.89,0,0,0-3.13.64" style="fill: none;stroke: #41bfbb;stroke-linecap: round;stroke-linejoin: round"></path>
+    <rect x="0.5" y="0.5" width="13" height="13" rx="1" transform="translate(14.01 14) rotate(180)" style="fill: none;stroke: #89B6A5;stroke-linecap: round;stroke-linejoin: round"></rect>
+    <circle cx="9.25" cy="4.75" r="1.75" style="fill: none;stroke: #89B6A5;stroke-linecap: round;stroke-linejoin: round"></circle>
+    <path d="M9.4,13.5A7.36,7.36,0,0,0,2,7.5,7.88,7.88,0,0,0,.5,7.64" style="fill: none;stroke: #89B6A5;stroke-linecap: round;stroke-linejoin: round"></path>
+    <path d="M13.5,9.91A7.8,7.8,0,0,0,11,9.5a7.89,7.89,0,0,0-3.13.64" style="fill: none;stroke: #89B6A5;stroke-linecap: round;stroke-linejoin: round"></path>
   </g></g></svg>
