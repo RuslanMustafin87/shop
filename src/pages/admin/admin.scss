@@ -9,6 +9,7 @@
 }
 
 .input {
+	color: var(--color-text);
 	width: 100%;
 	height: 30px;
 	margin-bottom: 0.625rem;
@@ -22,7 +23,6 @@
 .admin__form-add {
 	float: left;
 	margin-right: 2.5rem;
-	height: 15rem;
 	@include tablet {
 		margin: 0;
 		float: none;
@@ -63,6 +63,7 @@
 	}
 
 	&__category {
+		background-color: #fff;
 		@extend .input;
 	}
 

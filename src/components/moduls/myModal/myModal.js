@@ -1,3 +1,4 @@
+
 let modalContainer = document.createElement('div');
 let modal = document.createElement('div');
 let modalText = document.createElement('div');
