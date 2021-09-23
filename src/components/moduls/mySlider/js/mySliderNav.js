@@ -10,7 +10,7 @@ export default function(options) {
 	buttonLeft.classList.add('my-slider__button', 'my-slider__button--left');
 	slider.append(buttonRight, buttonLeft);
 
-	if (!options.infinite) buttonLeft.hidden = true; // скрываем левую кнопку при небесконечном слайдере
+	if (!options.infinite) {buttonLeft.hidden = true;} // скрываем левую кнопку при небесконечном слайдере
 
 	// вычисляем разницу в ширине между контейнером для слайдов и outer для
 	// слежения за тем, когда контейнер достигнет конца
@@ -99,8 +99,8 @@ export default function(options) {
 
 		buttonRight.hidden = false;
 		buttonLeft.hidden = false;
-		if (containerLeft === maxScroll) buttonRight.hidden = true;
-		if (containerLeft === 0) buttonLeft.hidden = true;
+		if (containerLeft === maxScroll) {buttonRight.hidden = true;}
+		if (containerLeft === 0) {buttonLeft.hidden = true;}
 	}
 
 	// событие слежения за окончанием перемещения слайдера

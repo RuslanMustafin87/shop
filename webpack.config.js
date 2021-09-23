@@ -74,7 +74,7 @@ const common = merge([
 			}),
 			new FriendlyErrorsWebpackPlugin(),
 			// new MiniCssExtractPlugin({
-				// filename: '[name].css',
+			// filename: '[name].css',
 			// }),
 			new CleanWebpackPlugin(),
 			// new RuntimeAnalyzerPlugin()

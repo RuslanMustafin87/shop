@@ -1,4 +1,3 @@
-//import '../../exm';
 import '../../css/main.scss';
 import './index.scss';
 import imgLogo from '../../images/logo-light.png';

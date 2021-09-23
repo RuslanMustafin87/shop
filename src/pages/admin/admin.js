@@ -4,21 +4,38 @@ import Modal from '../../components/moduls/myModal/myModal';
 import imgCross from '../../images/icons/cross.svg';
 
 // функция форматирования формы
-
 function formaterForm(form) {
 	let price = form.get('price');
 	let name = form.get('name');
 
 	price = parseInt(price.trim());
-	console.log(price);
-	name = name.trim();
-	name = name[0].toUpperCase() + name.slice(1).toLowerCase();
 
+	if (name !== '') {
+		name = name.trim();
+		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
+	}
+	
 	form.set('price', price);
 	form.set('name', name);
 
 	return form;
 }
+
+// функция-оберка для функции форматирования формы(просто чтобы попробывать)
+function wrapperFormaterForm(func) {
+	return function(form) {
+
+		let result = func(form);
+
+		if (form.get('price') === '') {
+			result.set('price', '');
+		}
+
+		return result;
+	}
+}
+
+formaterForm = wrapperFormaterForm(formaterForm);
 
 // отправка формы с новым товаром
 const addProduct = document.forms.addProduct;
@@ -66,17 +83,39 @@ addProduct.onreset = function() {
 	addImageSpan.innerHTML = 'Файл не выбран';
 }
 
+// отправка формы для удаления товара
+const deleteProduct = document.forms.deleteProduct;
+
+deleteProduct.onsubmit = async function(event) {
+	event.preventDefault();
+	console.log(this.id.value);
+	let response;
+	try {
+		response = await fetch(`http://localhost:3007/api/products/deleteproduct?id=${this.id.value}`, {
+			method: 'DELETE',
+		});
+	} catch {
+		Modal.start('Ошибка');
+	}
+
+	let data = await response.json();
+
+	Modal.start(data.message);
+
+	// deleteProduct.reset();
+};
+
 // отправка формы для изменения товара
 const updateProduct = document.forms.updateProduct;
 
 updateProduct.onsubmit = async function(event) {
 	event.preventDefault();
 
-	let formProduct = new FormData(this);
+	let formProduct = new FormData(this)
 
-	if (formProduct.get('name') === '' &&
-		formProduct.get('price') === '' &&
-		formProduct.get('image').name === ''
+	if (this.name.value === '' &&
+		this.price.value === '' &&
+		this.image.files.length === 0
 	) {
 		Modal.start('Введите значение, которое надо изменить');
 		return;
@@ -85,7 +124,7 @@ updateProduct.onsubmit = async function(event) {
 	formProduct = formaterForm(formProduct);
 
 	if (isNaN(formProduct.get('price'))) {
-		formProduct.set('price', '');
+		return Modal.start('Введите цену в формате числа');
 	}
 
 	let response;
@@ -97,7 +136,6 @@ updateProduct.onsubmit = async function(event) {
 	} catch {
 		Modal.start('Ошибка');
 	}
-
 	let data = await response.json();
 
 	Modal.start(data.message);

@@ -6,7 +6,7 @@ const basket = new Basket();
 // событие добавления товара в карзину с помощью перетаскивания
 document.addEventListener('pointerdown', function() {
 	let target = event.target.closest('.products__item');
-	if (!target) return;
+	if (!target) {return;}
 
 	if (event.which === 1) { // проверка какая кнопка мыши нажата
 		let basketMain = document.querySelector('.basket');

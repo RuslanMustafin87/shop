@@ -47,7 +47,7 @@ function createListGoods(data) {
 // событие удаления товара из корзины
 containerProducts.addEventListener('click', function(event) {
 	let button = event.target.closest('.product__button-delete');
-	if (!button) return;
+	if (!button) {return;}
 
 	let buttonParent = button.closest('li');
 	//if (!containerProducts.contains(elem)) return;

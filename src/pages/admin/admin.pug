@@ -25,7 +25,7 @@ block content
         form.admin__form-delete-product.form-delete-product(action="http://localhost:3007/api/products/deleteproduct" method='get' name='deleteProduct')
             h1.form-delete-product__title Удаление товара
             input.form-delete-product__id(type='text' name='id' placeholder='id')
-            input.form-delete-product__submit(type='submit' placeholder='')
+            input.form-delete-product__submit(type='submit')
             input.form-delete-product__reset(type='reset')
         form.admin__form-update-product.form-update-product(action="http://localhost:3007/admin/updateproduct" method='post' name='updateProduct' enctype='multipart/form-data')
             h1.form-update-product__title Изменение товара
