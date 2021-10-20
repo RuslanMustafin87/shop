@@ -1,41 +1,34 @@
 import '../../css/main.scss';
 import './admin.scss';
 import Modal from '../../components/moduls/myModal/myModal';
-import imgCross from '../../images/icons/cross.svg';
 
-// функция форматирования формы
+let formatter = new Intl.NumberFormat("ru", {
+	style: 'currency',
+	currency: 'RUB',
+	useGrouping: true,
+	maximumFractionDigits: 0
+});
+
+// функция форматирования формы для добавления товара
 function formaterForm(form) {
 	let price = form.get('price');
 	let name = form.get('name');
 
 	price = parseInt(price.trim());
+	name = name.trim();
+	name = name[0].toUpperCase() + name.slice(1).toLowerCase();
 
-	if (name !== '') {
-		name = name.trim();
-		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
+	if (isNaN(price)) {
+		return Modal.start('Введите цену в формате числа');
 	}
 	
+	price = formatter.format(price);
+
 	form.set('price', price);
 	form.set('name', name);
 
 	return form;
 }
-
-// функция-оберка для функции форматирования формы(просто чтобы попробывать)
-function wrapperFormaterForm(func) {
-	return function(form) {
-
-		let result = func(form);
-
-		if (form.get('price') === '') {
-			result.set('price', '');
-		}
-
-		return result;
-	}
-}
-
-formaterForm = wrapperFormaterForm(formaterForm);
 
 // отправка формы с новым товаром
 const addProduct = document.forms.addProduct;
@@ -46,10 +39,6 @@ addProduct.onsubmit = async function(event) {
 	let formProduct = new FormData(this);
 
 	formProduct = formaterForm(formProduct);
-
-	if (isNaN(formProduct.get('price'))) {
-		return Modal.start('Введите цену в формате числа');
-	}
 
 	let response;
 	try {
@@ -88,7 +77,7 @@ const deleteProduct = document.forms.deleteProduct;
 
 deleteProduct.onsubmit = async function(event) {
 	event.preventDefault();
-	console.log(this.id.value);
+
 	let response;
 	try {
 		response = await fetch(`http://localhost:3007/api/products/deleteproduct?id=${this.id.value}`, {
@@ -102,7 +91,7 @@ deleteProduct.onsubmit = async function(event) {
 
 	Modal.start(data.message);
 
-	// deleteProduct.reset();
+	deleteProduct.reset();
 };
 
 // отправка формы для изменения товара
@@ -122,10 +111,6 @@ updateProduct.onsubmit = async function(event) {
 	}
 
 	formProduct = formaterForm(formProduct);
-
-	if (isNaN(formProduct.get('price'))) {
-		return Modal.start('Введите цену в формате числа');
-	}
 
 	let response;
 	try {

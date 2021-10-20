@@ -1,6 +1,5 @@
 import '../../css/main.scss';
 import './index.scss';
-import imgLogo from '../../images/logo-light.png';
 
 import Sort from '../../js/sort';
 import Basket from '../../components/moduls/myBasket/myBasket';
@@ -13,6 +12,7 @@ let containerProducts = document.querySelector('.products');
 
 // получение данных с сервера
 let listProducts = null;
+let listProductsInContainer = null;
 
 (async function getDataFromServer() {
 	let data = null;
@@ -25,81 +25,38 @@ let listProducts = null;
 		console.log(err);
 	}
 
-	listProducts = data;
-
-	console.log(listProducts);
-
 	if (data) {
-		sort.sortByIncrease(data);
-		createListProducts(data)
+		insertImageInProducts(data);
+		listProducts = listProductsInContainer = Array.from(document.querySelectorAll('.product'));
 	};
 })();
 
-// функция создания элемента продукта
-
-function createElemProduct() {
-	let product = document.createElement('li');
-	let link = document.createElement('a');
-	let img = document.createElement('img');
-	let name = document.createElement('span');
-	let price = document.createElement('span');
-	let button = document.createElement('button');
-
-	product.classList.add('product', 'products__item');
-	link.classList.add('product__link');
-	img.classList.add('product__image');
-	name.classList.add('product__name');
-	price.classList.add('product__price');
-	button.classList.add('product__button');
-	button.innerHTML = 'Добавить';
-
-	product.append(link);
-	link.append(img);
-	product.append(name);
-	product.append(price);
-	product.append(button);
-
-	return product;
-}
-
-// функция создания контейнера с продуктами
-function createListProducts(data) {
-
-	let formatter = new Intl.NumberFormat("ru", {
-		style: 'currency',
-		currency: 'RUB',
-		useGrouping: true,
-		maximumFractionDigits: 0
-	});
-
-	data.forEach((item) => {
-		let elem = createElemProduct().cloneNode(true);
-
-		elem.dataset.id = item._id;
-		elem.dataset.name = item.name;
-		elem.dataset.price = item.price;
-
-
-		elem.firstElementChild.href = `product.html?id=${item._id}`;
-		elem.children[1].innerHTML = item.name;
-		elem.children[2].innerHTML = formatter.format(item.price);
-
-		if (item.image) {
-
-			let imageBlob = new Blob([new Uint8Array(item.image.data)], {
-				type: "image/jpeg"
-			});
-
-			elem.firstElementChild.firstElementChild.src = URL.createObjectURL(imageBlob);
-		}
-
+// функция наполнения контейнера с продуктами элементами продуктов
+function insertElemOfProduct(products) {
+	products.forEach(function(elem, index) {
 		containerProducts.append(elem);
 	});
 }
 
+// функция вставки картинок в контейнер с продуктами
+function insertImageInProducts(data) {
+
+	let products = document.querySelectorAll('.product__image');
+
+	for (let i = 0; i < products.length; i++) {
+		if (data[i].image) {
+
+			let imageBlob = new Blob([new Uint8Array(data[i].image.data)], {
+				type: "image/jpeg"
+			});
+
+			products[i].src = URL.createObjectURL(imageBlob);
+		}
+	}
+}
+
 // событие добавления товара в карзину
 containerProducts.addEventListener('mousedown', function(event) {
-	//event.stopPropagation();
 	event.preventDefault();
 
 	let elem = event.target.closest('.product__button');
@@ -114,20 +71,22 @@ containerProducts.addEventListener('mousedown', function(event) {
 // сортировка товара
 let sortProducts = document.querySelector('.sort-products');
 
+let eventSort = new Event('change');
+
 sortProducts.addEventListener('change', event => {
 	clearContainer(containerProducts);
 	switch (event.target.value) {
 		case 'sortIncreasedPrice':
-			sort.sortByIncrease(listProducts);
-			createListProducts(listProducts);
+			sort.sortByIncrease(listProductsInContainer);
+			insertElemOfProduct(listProductsInContainer);
 			break;
 		case 'sortDecreasedPrice':
-			sort.sortByDecrease(listProducts);
-			createListProducts(listProducts);
+			sort.sortByDecrease(listProductsInContainer);
+			insertElemOfProduct(listProductsInContainer);
 			break;
 		case 'sortAlphabet':
-			sort.sortByAlphabet(listProducts);
-			createListProducts(listProducts);
+			sort.sortByAlphabet(listProductsInContainer);
+			insertElemOfProduct(listProductsInContainer);
 			break;
 	}
 });
@@ -141,12 +100,10 @@ function clearContainer(container) {
 
 // функция фильтрации по категории товара
 function filterProductsByCategory(list, category) {
-	let listFiltered = list.filter((item) => {
-		return item.category === category;
-	});
-
 	clearContainer(containerProducts);
-	createListProducts(listFiltered);
+	listProductsInContainer = list.filter(item => item.dataset.category === category);
+	sortProducts.dispatchEvent(eventSort);
+	insertElemOfProduct(listProductsInContainer);
 }
 
 // событие фильтрации по категории товара
@@ -155,8 +112,10 @@ let sortProductsByCategory = document.querySelector('.sort-products-by-category'
 sortProductsByCategory.onchange = function(event) {
 	if (event.target.value === 'all') {
 		clearContainer(containerProducts);
-		createListProducts(listProducts);
+		listProductsInContainer = listProducts;
+		sortProducts.dispatchEvent(eventSort);
+		insertElemOfProduct(listProductsInContainer);
 		return;
 	}
-	filterProductsByCategory(listProducts, event.target.value)
+	filterProductsByCategory(listProducts, event.target.value);
 }

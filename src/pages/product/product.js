@@ -17,16 +17,14 @@ MySlider.init({
 const basket = new Basket();
 const idProduct = new URL(window.location.href).searchParams.get('id');
 
-let productPicture = document.querySelector('.product__pictures');
 let productName = document.querySelector('.product__name');
 let productPrice = document.querySelector('.product__price');
 let buttonAdd = document.querySelector('.product__button-add');
 
 // функция добавления на страницу даных с сервера 
 function getDataAndInsert(picture, name, price){
-	productPicture.style.background = picture;
-	productName.innerHTML = name;
-	productPrice.innerHTML = `Price: ${new Intl.NumberFormat('en-US').format(price)} $`;
+	// productName.innerHTML = name;
+	// productPrice.innerHTML = `Price: ${new Intl.NumberFormat('ru-RU').format(price)}`;
 }
 
 let data = null;
@@ -48,7 +46,7 @@ let data = null;
 		if (!responce.ok){
 			throw new Error(data.status)
 		}
-        getDataAndInsert(data.background, data.name, data.price)
+        // getDataAndInsert(data.background, data.name, data.price)
         
 	} catch (err) {
 		console.log(err.message);

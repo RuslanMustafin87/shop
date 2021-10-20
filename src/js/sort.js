@@ -2,20 +2,20 @@ export default class Sort {
 
 	sortByIncrease(arr) {
 		arr.sort((a, b) => {
-			return a.price - b.price;
+			console.log(a.dataset.price);
+			return a.dataset.price - b.dataset.price;
 		});
 	}
 
 	sortByDecrease(arr) {
-		console.log('hi');
 		arr.sort((a, b) => {
-			return b.price - a.price;
+			return b.dataset.price - a.dataset.price;
 		});
 	}
 
 	sortByAlphabet(arr) {
 		arr.sort((a, b) => {
-			return a.name < b.name ? -1 : 1;
+			return a.dataset.name < b.dataset.name ? -1 : 1;
 		});
 	}
 }
