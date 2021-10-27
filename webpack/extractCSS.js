@@ -7,7 +7,12 @@ module.exports = function(){
 				{
 					test: /\.css$/,
 					use: [
-						MiniCssExtractPlugin.loader,
+						{
+							loader: MiniCssExtractPlugin.loader,
+							options: {
+								publicPath: '../'
+							}
+						},
 						'css-loader',
 						//'postcss-loader'
 					]
@@ -15,7 +20,12 @@ module.exports = function(){
 				{
 					test: /\.scss$/,
 					use: [
-						MiniCssExtractPlugin.loader,
+						{
+							loader: MiniCssExtractPlugin.loader,
+							options: {
+								publicPath: '../'
+							}
+						},
 						'css-loader',
 						//'postcss-loader',
 						'sass-loader'
@@ -25,7 +35,7 @@ module.exports = function(){
 		},
 		plugins: [
 			new MiniCssExtractPlugin({
-				filename: './css/[name].css',
+				filename: './css/[name].css'
 			})
 		],
 	};

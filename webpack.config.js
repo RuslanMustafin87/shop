@@ -73,9 +73,6 @@ const common = merge([
 				template: PATHS.source + '/pages/admin/admin.pug'
 			}),
 			new FriendlyErrorsWebpackPlugin(),
-			// new MiniCssExtractPlugin({
-			// filename: '[name].css',
-			// }),
 			new CleanWebpackPlugin(),
 			// new RuntimeAnalyzerPlugin()
 		],

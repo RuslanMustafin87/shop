@@ -3,7 +3,7 @@ module.exports = function(){
 		module: {
 			rules: [
 				{
-					test: /\.(jpg|png)$/,
+					test: /\.(jpe?g|png)$/,
 					use: [
 						{
 							loader: 'file-loader',

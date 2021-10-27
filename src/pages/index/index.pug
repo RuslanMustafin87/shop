@@ -19,7 +19,7 @@ block content
                 option(value="table") Стол 
             ul.main-index__products.products
                 each item in products
-                    li.products__item.product(data-id= `${item._id}`  data-name= `${item.name}` data-price= `${item.price}` data-category=`${item.category}`)
+                    li.products__item.product(data-id=item._id  data-name=item.name data-price=item.price data-category=item.category)
                         a.product__link(href= `product?id=${item._id}`)
                             //- img.product__image(src="blob:http://localhost:3007/b5b2006e-d158-4872-a929-90e592dfe2e5")
                             img.product__image()
