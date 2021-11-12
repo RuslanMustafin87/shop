@@ -2,14 +2,13 @@ export default class Sort {
 
 	sortByIncrease(arr) {
 		arr.sort((a, b) => {
-			console.log(a.dataset.price);
-			return a.dataset.price - b.dataset.price;
+			return parseInt(a.dataset.price) - parseInt(b.dataset.price);
 		});
 	}
 
 	sortByDecrease(arr) {
 		arr.sort((a, b) => {
-			return b.dataset.price - a.dataset.price;
+			return parseInt(b.dataset.price) - parseInt(a.dataset.price);
 		});
 	}
 
