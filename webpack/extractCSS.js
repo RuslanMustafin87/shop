@@ -9,9 +9,9 @@ module.exports = function(){
 					use: [
 						{
 							loader: MiniCssExtractPlugin.loader,
-							options: {
-								publicPath: '../'
-							}
+							// options: {
+							// 	publicPath: '/assets/images/'
+							// }
 						},
 						'css-loader',
 						//'postcss-loader'
@@ -22,9 +22,9 @@ module.exports = function(){
 					use: [
 						{
 							loader: MiniCssExtractPlugin.loader,
-							options: {
-								publicPath: '../'
-							}
+							// options: {
+							// 	publicPath: '/assets/'
+							// }
 						},
 						'css-loader',
 						//'postcss-loader',
@@ -35,7 +35,7 @@ module.exports = function(){
 		},
 		plugins: [
 			new MiniCssExtractPlugin({
-				filename: './css/[name].css'
+				filename: 'css/[name].css'
 			})
 		],
 	};

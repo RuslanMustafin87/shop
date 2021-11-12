@@ -2,6 +2,8 @@ import '../../css/main.scss';
 import './admin.scss';
 import Modal from '../../components/moduls/myModal/myModal';
 
+const modal =  new Modal();
+
 let formatter = new Intl.NumberFormat("ru", {
 	style: 'currency',
 	currency: 'RUB',
@@ -19,7 +21,7 @@ function formaterForm(form) {
 	name = name[0].toUpperCase() + name.slice(1).toLowerCase();
 
 	if (isNaN(price)) {
-		return Modal.start('Введите цену в формате числа');
+		return modal.start('Введите цену в формате числа');
 	}
 	
 	price = formatter.format(price);
@@ -30,8 +32,17 @@ function formaterForm(form) {
 	return form;
 }
 
+// функция добавления множества картинок в formData
+function addImagesIntoForm(input, form){
+	for(var i = 0; i < input.files.length; i++){
+        form.append(`image_${i}`, input.files[i], input.files[i].name); 
+    }
+}
+
 // отправка формы с новым товаром
 const addProduct = document.forms.addProduct;
+let addImage = document.querySelector('#addImageProduct');
+let addImageSpan = document.querySelector('#addImageProductSpan')
 
 addProduct.onsubmit = async function(event) {
 	event.preventDefault();
@@ -39,6 +50,9 @@ addProduct.onsubmit = async function(event) {
 	let formProduct = new FormData(this);
 
 	formProduct = formaterForm(formProduct);
+	
+	formProduct.delete('image');
+	addImagesIntoForm(addImage, formProduct);
 
 	let response;
 	try {
@@ -47,20 +61,18 @@ addProduct.onsubmit = async function(event) {
 			body: formProduct
 		});
 	} catch {
-		Modal.start('Ошибка');
+		modal.start('Ошибка');
 	}
 
 	let data = await response.json();
 
-	Modal.start(data.message);
+	modal.start(data.message);
 
 	addProduct.reset();
 };
 
-let addImage = document.querySelector('#addImageProduct');
-let addImageSpan = document.querySelector('#addImageProductSpan')
-
 addImage.onchange = function(event) {
+	
 	if (this.files.length === 0) {
 		addImageSpan.innerHTML = 'Файл не выбран';
 	} else {
@@ -84,12 +96,12 @@ deleteProduct.onsubmit = async function(event) {
 			method: 'DELETE',
 		});
 	} catch {
-		Modal.start('Ошибка');
+		modal.start('Ошибка');
 	}
 
 	let data = await response.json();
 
-	Modal.start(data.message);
+	modal.start(data.message);
 
 	deleteProduct.reset();
 };
@@ -106,7 +118,7 @@ updateProduct.onsubmit = async function(event) {
 		this.price.value === '' &&
 		this.image.files.length === 0
 	) {
-		Modal.start('Введите значение, которое надо изменить');
+		modal.start('Введите значение, которое надо изменить');
 		return;
 	}
 
@@ -119,11 +131,11 @@ updateProduct.onsubmit = async function(event) {
 			body: formProduct
 		});
 	} catch {
-		Modal.start('Ошибка');
+		modal.start('Ошибка');
 	}
 	let data = await response.json();
 
-	Modal.start(data.message);
+	modal.start(data.message);
 
 	updateProduct.reset();
 };
@@ -132,6 +144,7 @@ let updateImage = document.querySelector('#updateImageProduct');
 let updateImageSpan = document.querySelector('#updateImageProductSpan');
 
 updateImage.onchange = function(event) {
+	
 	if (this.files.length === 0) {
 		updateImageSpan.innerHTML = 'Файл не выбран';
 	} else {
@@ -142,3 +155,4 @@ updateImage.onchange = function(event) {
 updateProduct.onreset = function() {
 	updateImageSpan.innerHTML = 'Файл не выбран';
 }
+

@@ -1,6 +1,6 @@
 // карусель
 
-//import mySliderInitInfinite from './js/mySliderInitInfinite';
+// import mySliderInitInfinite from './js/mySliderInitInfinite';
 import mySliderInit from './js/mySliderInit';
 import mySliderNav from './js/mySliderNav';
 import mySliderDrop from './js/mySliderDrop';

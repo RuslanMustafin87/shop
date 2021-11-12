@@ -7,7 +7,7 @@ module.exports = function(){
 					use: [
 						'style-loader',
 						'css-loader',
-						//'postcss-loader'
+						// 'postcss-loader'
 					]
 				},
 				{
@@ -15,7 +15,7 @@ module.exports = function(){
 					use: [
 						'style-loader',
 						'css-loader',
-						//'postcss-loader',
+						// 'postcss-loader',
 						'sass-loader'
 					]
 				}

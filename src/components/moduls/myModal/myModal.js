@@ -8,7 +8,7 @@ modalContainer.classList.add('modal');
 modal.classList.add('modal__window');
 modalText.classList.add('modal__text');
 modalClose.classList.add('modal__cross');
-modalClose.src = '../images/cross.svg';
+modalClose.src = '/assets/images/cross.svg';
 
 // eslint-disable-next-line no-undef
 document.body.prepend(modalContainer);
@@ -22,9 +22,9 @@ modalClose.addEventListener('click', () => {
 	modalText.innerHTML = '';
 });
 
-function Modal(){
+class Modal{
 
-	this.start = (message) => {
+	start(message){
 
 		modal.style.transition = '.3s linear ';
 		setTimeout(() => {
@@ -32,7 +32,7 @@ function Modal(){
 		}, 100);
 		modalContainer.style.display = 'block';
 		modalText.innerHTML = message;
-	};
+	}
 }
 
-module.exports = new Modal();
+export default Modal;

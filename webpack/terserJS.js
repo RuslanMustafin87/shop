@@ -6,8 +6,7 @@ module.exports = function(){
 			minimizer: [
 				new TerserJsPlugin({
 					test: /\.js(\?.*)?$/i,
-					parallel: true,
-					cache: true
+					parallel: true
 				}),
 			],
 		}

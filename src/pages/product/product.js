@@ -1,19 +1,22 @@
 import '../../css/main.scss';
 import './product.scss';
-import '../../images/logo-light.png';
+import logo from '../../images/logo-light.png';
 
-// import MySlider from '../../components/moduls/mySlider/mySlider';
+import MySlider from '../../components/moduls/mySlider/mySlider';
 import Basket from '../../components/moduls/myBasket/myBasket';
+import Modal from '../../components/moduls/myModal/myModal';
 
-// MySlider.init({
-// 	nav: true,
-// 	drop: true,
-// 	dots: true,
-// 	infinite: true,
-// 	animateTime: 0.5,
-// 	autoplay: false,
-// 	autoplayInterval: 2
-// });
+const modal = new Modal();
+
+MySlider.init({
+	nav: true,
+	drop: true,
+	dots: true,
+	infinite: true,
+	animateTime: 0.5,
+	autoplay: false,
+	autoplayInterval: 2
+});
 
 const basket = new Basket();
 const idProduct = new URL(window.location.href).searchParams.get('id');
@@ -28,7 +31,7 @@ let data = null;
 // TODO удалить если не нужно
 (async function getProduct() {
 	try {
-		let responce = await fetch('http://127.0.0.1:3007/api/products/getproduct');
+		let responce = await fetch('http://127.0.0.1:3007/api/products/getproduct?id=614b8667c9ff72909bdb631d');
 
 		data = await responce.json();
 		
@@ -42,7 +45,7 @@ let data = null;
 		console.log(err.message);
 		buttonAdd.disabled = true;
 	}
-});
+})();
 
 // событие добавления товара в корзину
 buttonAdd.addEventListener('click', function(){
@@ -55,10 +58,10 @@ function isCheck(name) {
     return document.querySelector(`input[name="${name}"]:checked`);
 }
 
-let buttonRating = document.querySelector('.product__button-rating');
+let buttonRating = document.querySelector('.review__button');
 
 buttonRating.onclick = async function() {
-	let checked = isCheck('rating');
+	let checked = isCheck('review');
 	
 	if (!checked) {
 		return console.log('error!');
@@ -77,12 +80,15 @@ buttonRating.onclick = async function() {
 		});
 
 		data = await responce.json();
-		
+		console.log(checked.checked);
 		if (!responce.ok){
 			throw new Error(data.status)
+		} else {
+			checked.checked = false;
+			modal.start('Спасибо за отзыв!');
 		}
         
 	} catch (err) {
-		console.log(err.message);
+		console.log('Err ' + err.message);
 	}
 };

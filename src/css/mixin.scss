@@ -62,7 +62,7 @@
 	border-radius: 0.9375rem;
 	box-shadow: 0 2px 8px 0 var(--color-main);
 	transition: .4s linear;
-
+	padding: 0 0.625rem 0 0.625rem ;
 	&:hover {
 		background-color: var(--color-hover);
 		box-shadow: 0 2px 8px 0 var(--color-hover);

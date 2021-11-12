@@ -7,9 +7,9 @@
 
 .product__pictures {
 	width: 18.75rem;
-	height: 25rem;
+	height: 18.75rem;
 	float: left;
-	margin-right: 3.75rem;
+	margin: 0 3.75rem 1rem 0;
 }
 
 .product__name {
@@ -22,7 +22,6 @@
 }
 
 .product__button-add {
-	width: 9.375rem;
 	height: 1.875rem;
 	@include button_shop;
 }
@@ -32,11 +31,13 @@
 	padding: 0;
 	border: none;
 	position: relative;
+
 	&__caption {
 		margin: 0 0 0.3125rem 0;
 		padding: 0;
+		font-size: 1.5rem;
 	}
-	
+
 	&__group {
 		transform: rotate(180deg);
 		width: 190px;
@@ -52,17 +53,18 @@
 		overflow: hidden;
 		clip: rect(0, 0, 0, 0);
 
-		&:checked + .rating__star {
+		&:checked+.rating__star {
 			background-image: url(../../images/icons/star-on.svg);
 		}
-		&:checked ~ .rating__star  {
+
+		&:checked~.rating__star {
 			background-image: url(../../images/icons/star-on.svg);
 		}
 	}
-	
+
 	&__star {
-		cursor: pointer !important;
-		position: absolute ;
+		pointer-events: none;
+		position: absolute;
 		top: 0;
 		width: 1.875rem;
 		height: 1.875rem;
@@ -72,6 +74,7 @@
 		transform: rotate(-35deg);
 		padding: 0 !important;
 		margin: 0 !important;
+
 		// &:hover {
 		// 	background-image: url(../../images/icons/star-on.svg);
 		// }
@@ -89,16 +92,107 @@
 		&:nth-of-type(3) {
 			left: 5rem;
 		}
-		
+
 		&:nth-of-type(4) {
 			left: 7.5rem;
-			
+
 		}
 
 		&:nth-of-type(5) {
 			left: 10rem;
-            
+
 		}
 
+	}
+}
+
+.product__review {
+
+	clear: both;
+
+}
+
+.review {
+	margin: 0 0 1em 0;
+	padding: 0;
+	border: none;
+	position: relative;
+
+	&__caption {
+		margin: 0 0 0.3125rem 0;
+		padding: 0;
+		font-size: 1.5rem;
+	}
+
+	&__group {
+		transform: rotate(180deg);
+		width: 190px;
+		height: 1.875rem;
+		position: relative;
+		margin-bottom: 1rem;
+	}
+
+	&__input {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+
+		&:checked+.review__star {
+			background-image: url(../../images/icons/star-on.svg);
+		}
+
+		&:checked~.review__star {
+			background-image: url(../../images/icons/star-on.svg);
+		}
+	}
+
+	&__star {
+		cursor: pointer !important;
+		position: absolute;
+		top: 0;
+		width: 1.875rem;
+		height: 1.875rem;
+		background-image: url(../../images/icons/star-off.svg);
+		background-size: 1.875rem;
+		background-repeat: no-repeat;
+		transform: rotate(-35deg);
+		padding: 0 !important;
+		margin: 0 !important;
+
+		// &:hover {
+		// 	background-image: url(../../images/icons/star-on.svg);
+		// }
+		// &:hover:not(:hover ~ .rating__star) {
+		// 	background-image: url(../../images/icons/star-on.svg);
+		// }
+		&:nth-of-type(1) {
+			left: 0;
+		}
+
+		&:nth-of-type(2) {
+			left: 2.5rem;
+		}
+
+		&:nth-of-type(3) {
+			left: 5rem;
+		}
+
+		&:nth-of-type(4) {
+			left: 7.5rem;
+
+		}
+
+		&:nth-of-type(5) {
+			left: 10rem;
+
+		}
+	}
+
+
+	&__button {
+
+		@include button_shop;
 	}
 }

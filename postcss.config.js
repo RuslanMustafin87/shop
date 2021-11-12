@@ -1,11 +1,11 @@
 module.exports = {
-	syntax: 'postcss-scss',
+	syntax: 'postcss-css',
 	plugins: {
 		'autoprefixer': {
-			browsers: ['ie >= 8', 'last 4 version']
+			browsers: ['last 4 version']
 		},
-		'cssnano': {},
-		'postcss-short': {},
-		'postcss-utilities': {}
+		// 'cssnano': {},
+		// 'postcss-short': {},
+		// 'postcss-utilities': {}
 	}
 };

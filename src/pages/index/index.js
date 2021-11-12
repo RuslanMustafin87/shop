@@ -1,5 +1,6 @@
 import '../../css/main.scss';
 import './index.scss';
+import '../../images/logo-light.png'
 
 import Sort from '../../js/sort';
 import Basket from '../../components/moduls/myBasket/myBasket';
