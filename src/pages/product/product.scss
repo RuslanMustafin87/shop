@@ -43,6 +43,12 @@
 		width: 190px;
 		height: 1.875rem;
 		position: relative;
+		&_no-clickable {
+			pointer-events: none;
+		}
+		&_clickable {
+			cursor: pointer;
+		}
 		// z-index: 0;
 	}
 
@@ -63,7 +69,7 @@
 	}
 
 	&__star {
-		pointer-events: none;
+		cursor: pointer;
 		position: absolute;
 		top: 0;
 		width: 1.875rem;
@@ -72,10 +78,10 @@
 		background-size: 1.875rem;
 		background-repeat: no-repeat;
 		transform: rotate(-35deg);
-		padding: 0 !important;
-		margin: 0 !important;
+		padding: 0;
+		margin: 0;
 
-		// &:hover {
+				// &:hover {
 		// 	background-image: url(../../images/icons/star-on.svg);
 		// }
 		// &:hover:not(:hover ~ .rating__star) {
@@ -112,87 +118,86 @@
 
 }
 
-.review {
-	margin: 0 0 1em 0;
-	padding: 0;
-	border: none;
-	position: relative;
+// .review {
+// 	margin: 0 0 1em 0;
+// 	padding: 0;
+// 	border: none;
+// 	position: relative;
 
-	&__caption {
-		margin: 0 0 0.3125rem 0;
-		padding: 0;
-		font-size: 1.5rem;
-	}
+// 	&__caption {
+// 		margin: 0 0 0.3125rem 0;
+// 		padding: 0;
+// 		font-size: 1.5rem;
+// 	}
 
-	&__group {
-		transform: rotate(180deg);
-		width: 190px;
-		height: 1.875rem;
-		position: relative;
-		margin-bottom: 1rem;
-	}
+// 	&__group {
+// 		transform: rotate(180deg);
+// 		width: 190px;
+// 		height: 1.875rem;
+// 		position: relative;
+// 		margin-bottom: 1rem;
+// 	}
 
-	&__input {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
+// 	&__input {
+// 		position: absolute;
+// 		width: 1px;
+// 		height: 1px;
+// 		overflow: hidden;
+// 		clip: rect(0, 0, 0, 0);
 
-		&:checked+.review__star {
-			background-image: url(../../images/icons/star-on.svg);
-		}
+// 		&:checked+.review__star {
+// 			background-image: url(../../images/icons/star-on.svg);
+// 		}
 
-		&:checked~.review__star {
-			background-image: url(../../images/icons/star-on.svg);
-		}
-	}
+// 		&:checked~.review__star {
+// 			background-image: url(../../images/icons/star-on.svg);
+// 		}
+// 	}
 
-	&__star {
-		cursor: pointer !important;
-		position: absolute;
-		top: 0;
-		width: 1.875rem;
-		height: 1.875rem;
-		background-image: url(../../images/icons/star-off.svg);
-		background-size: 1.875rem;
-		background-repeat: no-repeat;
-		transform: rotate(-35deg);
-		padding: 0 !important;
-		margin: 0 !important;
+// 	&__star {
+// 		cursor: pointer;
+// 		position: absolute;
+// 		top: 0;
+// 		width: 1.875rem;
+// 		height: 1.875rem;
+// 		background-image: url(../../images/icons/star-off.svg);
+// 		background-size: 1.875rem;
+// 		background-repeat: no-repeat;
+// 		transform: rotate(-35deg);
+// 		padding: 0 !important;
+// 		margin: 0 !important;
 
-		// &:hover {
-		// 	background-image: url(../../images/icons/star-on.svg);
-		// }
-		// &:hover:not(:hover ~ .rating__star) {
-		// 	background-image: url(../../images/icons/star-on.svg);
-		// }
-		&:nth-of-type(1) {
-			left: 0;
-		}
+// 		// &:hover {
+// 		// 	background-image: url(../../images/icons/star-on.svg);
+// 		// }
+// 		// &:hover:not(:hover ~ .rating__star) {
+// 		// 	background-image: url(../../images/icons/star-on.svg);
+// 		// }
+// 		&:nth-of-type(1) {
+// 			left: 0;
+// 		}
 
-		&:nth-of-type(2) {
-			left: 2.5rem;
-		}
+// 		&:nth-of-type(2) {
+// 			left: 2.5rem;
+// 		}
 
-		&:nth-of-type(3) {
-			left: 5rem;
-		}
+// 		&:nth-of-type(3) {
+// 			left: 5rem;
+// 		}
 
-		&:nth-of-type(4) {
-			left: 7.5rem;
+// 		&:nth-of-type(4) {
+// 			left: 7.5rem;
 
-		}
+// 		}
 
-		&:nth-of-type(5) {
-			left: 10rem;
+// 		&:nth-of-type(5) {
+// 			left: 10rem;
 
-		}
-	}
+// 		}
+// 	}
 
 
-	&__button {
+.review__button {
 
-		@include button_shop;
-	}
+	@include button_shop;
 }

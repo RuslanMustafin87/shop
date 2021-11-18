@@ -66,7 +66,7 @@ buttonRating.onclick = async function() {
 	if (!checked) {
 		return console.log('error!');
 	}
-	
+	console.log(checked);
 	try {
 		let responce = await fetch('http://127.0.0.1:3007/product/updateratingproduct', {
 			method: 'PUT',
@@ -80,15 +80,15 @@ buttonRating.onclick = async function() {
 		});
 
 		data = await responce.json();
-		console.log(checked.checked);
+		
 		if (!responce.ok){
-			throw new Error(data.status)
+			throw new Error(data.message);
 		} else {
 			checked.checked = false;
 			modal.start('Спасибо за отзыв!');
 		}
         
 	} catch (err) {
-		console.log('Err ' + err.message);
+		console.log('Ошибка ' + err.message);
 	}
 };
