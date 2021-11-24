@@ -11,7 +11,7 @@ document.addEventListener('pointerdown', function() {
 	if (event.which === 1) { // проверка какая кнопка мыши нажата
 		let basketMain = document.querySelector('.basket');
 		let elem = target.cloneNode(true);
-
+		
 		elem.ondragstart = function() {
 			return false;
 		};
@@ -48,7 +48,7 @@ document.addEventListener('pointerdown', function() {
 			mouseBasketAbove = false;
 		}
 
-		// функция начала перемещения и перемешения дроп-елемента
+		// функция начала перемещения и перемещения дроп-елемента
 		function onMouseMove(event) {
 			if (!startDrop) {
 				createDropElem(elem, target);

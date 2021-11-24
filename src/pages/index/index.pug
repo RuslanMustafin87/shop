@@ -21,22 +21,16 @@ block content
             ul.main-index__products.products
                 each item in products
                     li.products__item.product(data-id=item._id  data-name=item.name data-price=item.price data-category=item.category)
-                        fieldset.product__rating.rating
-                            legend.rating__caption Рейтинг
-                            .rating__group.rating__group-no-clickable
-                                input.rating__input(type="radio" name=`rating-${item.name}` id='rating-1' value='5' checked=item.rating.roundedRating  == 5 ? 'checked' : undefined)
-                                label.rating__star(for='rating-1')
-                                input.rating__input(type="radio" name=`rating-${item.name}` id='rating-2' value='4' checked=item.rating.roundedRating  == 4 ? 'checked' : undefined)
-                                label.rating__star(for='rating-2')
-                                input.rating__input(type="radio" name=`rating-${item.name}` id='rating-3' value='3' checked=item.rating.roundedRating  == 3 ? 'checked' : undefined)
-                                label.rating__star(for='rating-3')
-                                input.rating__input(type="radio" name=`rating-${item.name}` id='rating-4' value='2' checked=item.rating.roundedRating  == 2 ? 'checked' : undefined)
-                                label.rating__star(for='rating-4')
-                                input.rating__input(type="radio" name=`rating-${item.name}` id='rating-5' value='1' checked=item.rating.roundedRating  == 1 ? 'checked' : undefined)
-                                label.rating__star(for='rating-5')
                         a.product__link(href= `product?id=${item._id}`)
                             //- img.product__image(src="blob:http://localhost:3007/b5b2006e-d158-4872-a929-90e592dfe2e5")
                             img.product__image()
+                        fieldset.product__rating.rating
+                            ul.rating__group.rating__group-no-clickable
+                                li.rating__star(data-rating=item.rating.roundedRating  == 5 ? 'true' : undefined)
+                                li.rating__star(data-rating=item.rating.roundedRating  == 4 ? 'true' : undefined)
+                                li.rating__star(data-rating=item.rating.roundedRating  == 3 ? 'true' : undefined)
+                                li.rating__star(data-rating=item.rating.roundedRating  == 2 ? 'true' : undefined)
+                                li.rating__star(data-rating=item.rating.roundedRating  == 1 ? 'true' : undefined)
                         span.product__name= item.name
                         span.product__price= item.price
                         button.product__button Добавить

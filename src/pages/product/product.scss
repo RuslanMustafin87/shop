@@ -80,6 +80,10 @@
 		transform: rotate(-35deg);
 		padding: 0;
 		margin: 0;
+		&_no-clickable {
+			pointer-events: none;
+			cursor: none;
+		}
 
 				// &:hover {
 		// 	background-image: url(../../images/icons/star-on.svg);
@@ -197,7 +201,7 @@
 // 	}
 
 
-.review__button {
+.product__button-review {
 
 	@include button_shop;
 }

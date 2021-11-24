@@ -5,9 +5,9 @@ block var
     - var page = 'product'
     - var products = []
     - var rating = {roundedRating: 5}
-    // TODO стилизовать
 block content
     main.product-page 
+        // TODO вставка картинок
         .product__pictures
             .my-slider
                 .my-slider__slide 1     
@@ -19,15 +19,15 @@ block content
             legend.rating__caption Рейтинг
             .rating__group.rating__group-no-clickable
                 input.rating__input(type="radio" name='rating' id='rating-1' value='5' checked=rating.roundedRating  == 5 ? 'checked' : undefined)
-                label.rating__star(for='rating-1')
+                label.rating__star.rating__star_no-clickable(for='rating-1')
                 input.rating__input(type="radio" name='rating' id='rating-2' value='4' checked=rating.roundedRating  == 4 ? 'checked' : undefined)
-                label.rating__star(for='rating-2')
+                label.rating__star.rating__star_no-clickable(for='rating-2')
                 input.rating__input(type="radio" name='rating' id='rating-3' value='3' checked=rating.roundedRating  == 3 ? 'checked' : undefined)
-                label.rating__star(for='rating-3')
+                label.rating__star.rating__star_no-clickable(for='rating-3')
                 input.rating__input(type="radio" name='rating' id='rating-4' value='2' checked=rating.roundedRating  == 2 ? 'checked' : undefined)
-                label.rating__star(for='rating-4')
+                label.rating__star.rating__star_no-clickable(for='rating-4')
                 input.rating__input(type="radio" name='rating' id='rating-5' value='1' checked=rating.roundedRating  == 1 ? 'checked' : undefined)
-                label.rating__star(for='rating-5')
+                label.rating__star.rating__star_no-clickable(for='rating-5')
         button.product__button-add Добавить в корзину
         fieldset.product__review.rating
             legend.rating__caption Оставить отзыв
@@ -42,5 +42,5 @@ block content
                 label.rating__star(for='review-4')
                 input.rating__input(type="radio" name='review' id='review-5' value='1')
                 label.rating__star(for='review-5')
-            button.review__button Оценить
+        button.product__button-review Оценить
         

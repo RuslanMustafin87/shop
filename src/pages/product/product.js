@@ -20,7 +20,7 @@ MySlider.init({
 
 const basket = new Basket();
 const idProduct = new URL(window.location.href).searchParams.get('id');
-
+console.log(new URL(window.location.href));
 // TODO удалить если не нужно
 let productName = document.querySelector('.product__name');
 let productPrice = document.querySelector('.product__price');
@@ -45,11 +45,11 @@ let data = null;
 		console.log(err.message);
 		buttonAdd.disabled = true;
 	}
-})();
+});
 
 // событие добавления товара в корзину
 buttonAdd.addEventListener('click', function(){
-	basket.addProductInBasket(data._id, data.name, data.price, data.background);
+	basket.addProductInBasket(idProduct);
 })
 
 // отправка рейтинга на сервер
@@ -58,7 +58,7 @@ function isCheck(name) {
     return document.querySelector(`input[name="${name}"]:checked`);
 }
 
-let buttonRating = document.querySelector('.review__button');
+let buttonRating = document.querySelector('.product__button-review');
 
 buttonRating.onclick = async function() {
 	let checked = isCheck('review');

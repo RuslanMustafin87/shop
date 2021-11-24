@@ -1,7 +1,8 @@
 header.header
     .header__basket
-        a.header__link-basket(href='basket.html')
-            include ../basket/basket.pug
+        a.header__link-basket(href='basket.html' id='basket-link')
+            .basket
+                .basket__count
     a.header__link-logo(href='/')
         img.header__logo.logo-furniture(src="./images/logo-light.png")
     .header__link-home
