@@ -1,6 +1,8 @@
 import '../../css/main.scss';
 import './index.scss';
-import '../../images/logo-light.png'
+import '../../images/logo-light.png';
+
+import config from '../../../config.json';
 
 import Sort from '../../js/sort';
 import Basket from '../../components/moduls/myBasket/myBasket';
@@ -18,7 +20,7 @@ let listProductsInContainer = null;
 (async function getDataFromServer() {
 	let data = null;
 	try {
-		let result = await fetch('http://127.0.0.1:3007/api/products');
+		let result = await fetch(`${config.URL}:${config.PORT}/api/products`);
 
 		data = await result.json();
 

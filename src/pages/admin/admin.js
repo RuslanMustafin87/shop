@@ -2,6 +2,8 @@ import '../../css/main.scss';
 import './admin.scss';
 import Modal from '../../components/moduls/myModal/myModal';
 
+import config from '../../../config.json';
+
 const modal =  new Modal();
 
 let formatter = new Intl.NumberFormat("ru", {
@@ -56,7 +58,7 @@ addProduct.onsubmit = async function(event) {
 
 	let response;
 	try {
-		response = await fetch('http://localhost:3007/admin/addproduct', {
+		response = await fetch(`${config.URL}:${config.PORT}/admin/addproduct`, {
 			method: 'POST',
 			body: formProduct
 		});
@@ -92,7 +94,7 @@ deleteProduct.onsubmit = async function(event) {
 
 	let response;
 	try {
-		response = await fetch(`http://localhost:3007/api/products/deleteproduct?id=${this.id.value}`, {
+		response = await fetch(`${config.URL}:${config.PORT}/api/products/deleteproduct?id=${this.id.value}`, {
 			method: 'DELETE',
 		});
 	} catch {
@@ -126,7 +128,7 @@ updateProduct.onsubmit = async function(event) {
 
 	let response;
 	try {
-		response = await fetch('http://localhost:3007/admin/updateproduct', {
+		response = await fetch(`${config.URL}:${config.PORT}/admin/updateproduct`, {
 			method: 'POST',
 			body: formProduct
 		});

@@ -2,6 +2,8 @@ import '../../css/main.scss';
 import './product.scss';
 import logo from '../../images/logo-light.png';
 
+import config from '../../../config.json';
+
 import MySlider from '../../components/moduls/mySlider/mySlider';
 import Basket from '../../components/moduls/myBasket/myBasket';
 import Modal from '../../components/moduls/myModal/myModal';
@@ -68,7 +70,7 @@ buttonRating.onclick = async function() {
 	}
 	console.log(checked);
 	try {
-		let responce = await fetch('http://127.0.0.1:3007/product/updateratingproduct', {
+		let responce = await fetch(`${config.URL}:${config.PORT}/product/updateratingproduct`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json;charset=utf-8'

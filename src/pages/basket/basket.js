@@ -1,8 +1,9 @@
 import '../../css/main.scss';
 import './basket.scss';
 
+import config from '../../../config.json';
+
 import Basket from '../../components/moduls/myBasket/myBasket';
-import '../../components/blocks/form-order/form-order';
 
 const basket = new Basket();
 
@@ -98,7 +99,7 @@ async function addProductIntoBasket(newValue){
 	let data;
 
 	try {
-		let result = await fetch(`http://127.0.0.1:3007/basket/getimages`, {
+		let result = await fetch(`${config.URL}:${config.PORT}/basket/getimages`, {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json'
@@ -155,7 +156,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 	let products = [];
 
 	try {
-		let result = await fetch('http://127.0.0.1:3007/basket/getimages', {
+		let result = await fetch(`${config.URL}:${config.PORT}/basket/getimages`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
