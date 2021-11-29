@@ -1,5 +1,5 @@
 export default class Sort {
-
+	// TODO испрпавить сортировку utf-8 пробел 
 	sortByIncrease(arr) {
 		arr.sort((a, b) => {
 			console.log(a.dataset.price.replace(/\&nbsp;/g, ''));

@@ -66,7 +66,7 @@ containerProducts.addEventListener('mousedown', function(event) {
 
 	let elemParent = elem.closest('.products__item');
 
-	basket.addProductInBasket(elemParent.dataset.id, elemParent.dataset.name, elemParent.dataset.price, elemParent.dataset.background);
+	basket.addProductInBasket(elemParent.dataset.id);
 });
 
 // сортировка товара

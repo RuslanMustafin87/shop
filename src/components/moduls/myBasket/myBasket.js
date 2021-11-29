@@ -19,15 +19,12 @@ class Basket {
 		return JSON.parse(localStorage.getItem('oneProduct'));
 	}
 
-	addProductInBasket(id, name, price, background) {
+	addProductInBasket(id) {
 		count++;
 		countProducts.style.display = 'block';
 		countProducts.innerHTML = count;
 		listProductsInBasket.push({
-			id: id,
-			name: name,
-			price: price,
-			background: background
+			id: id
 		});
 		localStorage.setItem('listProducts', JSON.stringify(listProductsInBasket));
 	}
@@ -71,6 +68,7 @@ class Basket {
 const basket = new Basket();
 
 window.addEventListener('storage', (event) => {
+	console.log('ki2');
 	if (event.newValue === null) {
 		basket.resetBasket();
 		return;

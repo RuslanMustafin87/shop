@@ -68,7 +68,7 @@ document.addEventListener('pointerdown', function() {
 		document.onmouseup = function() {
 			// если курсор над корзиной добовляем товар
 			if (mouseBasketAbove) {
-				basket.addProductInBasket(elem.dataset.id, elem.dataset.name, elem.dataset.price, elem.dataset.background);
+				basket.addProductInBasket(elem.dataset.id);
 				basketMain.style.transform = 'scale(1)';
 				mouseBasketAbove = false;
 			}
