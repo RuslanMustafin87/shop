@@ -1,21 +1,20 @@
 .form-order{
-    margin: auto;
     display: flex;
     flex-direction: column;
     width: 18.75rem;
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
     &__input{
         width: 90%;
         margin-bottom: 0.625rem;
         outline: var(--color-main);
         box-sizing: border-box;
+		@include input_shop;
         &:last-child{
             margin-bottom: 0;
         }
     }
 }
 
-.form-order__input_submit{
+.form-order__input-submit{
     cursor: pointer;
+    @include button_shop;
 }

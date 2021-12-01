@@ -38,7 +38,7 @@ class Basket {
 				return true;
 			}
 		});
-
+		
 		listProductsInBasket.splice(indexProduct, 1);
 		count = listProductsInBasket.length;
 		if (count === 0) {
@@ -68,7 +68,6 @@ class Basket {
 const basket = new Basket();
 
 window.addEventListener('storage', (event) => {
-	console.log('ki2');
 	if (event.newValue === null) {
 		basket.resetBasket();
 		return;

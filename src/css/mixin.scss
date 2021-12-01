@@ -69,3 +69,15 @@
 		transform: scale(1.05);
 	}
 }
+
+@mixin input_shop {
+	color: var(--color-text);
+	width: 100%;
+	height: 30px;
+	margin-bottom: 0.625rem;
+	padding: 0 3px 0 3px;
+	border-radius: 5px;
+	border: 2px solid var(--color-text);
+	box-sizing: border-box;
+	outline: none;
+}

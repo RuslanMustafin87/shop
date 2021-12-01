@@ -1,4 +1,4 @@
 {
-    "PORT": 8080,
-    "URL": "http://92.53.105.229"
+    "PORT": 3007,
+    "SHOP_URL": "http://localhost"
 }

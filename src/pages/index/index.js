@@ -20,7 +20,7 @@ let listProductsInContainer = null;
 (async function getDataFromServer() {
 	let data = null;
 	try {
-		let result = await fetch(`${config.URL}:${config.PORT}/api/products`);
+		let result = await fetch(`${config.SHOP_URL}:${config.PORT}/api/products`);
 
 		data = await result.json();
 
@@ -47,14 +47,12 @@ function insertImageInProducts(data) {
 	let products = document.querySelectorAll('.product__image');
 
 	for (let i = 0; i < products.length; i++) {
-		if (data[i].images[0]) {
 
-			let imageBlob = new Blob([new Uint8Array(data[i].images[0].data)], {
-				type: "image/jpeg"
-			});
+		let imageBlob = new Blob([new Uint8Array(data[i].images[0].data)], {
+			type: "image/jpeg"
+		});
 
-			products[i].src = URL.createObjectURL(imageBlob);
-		}
+		products[i].src = URL.createObjectURL(imageBlob);
 	}
 }
 
@@ -106,7 +104,6 @@ function filterProductsByCategory(list, category) {
 	clearContainer(containerProducts);
 	listProductsInContainer = list.filter(item => item.dataset.category === category);
 	sortProducts.dispatchEvent(eventSort);
-	insertElemOfProduct(listProductsInContainer);
 }
 
 // событие фильтрации по категории товара
@@ -117,7 +114,6 @@ sortProductsByCategory.onchange = function(event) {
 		clearContainer(containerProducts);
 		listProductsInContainer = listProducts;
 		sortProducts.dispatchEvent(eventSort);
-		insertElemOfProduct(listProductsInContainer);
 		return;
 	}
 	filterProductsByCategory(listProducts, event.target.value);

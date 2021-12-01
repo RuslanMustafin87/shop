@@ -2,15 +2,13 @@ export default class Sort {
 	// TODO испрпавить сортировку utf-8 пробел 
 	sortByIncrease(arr) {
 		arr.sort((a, b) => {
-			console.log(a.dataset.price.replace(/\&nbsp;/g, ''));
-			return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+			return a.dataset.price.replace(/\D/g, '') - b.dataset.price.replace(/\D/g, '');
 		});
 	}
 	
 	sortByDecrease(arr) {
 		arr.sort((a, b) => {
-			console.log(a.dataset.price.replace(/\&nbsp;/g, ''));
-			return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+			return b.dataset.price.replace(/\D/g, '') - a.dataset.price.replace(/\D/g, '');
 		});
 	}
 

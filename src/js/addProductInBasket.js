@@ -4,7 +4,7 @@ const basket = new Basket();
 //let containerProducts = document.querySelector('.products');
 
 // событие добавления товара в карзину с помощью перетаскивания
-document.addEventListener('pointerdown', function() {
+document.addEventListener('mousedown', function() {
 	let target = event.target.closest('.products__item');
 	if (!target) {return;}
 
@@ -39,12 +39,12 @@ document.addEventListener('pointerdown', function() {
 
 			elemBelow = elemBelow.closest('.basket');
 			if (elemBelow) {
-				elemBelow.style.transform = 'scale(1.5)';
+				elemBelow.style.transform = 'scale(1.5) translateY(-50%)';
 				mouseBasketAbove = true;
 				return;
 			}
 
-			basketMain.style.transform = 'scale(1)';
+			basketMain.style.transform = 'scale(1) translateY(-50%)';
 			mouseBasketAbove = false;
 		}
 
@@ -63,17 +63,17 @@ document.addEventListener('pointerdown', function() {
 			treckMouseAboveBasket(elem);
 		}
 
-		document.addEventListener('pointermove', onMouseMove);
+		document.addEventListener('mousemove', onMouseMove);
 
 		document.onmouseup = function() {
 			// если курсор над корзиной добовляем товар
 			if (mouseBasketAbove) {
 				basket.addProductInBasket(elem.dataset.id);
-				basketMain.style.transform = 'scale(1)';
+				basketMain.style.transform = 'scale(1) translateY(-50%)';
 				mouseBasketAbove = false;
 			}
 			// удаляем все лишнее после отжатия кнопки мыши
-			document.removeEventListener('pointermove', onMouseMove);
+			document.removeEventListener('mousemove', onMouseMove);
 			document.onmouseup = null;
 			elem.remove();
 			startDrop = false;

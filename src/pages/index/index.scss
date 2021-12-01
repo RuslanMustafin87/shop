@@ -7,7 +7,7 @@
 		max-width: 1200px;
 		margin: auto;
 		@media (max-width: 600px){
-			width: 90%;
+			width: 95%;
 		}
 	}
 	&__sort{
@@ -29,6 +29,10 @@
 	padding-top: 10px;
 	&__item {
 		height: auto;
+		z-index: 1001;
+	}
+	@include phone{
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	}
 }
 

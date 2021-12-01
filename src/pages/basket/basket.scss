@@ -1,29 +1,44 @@
 @import '../../css/mixin.scss';
 
-.basket {
+.main-basket {
+	&__wrapper{
+		padding: 0.9375rem 0 0 0;
+		width: 85%;
+		max-width: 1200px;
+		margin: auto;
+		@media (max-width: 600px){
+			width: 95%;
+		}
+	}
 	&__button-reset {
-		width: 200px;
+		width: 12.5rem;
+		margin: 0 0 0.9375rem 0;
 		@include button_shop;
+	}
+	&__products{
+		margin: 0 0 0.9375rem 0;
+	}
+	&__form-order{
+		margin: 0 auto 0.9375rem auto;
+	}
+	&__total {
+		margin: 0 0 0.9375rem 0;
 	}
 }
 
 .products {
-	margin: auto;
-	width: 43.75rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: nowrap;
-	color: var(--color-text);
-
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	// grid-template-rows: auto;
+	grid-auto-rows: auto;
+	grid-column-gap: 0.625rem;
+	grid-row-gap: 1.25rem;
 	&__item {
-		margin-left: 5px;
-		margin-right: 5px;
-		margin-bottom: 10px;
-		flex-grow: 1;
-		//&:last-child{
-		//	margin-right: 0;
-		//}
+		height: auto;
+	}
+	@include phone{
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
@@ -122,4 +137,8 @@
 
 		}
 	}
+}
+
+.total{
+	font-size: 1.5rem;
 }

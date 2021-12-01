@@ -8,18 +8,6 @@
 	padding: 1.25rem 1.25rem 0 1.25rem;
 }
 
-.input {
-	color: var(--color-text);
-	width: 100%;
-	height: 30px;
-	margin-bottom: 0.625rem;
-	padding: 0 3px 0 3px;
-	border-radius: 5px;
-	border: 2px solid var(--color-text);
-	box-sizing: border-box;
-	outline: none;
-}
-
 .admin__form-add {
 	float: left;
 	margin-right: 2.5rem;
@@ -40,15 +28,15 @@
 	}
 
 	&__name {
-		@extend .input;
+		@include input_shop;
 	}
 
 	&__price {
-		@extend .input;
+		@include input_shop;
 	}
 
 	&__bg {
-		@extend .input;
+		@include input_shop;
 	}
 
 	&__image {
@@ -64,7 +52,7 @@
 
 	&__category {
 		background-color: #fff;
-		@extend .input;
+		@include input_shop;
 	}
 
 	&__submit {
@@ -108,7 +96,7 @@
 	}
 
 	&__id {
-		@extend .input;
+		@include input_shop;
 	}
 
 	&__submit {
@@ -150,15 +138,15 @@
 	}
 
 	&__id {
-		@extend .input;
+		@include input_shop;
 	}
 
 	&__name {
-		@extend .input;
+		@include input_shop;
 	}
 
 	&__price {
-		@extend .input;
+		@include input_shop;
 	}
 
 	&__add-pic {

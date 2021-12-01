@@ -1,6 +1,5 @@
 import '../../css/main.scss';
 import './product.scss';
-import logo from '../../images/logo-light.png';
 
 import config from '../../../config.json';
 
@@ -33,7 +32,7 @@ let data = null;
 // TODO удалить если не нужно
 (async function getProduct() {
 	try {
-		let responce = await fetch('http://127.0.0.1:3007/api/products/getproduct?id=614b8667c9ff72909bdb631d');
+		let responce = await fetch(`${config.SHOP_URL}:${config.PORT}/api/products/getproduct?id=614b8667c9ff72909bdb631d`);
 
 		data = await responce.json();
 		
@@ -70,7 +69,7 @@ buttonRating.onclick = async function() {
 	}
 	console.log(checked);
 	try {
-		let responce = await fetch(`${config.URL}:${config.PORT}/product/updateratingproduct`, {
+		let responce = await fetch(`${config.SHOP_URL}:${config.PORT}/product/updateratingproduct`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json;charset=utf-8'

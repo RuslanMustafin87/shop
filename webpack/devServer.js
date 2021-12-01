@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const config = require('../config.json');
 
 module.exports = function() {
 	return {
@@ -10,7 +11,7 @@ module.exports = function() {
 			},
 			open: true,
 			compress: true,
-			port: 8080,
+			port: config.PORT,
 			hot: true
 		},
 		plugins: [
