@@ -94,19 +94,34 @@ export default function(options) {
 		direction = undefined;
 	}
 
-	containerSlides.addEventListener('mousedown', function(e) {
+	containerSlides.addEventListener('pointerdown', function(e) {
 		e.preventDefault();
 		duration = e.pageX;
 		containerSlides.style.left = containerSlides.offsetLeft + 'px';
 		containerSlides.style.transition = 'none';
-		containerSlides.addEventListener('mousemove', moveList);
+		containerSlides.addEventListener('pointermove', moveList);
 	});
 
-	document.addEventListener('mouseup', function(e) {
+	document.addEventListener('pointerup', function(e) {
 		containerSlides.style.transition = `left ${options.animateTime}s linear`;
-		moveSlider(event);
-		containerSlides.removeEventListener('mousemove', moveList);
+		// console.log(direction);
+		moveSlider(e);
+		containerSlides.removeEventListener('pointermove', moveList);
 	});
+
+	// containerSlides.addEventListener('touchstart', function(e) {
+	// 	e.preventDefault();
+	// 	duration = e.pageX;
+	// 	containerSlides.style.left = containerSlides.offsetLeft + 'px';
+	// 	containerSlides.style.transition = 'none';
+	// 	containerSlides.addEventListener('touchmove', moveList);
+	// });
+
+	// document.addEventListener('touchend', function(e) {
+	// 	containerSlides.style.transition = `left ${options.animateTime}s linear`;
+	// 	moveSlider(e);
+	// 	containerSlides.removeEventListener('touchmove', moveList);
+	// });
 
 	// пользовательское событие нажатие кнопки направо чтобы установить направление движения 
 	// (само событие определено в модуле навигации и всплывает до document)

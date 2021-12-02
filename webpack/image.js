@@ -6,14 +6,14 @@ module.exports = function() {
 				type: 'asset/resource',
 				generator: {
 					// filename: 'images/[hash][ext]'
-					filename: 'images/[name][ext]'
+					filename: 'images/[name][hash][ext]'
 				},
 			},
 			{
 				test: /\.svg$/,
 				type: 'asset/resource',
 				generator: {
-					filename: 'images/icons/[hash][ext]'
+					filename: 'images/icons/[name][hash][ext]'
 				},
 				use: [{
 					loader: 'svgo-loader',

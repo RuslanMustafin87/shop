@@ -62,7 +62,6 @@ export default function(options) {
 
 	// событие нажатия на левую кнопку и перемещение слайдера влево
 	buttonLeft.addEventListener('click', function() {
-		console.time('t2');
 		this.dispatchEvent(
 			new CustomEvent('push-button-left', {
 				bubbles: true,
