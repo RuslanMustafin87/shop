@@ -1,7 +1,7 @@
 export default function(options) {
 
 	const slider = document.querySelector('.my-slider');
-	const containerSlides = document.querySelector('.my-slider__container-slides');
+	const containerSlides = document.getElementById('container-slides');
 
 	let containerDots = document.createElement('ul');
 	containerDots.classList.add('my-slider__dots', 'dots');

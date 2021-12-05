@@ -12,6 +12,7 @@ export default {
 		let containerSlides = document.createElement('div');
 		outer.classList.add('my-slider__outer');
 		containerSlides.classList.add('my-slider__container-slides');
+		containerSlides.setAttribute('id', 'container-slides');
 		slider.appendChild(outer);
 		outer.appendChild(containerSlides);
 

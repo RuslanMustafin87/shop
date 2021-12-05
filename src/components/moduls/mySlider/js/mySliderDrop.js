@@ -1,18 +1,22 @@
 export default function(options) {
-	let containerSlides = document.querySelector('.my-slider__container-slides');
 
-	let duration; // направление перемещения слайдера число
-	let direction; // направление перемещения слайдера
+	const containerSlides = document.getElementById('container-slides');
+
+	let duration = null; // направление перемещения слайдера число
+	let direction = null; // направление перемещения слайдера
+
 	// вычисляем разницу в ширине между контейнером для слайдов и outer для
 	// слежения за тем, когда контейнер достигнет конца
 	let maxScroll = containerSlides.offsetParent.clientWidth - containerSlides.clientWidth;
-
+	
 	// функция перемещения слайдер с помощью дропа
 	function moveList(e) {
-		let containerLeft = this.offsetLeft;
+		e.preventDefault();
 		this.ondragstart = function() {
 			return false;
 		};
+
+		let containerLeft = this.offsetLeft;
 
 		if (duration > e.pageX) {
 			duration = e.pageX;
@@ -72,6 +76,7 @@ export default function(options) {
 	// функция перемещения слайдера влево или вправо в зависимоти в какую сторону он перемещен
 	// после отпускания кнопки мыши
 	function moveSlider() {
+		
 		let elemAtEdge = findElemAtEdge(containerSlides);
 
 		if (containerSlides.offsetLeft > 0) {
@@ -79,35 +84,40 @@ export default function(options) {
 			return;
 		}
 
-		//let maxScroll = containerSlides.offsetParent.clientWidth - containerSlides.clientWidth;
-
 		if (containerSlides.offsetLeft < maxScroll) {
 			containerSlides.style.left = `${maxScroll}px`;
 			return;
 		}
 
-		if (direction === 'right' && elemAtEdge.nextElementSibling) {
+		if (direction === 'right') {
 			containerSlides.style.left = -elemAtEdge.nextElementSibling.offsetLeft + 'px';
 		} else if (direction === 'left') {
 			containerSlides.style.left = -elemAtEdge.offsetLeft + 'px';
 		}
+
 		direction = undefined;
 	}
 
-	containerSlides.addEventListener('pointerdown', function(e) {
+	containerSlides.addEventListener('mousedown', function(e) {
 		e.preventDefault();
 		duration = e.pageX;
 		containerSlides.style.left = containerSlides.offsetLeft + 'px';
 		containerSlides.style.transition = 'none';
-		containerSlides.addEventListener('pointermove', moveList);
+		containerSlides.addEventListener('mousemove', moveList);	
 	});
 
-	document.addEventListener('pointerup', function(e) {
+	document.addEventListener('mouseup', function mouseUp(e) {
 		containerSlides.style.transition = `left ${options.animateTime}s linear`;
-		// console.log(direction);
-		moveSlider(e);
-		containerSlides.removeEventListener('pointermove', moveList);
+		if (e.target.closest('.my-slider')){
+			moveSlider(e);
+		}
+		containerSlides.removeEventListener('mousemove', moveList);
 	});
+
+	containerSlides.onmouseleave = function(){
+		containerSlides.style.transition = `left ${options.animateTime}s linear`;
+		moveSlider();
+	};
 
 	// containerSlides.addEventListener('touchstart', function(e) {
 	// 	e.preventDefault();

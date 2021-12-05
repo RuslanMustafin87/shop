@@ -13,6 +13,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pug = require('./webpack/pug');
 const css = require('./webpack/css');
 const image = require('./webpack/image');
+const font = require('./webpack/font');
 const favicon = require('./webpack/favicon');
 const extractCSS = require('./webpack/extractCSS');
 const devServer = require('./webpack/devServer');
@@ -97,6 +98,7 @@ const conf = merge([{
 babel(),
 pug(),
 image(),
+font(),
 	// favicon()
 ]);
 
