@@ -51,6 +51,7 @@ export default function(options) {
 		}, options.animateTime * 1000);
 
 		let elemAtEdge = findElemAtEdge(containerSlides);
+		// TODO исправить на проценты 
 		let containerLeft = elemAtEdge.nextElementSibling.offsetLeft;
 
 		if (!options.infinite && containerLeft < maxScroll) {
@@ -83,11 +84,11 @@ export default function(options) {
 		let elemAtEdge = findElemAtEdge(containerSlides);
 		let containerLeft = elemAtEdge.previousElementSibling.offsetLeft;
 
-		if (!options.infinite) {
-			if (containerLeft > 0) {
-				containerLeft = '0%';
-			}
-		}
+		// if (!options.infinite) {
+		// 	if (containerLeft > 0) {
+		// 		containerLeft = '0%';
+		// 	}
+		// }
 
 		containerSlides.style.left = -containerLeft + 'px';
 	});

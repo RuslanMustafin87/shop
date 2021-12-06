@@ -9,44 +9,51 @@ import Modal from '../../components/moduls/myModal/myModal';
 
 const modal = new Modal();
 
-MySlider.init({
-	nav: true,
-	drop: true,
-	dots: true,
-	infinite: true,
-	animateTime: 0.5,
-	autoplay: false,
-	autoplayInterval: 2
-});
-
 const basket = new Basket();
 const idProduct = new URL(window.location.href).searchParams.get('id');
-console.log(new URL(window.location.href));
-// TODO удалить если не нужно
-let productName = document.querySelector('.product__name');
-let productPrice = document.querySelector('.product__price');
-let buttonAdd = document.querySelector('.product__button-add');
 
+// TODO удалить если не нужно
+let buttonAdd = document.querySelector('.product__button-add');
 let data = null;
 
-// TODO удалить если не нужно
+// получение картинок с сервера
 (async function getProduct() {
 	try {
-		let responce = await fetch(`${config.SHOP_URL}:${config.PORT}/api/products/getproduct?id=614b8667c9ff72909bdb631d`);
+		let responce = await fetch(`${config.SHOP_URL}:${config.PORT}/api/products/getproduct?id=${idProduct}`);
 
 		data = await responce.json();
 		
 		if (!responce.ok){
 			throw new Error(data.status)
 		}
-        // getDataAndInsert(data.background, data.name, data.price)
-        
-		console.log(data);
+
+        let listImages = document.querySelectorAll('.my-slider__image');
+        console.log(listImages.length);
+
+		listImages.forEach((image, index) => {
+			console.log(data);
+			let imageBlob = new Blob([new Uint8Array(data.images[index].data)], {
+				type: "image/jpeg"
+			});
+	
+			image.src = URL.createObjectURL(imageBlob);
+		})
+		
 	} catch (err) {
 		console.log(err.message);
 		buttonAdd.disabled = true;
 	}
-});
+
+	MySlider.init({
+		nav: true,
+		drop: true,
+		dots: true,
+		infinite: true,
+		animateTime: 0.3,
+		autoplayInterval: 2
+	});
+
+})();
 
 // событие добавления товара в корзину
 buttonAdd.addEventListener('click', function(){
@@ -54,7 +61,6 @@ buttonAdd.addEventListener('click', function(){
 })
 
 // отправка рейтинга на сервер
-
 function isCheck(name) {
     return document.querySelector(`input[name="${name}"]:checked`);
 }

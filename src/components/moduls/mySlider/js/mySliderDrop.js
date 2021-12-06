@@ -12,9 +12,7 @@ export default function(options) {
 	// функция перемещения слайдер с помощью дропа
 	function moveList(e) {
 		e.preventDefault();
-		this.ondragstart = function() {
-			return false;
-		};
+		this.ondragstart = () => false;
 
 		let containerLeft = this.offsetLeft;
 
@@ -76,25 +74,25 @@ export default function(options) {
 	// функция перемещения слайдера влево или вправо в зависимоти в какую сторону он перемещен
 	// после отпускания кнопки мыши
 	function moveSlider() {
-		
+		if (!direction) {return};
+
 		let elemAtEdge = findElemAtEdge(containerSlides);
 
-		if (containerSlides.offsetLeft > 0) {
-			containerSlides.style.left = '0px';
-			return;
-		}
+		// if (containerSlides.offsetLeft > 0) {
+		// 	containerSlides.style.left = '0px';
+		// 	return;
+		// }
 
-		if (containerSlides.offsetLeft < maxScroll) {
-			containerSlides.style.left = `${maxScroll}px`;
-			return;
-		}
+		// if (containerSlides.offsetLeft < maxScroll) {
+		// 	containerSlides.style.left = `${maxScroll}px`;
+		// 	return;
+		// }
 
 		if (direction === 'right') {
 			containerSlides.style.left = -elemAtEdge.nextElementSibling.offsetLeft + 'px';
 		} else if (direction === 'left') {
 			containerSlides.style.left = -elemAtEdge.offsetLeft + 'px';
 		}
-
 		direction = undefined;
 	}
 
@@ -103,7 +101,12 @@ export default function(options) {
 		duration = e.pageX;
 		containerSlides.style.left = containerSlides.offsetLeft + 'px';
 		containerSlides.style.transition = 'none';
-		containerSlides.addEventListener('mousemove', moveList);	
+
+		this.addEventListener('mousemove', moveList);
+		this.addEventListener('mouseleave', function(){
+			containerSlides.style.transition = `left ${options.animateTime}s linear`;
+			moveSlider();
+		}, { once: true });
 	});
 
 	document.addEventListener('mouseup', function mouseUp(e) {
@@ -114,24 +117,19 @@ export default function(options) {
 		containerSlides.removeEventListener('mousemove', moveList);
 	});
 
-	containerSlides.onmouseleave = function(){
+	containerSlides.addEventListener('touchstart', function(e) {
+		e.preventDefault();
+		duration = e.pageX;
+		containerSlides.style.left = containerSlides.offsetLeft + 'px';
+		containerSlides.style.transition = 'none';
+		containerSlides.addEventListener('touchmove', moveList);
+	});
+	
+	document.addEventListener('touchend', function(e) {
 		containerSlides.style.transition = `left ${options.animateTime}s linear`;
-		moveSlider();
-	};
-
-	// containerSlides.addEventListener('touchstart', function(e) {
-	// 	e.preventDefault();
-	// 	duration = e.pageX;
-	// 	containerSlides.style.left = containerSlides.offsetLeft + 'px';
-	// 	containerSlides.style.transition = 'none';
-	// 	containerSlides.addEventListener('touchmove', moveList);
-	// });
-
-	// document.addEventListener('touchend', function(e) {
-	// 	containerSlides.style.transition = `left ${options.animateTime}s linear`;
-	// 	moveSlider(e);
-	// 	containerSlides.removeEventListener('touchmove', moveList);
-	// });
+		moveSlider(e);
+		containerSlides.removeEventListener('touchmove', moveList);
+	});
 
 	// пользовательское событие нажатие кнопки направо чтобы установить направление движения 
 	// (само событие определено в модуле навигации и всплывает до document)

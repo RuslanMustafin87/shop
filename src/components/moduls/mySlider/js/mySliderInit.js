@@ -1,7 +1,7 @@
 export default {
 	init(options) {
 
-		const slider = document.querySelector('.my-slider');
+		const slider = document.getElementById('my-slider');
 		const sliderChildren = Array.from(slider.children);
 
 		while (slider.firstElementChild) {
@@ -12,7 +12,7 @@ export default {
 		let containerSlides = document.createElement('div');
 		outer.classList.add('my-slider__outer');
 		containerSlides.classList.add('my-slider__container-slides');
-		containerSlides.setAttribute('id', 'container-slides');
+		containerSlides.id = 'container-slides';
 		slider.appendChild(outer);
 		outer.appendChild(containerSlides);
 
@@ -74,7 +74,8 @@ export default {
 			});
 		}
 
-		// если слайдер-карусель делаем его бесконечным 
+		// если слайдер-карусель делаем его бесконечным
+
 		if (options.infinite) {
 			containerSlides.addEventListener('transitionend', function() {
 				let containerLeft = containerSlides.offsetLeft;

@@ -5,8 +5,8 @@ module.exports = function() {
 				test: /\.(jpe?g|png)$/,
 				type: 'asset/resource',
 				generator: {
-					// filename: 'images/[hash][ext]'
-					filename: 'images/[name][hash][ext]'
+					filename: 'images/[name][ext]'
+					// filename: 'images/[name][hash][ext]'
 				},
 			},
 			{

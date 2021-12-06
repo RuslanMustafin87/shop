@@ -21,6 +21,7 @@ export default function(options) {
 
 	dotsItems.forEach((item, index) => {
 		item.addEventListener('click', function() {
+			console.log('s');
 			let pos = options.infinite ? index + 1 : index;
 			containerSlides.style.left = `${pos * -100}%`;
 			dotsItems.forEach((item) => {
@@ -43,10 +44,9 @@ export default function(options) {
 	}
 
 	// событие переключения внешнего вида дотов на активный дот
-	containerSlides.addEventListener('transitionend', function() {
-			
-		let dotsList = document.querySelectorAll('.dots__item');
+	let dotsList = document.querySelectorAll('.dots__item');
 
+	containerSlides.addEventListener('transitionend', function() {
 		let activeDot = document.querySelector('.dots__item--active');
 		activeDot.classList.remove('dots__item--active');
 

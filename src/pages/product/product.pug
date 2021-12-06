@@ -8,11 +8,14 @@ block var
 block content
     main.product-page 
         // TODO вставка картинок
-        .product__pictures
-            .my-slider
-                .my-slider__slide 1     
-                .my-slider__slide 2        
-                .my-slider__slide 3
+        .product__slider
+            .my-slider#my-slider
+                .my-slider__slide
+                    img.my-slider__image()   
+                .my-slider__slide
+                    img.my-slider__image()   
+                .my-slider__slide
+                    img.my-slider__image()   
         h1.product__name= name
         p.product__price= price
         fieldset.product__rating.rating
