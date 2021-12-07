@@ -1,12 +1,13 @@
 import '../../css/main.scss';
 import './index.scss';
-import '../../images/logo-light.png';
+import '../../images/logo-light.png'
 
 import config from '../../../config.json';
 
 import Sort from '../../js/sort';
 import Basket from '../../components/moduls/myBasket/myBasket';
 import '../../js/addProductInBasket';
+import '../../js/openPageBasket';
 
 const sort = new Sort();
 const basket = new Basket();
@@ -25,7 +26,7 @@ let listProductsInContainer = null;
 		data = await result.json();
 
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 	}
 
 	if (data) {
@@ -118,3 +119,22 @@ sortProductsByCategory.onchange = function(event) {
 	}
 	filterProductsByCategory(listProducts, event.target.value);
 }
+
+// ------------
+// const basketLink = document.getElementById('basket-link');
+
+// basketLink.onclick = function(event) {
+// 	event.preventDefault();
+
+// 	let listProductsInBasket = basket.getProductsFromBasket();
+// 	let parametrs = [];
+
+// 	listProductsInBasket.forEach((item, index) => {
+// 		parametrs += `productId-${index}=${item.id}&`;
+// 	});
+
+// 	fetch(`${config.SHOP_URL}:${config.PORT}/basket?${ parametrs }`)
+// 		.then((response) => {
+// 			console.log( response );
+// 		});
+// };

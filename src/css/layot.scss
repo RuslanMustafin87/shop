@@ -1,7 +1,9 @@
 @import './mixin.scss';
 
 :root {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Roboto Condensed', Helvetica, sans-serif;
+	font-weight: 400;
+	letter-spacing: .2px;
 	color: var(--color-text-dark);
 }
 
@@ -27,7 +29,9 @@ html {
 }
 
 h1{
+	font-size: 1.5rem;
 	font-weight: bold;
+	color: var(--color-text-dark);
 }
 
 .wrapper {

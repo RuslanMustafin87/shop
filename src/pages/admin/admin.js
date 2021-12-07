@@ -25,7 +25,7 @@ function formaterForm(form) {
 	if (isNaN(price)) {
 		return modal.start('Введите цену в формате числа');
 	}
-	
+
 	price = formatter.format(price);
 
 	form.set('price', price);
@@ -37,7 +37,7 @@ function formaterForm(form) {
 // функция добавления множества картинок в formData
 function addImagesIntoForm(input, form){
 	for(var i = 0; i < input.files.length; i++){
-        form.append(`image_${i}`, input.files[i], input.files[i].name); 
+        form.append(`image_${i}`, input.files[i], input.files[i].name);
     }
 }
 
@@ -52,7 +52,7 @@ addProduct.onsubmit = async function(event) {
 	let formProduct = new FormData(this);
 
 	formProduct = formaterForm(formProduct);
-	
+
 	formProduct.delete('image');
 	addImagesIntoForm(addImage, formProduct);
 
@@ -74,7 +74,7 @@ addProduct.onsubmit = async function(event) {
 };
 
 addImage.onchange = function(event) {
-	
+
 	if (this.files.length === 0) {
 		addImageSpan.innerHTML = 'Файл не выбран';
 	} else {
@@ -146,7 +146,7 @@ let updateImage = document.querySelector('#updateImageProduct');
 let updateImageSpan = document.querySelector('#updateImageProductSpan');
 
 updateImage.onchange = function(event) {
-	
+
 	if (this.files.length === 0) {
 		updateImageSpan.innerHTML = 'Файл не выбран';
 	} else {

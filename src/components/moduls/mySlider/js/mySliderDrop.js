@@ -74,7 +74,7 @@ export default function(options) {
 	// функция перемещения слайдера влево или вправо в зависимоти в какую сторону он перемещен
 	// после отпускания кнопки мыши
 	function moveSlider() {
-		if (!direction) {return};
+		if (!direction) {return;}
 
 		let elemAtEdge = findElemAtEdge(containerSlides);
 

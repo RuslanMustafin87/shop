@@ -38,14 +38,13 @@ function createListGoods(data) {
 
 // функция создания элемента товара и заполнение его данными
 function createProduct(data) {
-
+	// TODO перевести создание товара на сервере
 	let product = document.createElement('li');
 	let link = document.createElement('a');
 	let img = document.createElement('img');
-	let rating = document.createElement('div');
-	let starGroup = document.createElement('ul');
+	let rating = document.createElement('ul');
 	let star = document.createElement('li');
-	let name = document.createElement('span');
+	let name = document.createElement('h1');
 	let price = document.createElement('span');
 	let button = document.createElement('button');
 
@@ -53,7 +52,6 @@ function createProduct(data) {
 	link.classList.add('product__link');
 	img.classList.add('product__image');
 	rating.classList.add('product__rating', 'rating');
-	starGroup.classList.add('rating__group');
 	star.classList.add('rating__star');
 	name.classList.add('product__name');
 	price.classList.add('product__price');
@@ -67,13 +65,13 @@ function createProduct(data) {
 	img.src = URL.createObjectURL(imageBlob);
 
 	link.href = `/product?id=${data._id}`;
-	
+
 	for (let i = 0; i < 5; i++) {
-		starGroup.append(star.cloneNode(true));
+		rating.append(star.cloneNode(true));
 	}
 
 	if (data.rating.roundedRating) {
-		Array.from(starGroup.children)[5 - data.rating.roundedRating].setAttribute('data-rating', 'true');
+		Array.from(rating.children)[5 - data.rating.roundedRating].setAttribute('data-rating', 'true');
 	}
 
 	name.innerHTML = data.name;
@@ -85,7 +83,6 @@ function createProduct(data) {
 
 	link.append(img);
 	product.append(link);
-	rating.append(starGroup);
 	product.append(rating);
 	product.append(name);
 	product.append(price);
@@ -113,7 +110,7 @@ async function addProductIntoBasket(newValue) {
 		data = await result.json();
 
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 	}
 
 	let product = createProduct(data[0])
@@ -184,7 +181,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 		console.log(err);
 	}
 
-	createListGoods(products);
+	// createListGoods(products);
 });
 
 // событие изменения в локальном хранилище и добавление товара в корзину
@@ -205,3 +202,4 @@ function sumProducts(list) {
 
 	return formatter.format(sum);
 }
+

@@ -1,20 +1,29 @@
 extends ../../templates/main.pug
 
 block var
-
     - var title = 'Корзина'
     - var page = 'basket'
-
+    - var products = []
+    - var rating = {roundedRating: 5}
 block content
     // TODO стилизовать
     main.main-basket
         .main-basket__wrapper
             button.main-basket__button-reset#button-reset Очистить корзину
             ul.main-basket__products.products#products
+                each item in products
+                    li.products__item.product(data-id=item._id  data-name=item.name data-price=item.price data-category=item.category)
+                        a.product__link(href= `product?id=${item._id}`)
+                            img.product__image(alt=`${item.category} ${item.name}`)
+                        .product__rating
+                            include ../../components/blocks/rating-star/rating-star.pug
+                        h1.product__name= item.name
+                        span.product__price= item.price
+                        button.product__button-delete Удалить
             // TODO реализовать отправку заказа
             .main-basket__form-order
                 include ../../components/blocks/form-order/form-order
             .main-basket__total.total
-                span.total__caption Итого: 
+                span.total__caption Итого:&#32;
                 span.total__sum#total-sum
 

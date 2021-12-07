@@ -24,19 +24,21 @@
 		"clean-webpack-plugin": "^4.0.0",
 		"colors": "^1.4.0",
 		"compression-webpack-plugin": "^9.0.0",
+		"copy-webpack-plugin": "^10.0.0",
 		"css-loader": "^6.5.0",
+		"css-mqpacker": "^7.0.0",
 		"cssnano": "^5.0.8",
 		"eslint": "^8.1.0",
-		"favicons": "^6.2.2",
-		"favicons-webpack-plugin": "5.0.2",
+		"favicons-webpack-plugin": "0.0.9",
 		"file-loader": "^6.0.0",
 		"friendly-errors-webpack-plugin": "^1.7.0",
 		"html-webpack-plugin": "^5.5.0",
 		"mini-css-extract-plugin": "^2.4.3",
 		"passport-local": "^1.0.0",
+		"postcss": "^8.4.4",
+		"postcss-font-magician": "^3.0.0",
 		"postcss-loader": "^6.2.0",
-		"postcss-short": "^5.0.0",
-		"postcss-utilities": "^0.8.4",
+		"postcss-preset-env": "^7.0.1",
 		"pug": "^3.0.0",
 		"pug-loader": "^2.3.0",
 		"sass": "^1.35.1",
@@ -57,6 +59,9 @@
 	},
 	"browserslist": [
 		"> 1%",
-		"last 2 versions"
+		"last 2 versions",
+		"not op_mini all",
+		"not dead",
+		"not ie 11"
 	]
 }

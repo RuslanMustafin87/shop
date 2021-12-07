@@ -22,7 +22,7 @@ let data = null;
 		let responce = await fetch(`${config.SHOP_URL}:${config.PORT}/api/products/getproduct?id=${idProduct}`);
 
 		data = await responce.json();
-		
+
 		if (!responce.ok){
 			throw new Error(data.status)
 		}
@@ -35,10 +35,10 @@ let data = null;
 			let imageBlob = new Blob([new Uint8Array(data.images[index].data)], {
 				type: "image/jpeg"
 			});
-	
+
 			image.src = URL.createObjectURL(imageBlob);
 		})
-		
+
 	} catch (err) {
 		console.log(err.message);
 		buttonAdd.disabled = true;
@@ -69,7 +69,7 @@ let buttonRating = document.querySelector('.product__button-review');
 
 buttonRating.onclick = async function() {
 	let checked = isCheck('review');
-	
+
 	if (!checked) {
 		return console.log('error!');
 	}
@@ -87,14 +87,14 @@ buttonRating.onclick = async function() {
 		});
 
 		data = await responce.json();
-		
+
 		if (!responce.ok){
 			throw new Error(data.message);
 		} else {
 			checked.checked = false;
 			modal.start('Спасибо за отзыв!');
 		}
-        
+
 	} catch (err) {
 		console.log('Ошибка ' + err.message);
 	}

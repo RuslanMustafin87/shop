@@ -5,9 +5,16 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name='keywords', content='мебель, диван, шкаф, комод')
+        meta(name='description', content='магазин мебели')
         title #{title}
         // TODO favicon
+        link(rel="icon" href="/assets/images/fav-furniture.png")
+        link(rel="stylesheet" href="/assets/css/common.css")
+        link(rel="stylesheet" href=`/assets/css/${page}.css`)
     body
         .wrapper
             include ../components/blocks/header/header
             block content
+        script(src=`/assets/js/common.js`)
+        script(src=`/assets/js/${page}.js`)

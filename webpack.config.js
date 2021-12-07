@@ -18,8 +18,8 @@ const favicon = require('./webpack/favicon');
 const extractCSS = require('./webpack/extractCSS');
 const devServer = require('./webpack/devServer');
 const devtool = require('./webpack/devtool');
+const CopyPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 // const RuntimeAnalyzerPlugin = require('webpack-runtime-analyzer');
 
 const PATHS = {
@@ -61,37 +61,42 @@ const conf = merge([{
 			chunks: ['index',
 				'common'
 			],
-			template: PATHS.source + '/pages/index/index.pug'
+			template: PATHS.source + '/pages/index/index.pug',
+			favicon: './src/images/fav-furniture.png'
 		}),
 		new HtmlWebpackPlugin({
 			filename: 'basket.html',
 			chunks: ['basket',
 				'common'
 			],
-			template: PATHS.source + '/pages/basket/basket.pug'
+			template: PATHS.source + '/pages/basket/basket.pug',
+			favicon: './src/images/fav-furniture.png'
 		}),
 		new HtmlWebpackPlugin({
 			filename: 'product.html',
 			chunks: ['product',
 				'common'
 			],
-			template: PATHS.source + '/pages/product/product.pug'
+			template: PATHS.source + '/pages/product/product.pug',
+			favicon: './src/images/fav-furniture.png'
 		}),
 		new HtmlWebpackPlugin({
 			filename: 'admin.html',
 			chunks: ['admin',
 				'common'
 			],
-			template: PATHS.source + '/pages/admin/admin.pug'
+			template: PATHS.source + '/pages/admin/admin.pug',
+			favicon: './src/images/fav-furniture.png'
+
+		}),
+		new CopyPlugin({
+			patterns: [{
+				from: PATHS.source + '/images/fav-furniture.png',
+				to: PATHS.build + '/images/fav-furniture.png'
+			}]
 		}),
 		new FriendlyErrorsWebpackPlugin(),
 		new CleanWebpackPlugin(),
-		// new FaviconsWebpackPlugin({
-		// 	logo: './src/images/fav-furniture.png',
-		// 	// publicPath: '/assets/',
-		// 	// inject: true,
-		// })
-		// new RuntimeAnalyzerPlugin()
 	],
 },
 // lintJS(PATHS.source),
@@ -99,7 +104,7 @@ babel(),
 pug(),
 image(),
 font(),
-	// favicon()
+// favicon()
 ]);
 
 module.exports = function(env, argv) {
@@ -116,7 +121,7 @@ module.exports = function(env, argv) {
 		]);
 	}
 	if (argv.mode === 'development') {
-		
+
 		return merge([
 			conf,
 			css(),

@@ -1,26 +1,31 @@
 @import '../../css/mixin.scss';
 
 .main-basket {
-	&__wrapper{
+	&__wrapper {
 		padding: 0.9375rem 0 0 0;
 		width: 85%;
 		max-width: 1200px;
 		margin: auto;
-		@media (max-width: 600px){
+
+		@media (max-width: 600px) {
 			width: 95%;
 		}
 	}
+
 	&__button-reset {
 		width: 12.5rem;
 		margin: 0 0 0.9375rem 0;
 		@include button_shop;
 	}
-	&__products{
+
+	&__products {
 		margin: 0 0 0.9375rem 0;
 	}
-	&__form-order{
+
+	&__form-order {
 		margin: 0 auto 0.9375rem auto;
 	}
+
 	&__total {
 		margin: 0 0 0.9375rem 0;
 	}
@@ -30,22 +35,23 @@
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-	// grid-template-rows: auto;
 	grid-auto-rows: auto;
 	grid-column-gap: 0.625rem;
 	grid-row-gap: 1.25rem;
 	font-size: 1.5rem;
+
 	&__item {
 		height: auto;
 	}
-	@include phone{
+
+	@include phone {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 .product {
 	position: relative;
-	
+
 	&__link {
 		cursor: pointer;
 		display: block;
@@ -59,7 +65,7 @@
 		height: 100%;
 		object-fit: cover;
 	}
-	
+
 	&__rating {
 		margin: 0 0 1em 0;
 	}
@@ -69,7 +75,7 @@
 		margin-bottom: 0.625rem;
 		color: #000;
 	}
-	
+
 	&__price {
 		display: block;
 		margin-bottom: 0.625rem;
@@ -86,60 +92,6 @@
 	}
 }
 
-.rating {
-	margin: 0 0 1em 0;
-	position: relative;
-
-	&__group {
-		transform: rotate(180deg);
-		width: 9.375rem;
-		height: 1.25rem;
-		position: relative;
-	}
-
-	&__star {
-		pointer-events: none;
-		position: absolute;
-		top: 0;
-		width: 1.25rem;
-		height: 1.25rem;
-		background-image: url(../../images/icons/star-off.svg);
-		background-size: 1.25rem;
-		background-repeat: no-repeat;
-		transform: rotate(-35deg);
-		padding: 0;
-		margin: 0;
-		&[data-rating=true]{
-			background-image: url(../../images/icons/star-on.svg);
-		}
-		&[data-rating=true] ~ .rating__star{
-			background-image: url(../../images/icons/star-on.svg);
-		}
-
-		&:nth-of-type(1) {
-			right: 120px;
-		}
-
-		&:nth-of-type(2) {
-			right: 90px;
-		}
-
-		&:nth-of-type(3) {
-			right: 60px;
-		}
-
-		&:nth-of-type(4) {
-			right: 30px;
-
-		}
-
-		&:nth-of-type(5) {
-			right: 0;
-
-		}
-	}
-}
-
-.total{
+.total {
 	font-size: 1.5rem;
 }

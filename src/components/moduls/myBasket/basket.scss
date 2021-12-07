@@ -1,9 +1,9 @@
 .basket {
 	height: 2.1875rem;
 	width: 2.1875rem;
-	background: url(../images/icons/basket.svg) no-repeat;
-	background-position: 0%;
-	background-size: cover;
+	background: url(../images/icons/basket.svg) no-repeat 0 0;
+	// background-position: 0%;
+	// background-size: cover;
 	cursor: pointer;
 	&__count{
 		display: none;
@@ -17,7 +17,6 @@
 		color: wheat;
 		border-radius: 50%;
 		text-align: center;
-		font-family: Arial, Helvetica, sans-serif;
 		font-size: .9rem;
 		line-height: 1.4375rem;
 		vertical-align: middle;

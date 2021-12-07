@@ -13,12 +13,12 @@
 }
 
 .product__name {
-	font-size: 1.5rem;
-	margin-bottom: 1.875rem;
+	margin-bottom: 1.25rem;
 }
 
 .product__price {
-	margin-bottom: 1.25rem;
+	font-size: 1.5rem;
+	margin-bottom: 0.625rem;
 }
 
 .product__button-add {
@@ -27,29 +27,29 @@
 }
 
 .rating {
-	margin: 0 0 1em 0;
+	margin: 0 0 0.625rem 0;
 	padding: 0;
 	border: none;
 	position: relative;
 
 	&__caption {
-		margin: 0 0 0.3125rem 0;
+		margin: 0 0 0.625rem 0;
 		padding: 0;
-		font-size: 1.5rem;
+		font-size: 1rem;
 	}
 
 	&__group {
-		transform: rotate(180deg);
-		width: 190px;
-		height: 1.875rem;
+		width: 100%;
 		position: relative;
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: flex-end;
 		&_no-clickable {
 			pointer-events: none;
 		}
 		&_clickable {
 			cursor: pointer;
 		}
-		// z-index: 0;
 	}
 
 	&__input {
@@ -70,16 +70,13 @@
 
 	&__star {
 		cursor: pointer;
-		position: absolute;
-		top: 0;
-		width: 1.875rem;
-		height: 1.875rem;
+		width: 1.25rem;
+		height: 1.25rem;
 		background-image: url(../../images/icons/star-off.svg);
 		background-size: 1.875rem;
 		background-repeat: no-repeat;
-		transform: rotate(-35deg);
 		padding: 0;
-		margin: 0;
+		margin: 0 .625rem 0 0;
 		&_no-clickable {
 			pointer-events: none;
 			cursor: none;
@@ -121,85 +118,6 @@
 	clear: both;
 
 }
-
-// .review {
-// 	margin: 0 0 1em 0;
-// 	padding: 0;
-// 	border: none;
-// 	position: relative;
-
-// 	&__caption {
-// 		margin: 0 0 0.3125rem 0;
-// 		padding: 0;
-// 		font-size: 1.5rem;
-// 	}
-
-// 	&__group {
-// 		transform: rotate(180deg);
-// 		width: 190px;
-// 		height: 1.875rem;
-// 		position: relative;
-// 		margin-bottom: 1rem;
-// 	}
-
-// 	&__input {
-// 		position: absolute;
-// 		width: 1px;
-// 		height: 1px;
-// 		overflow: hidden;
-// 		clip: rect(0, 0, 0, 0);
-
-// 		&:checked+.review__star {
-// 			background-image: url(../../images/icons/star-on.svg);
-// 		}
-
-// 		&:checked~.review__star {
-// 			background-image: url(../../images/icons/star-on.svg);
-// 		}
-// 	}
-
-// 	&__star {
-// 		cursor: pointer;
-// 		position: absolute;
-// 		top: 0;
-// 		width: 1.875rem;
-// 		height: 1.875rem;
-// 		background-image: url(../../images/icons/star-off.svg);
-// 		background-size: 1.875rem;
-// 		background-repeat: no-repeat;
-// 		transform: rotate(-35deg);
-// 		padding: 0 !important;
-// 		margin: 0 !important;
-
-// 		// &:hover {
-// 		// 	background-image: url(../../images/icons/star-on.svg);
-// 		// }
-// 		// &:hover:not(:hover ~ .rating__star) {
-// 		// 	background-image: url(../../images/icons/star-on.svg);
-// 		// }
-// 		&:nth-of-type(1) {
-// 			left: 0;
-// 		}
-
-// 		&:nth-of-type(2) {
-// 			left: 2.5rem;
-// 		}
-
-// 		&:nth-of-type(3) {
-// 			left: 5rem;
-// 		}
-
-// 		&:nth-of-type(4) {
-// 			left: 7.5rem;
-
-// 		}
-
-// 		&:nth-of-type(5) {
-// 			left: 10rem;
-
-// 		}
-// 	}
-
 
 .product__button-review {
 
