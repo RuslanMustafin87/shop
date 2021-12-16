@@ -1,0 +1,25 @@
+.footer{
+    height: 6.25rem;
+    width: 100%;
+    background-color: var(--color-main);
+    position: relative;
+    &__link-admin {
+		position: absolute;
+		left: 7.5%;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+		color: var(--color-text-light);
+		@media (max-width: 600px){
+			left: 2.5%;
+		}
+	}
+	&__author {
+		color: var(--color-text-light);
+		position: absolute;
+		left: 50%;
+		bottom: 0.625rem;
+		transform: translateX(-50%);
+		font-size: .8rem;
+	}
+}

@@ -1,5 +1,5 @@
 .header {
-	height: 128px;
+	height: 8rem;
 	background-color: var(--color-main);
 	position: relative;
 
@@ -11,7 +11,7 @@
 		@media (max-width: 600px){
 			right: 2.5%;
 		}
-		
+
 	}
 	&__link-home {
 		position: absolute;
@@ -23,6 +23,9 @@
 		@media (max-width: 600px){
 			left: 2.5%;
 		}
+	}
+	&__link{
+		color: inherit;
 	}
 	&__link-logo{
 		position: absolute;

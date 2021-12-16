@@ -43,7 +43,7 @@
 .product {
 	position: relative;
 	overflow: hidden;
-	padding: 0.3125rem;
+	padding: 0.625rem;
 
 	&__link {
 		cursor: pointer;
@@ -84,8 +84,8 @@
 		@include button_shop;
 	}
 	&:hover{
-		border-radius: 5px;
-		box-shadow: 0 0px 13px 1px #bccfd1;
+		border-radius: 6px;
+		box-shadow: 0 0 13px 1px #bccfd1;
 	}
 }
 
