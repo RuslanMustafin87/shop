@@ -17,7 +17,7 @@ export default function(options) {
 	let maxScroll = containerSlides.offsetParent.clientWidth - containerSlides.clientWidth;
 
 	// переменная веденная для нормального, последовательного переключения слайдов
-	// иначе при быстром переключении слайдов контейнер может остановится на половине слайда 
+	// иначе при быстром переключении слайдов контейнер может остановится на половине слайда
 	let isMove = false;
 
 	// функция проверки какой слайд находится на левом краю контейнера
@@ -51,7 +51,6 @@ export default function(options) {
 		}, options.animateTime * 1000);
 
 		let elemAtEdge = findElemAtEdge(containerSlides);
-		// TODO исправить на проценты 
 		let containerLeft = elemAtEdge.nextElementSibling.offsetLeft;
 
 		if (!options.infinite && containerLeft < maxScroll) {

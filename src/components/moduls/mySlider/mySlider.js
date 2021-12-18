@@ -5,7 +5,8 @@ import mySliderInit from './js/mySliderInit';
 import mySliderNav from './js/mySliderNav';
 import mySliderDrop from './js/mySliderDrop';
 import mySliderDots from './js/mySliderDots';
-
+import mySliderAddSlide from './js/mySliderAddSlide';
+// TODO сделать классом
 export default {
 
 	init(options) {
@@ -43,5 +44,6 @@ export default {
 				infinite: infinite
 			});
 		}
-	}
+	},
+	addSlide: mySliderAddSlide
 };

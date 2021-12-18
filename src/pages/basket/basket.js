@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 		console.log(err);
 	}
 
-	// createListGoods(products);
+	createListGoods(products);
 });
 
 // событие изменения в локальном хранилище и добавление товара в корзину

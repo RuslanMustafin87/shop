@@ -8,7 +8,6 @@ modalContainer.classList.add('modal');
 modal.classList.add('modal__window');
 modalText.classList.add('modal__text');
 modalClose.classList.add('modal__cross');
-modalClose.src = '/assets/images/cross.svg';
 
 // eslint-disable-next-line no-undef
 document.body.prepend(modalContainer);

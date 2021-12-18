@@ -5,7 +5,7 @@
 	padding-left: 3.75rem;
 }
 
-.product__slider{
+.product__slider {
 	width: 31.25rem;
 	height: 31.25rem;
 	float: left;
@@ -44,9 +44,11 @@
 		display: flex;
 		flex-direction: row-reverse;
 		justify-content: flex-end;
+
 		&_no-clickable {
 			pointer-events: none;
 		}
+
 		&_clickable {
 			cursor: pointer;
 		}
@@ -77,12 +79,13 @@
 		background-repeat: no-repeat;
 		padding: 0;
 		margin: 0 .625rem 0 0;
+
 		&_no-clickable {
 			pointer-events: none;
 			cursor: none;
 		}
 
-				// &:hover {
+		// &:hover {
 		// 	background-image: url(../../images/icons/star-on.svg);
 		// }
 		// &:hover:not(:hover ~ .rating__star) {

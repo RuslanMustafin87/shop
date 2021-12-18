@@ -9,7 +9,7 @@ export default {
 		}
 
 		let outer = document.createElement('div');
-		let containerSlides = document.createElement('div');
+		let containerSlides = document.createElement('ul');
 		outer.classList.add('my-slider__outer');
 		containerSlides.classList.add('my-slider__container-slides');
 		containerSlides.id = 'container-slides';

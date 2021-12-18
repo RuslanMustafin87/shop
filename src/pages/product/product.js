@@ -12,7 +12,7 @@ const modal = new Modal();
 const basket = new Basket();
 const idProduct = new URL(window.location.href).searchParams.get('id');
 
-// TODO удалить если не нужно
+const slider = document.getElementById('my-slider');
 let buttonAdd = document.querySelector('.product__button-add');
 let data = null;
 
@@ -27,16 +27,17 @@ let data = null;
 			throw new Error(data.status)
 		}
 
-        let listImages = document.querySelectorAll('.my-slider__image');
-        console.log(listImages.length);
+        let listImages = data.images;
 
 		listImages.forEach((image, index) => {
-			console.log(data);
-			let imageBlob = new Blob([new Uint8Array(data.images[index].data)], {
+
+			let imageBlob = new Blob([new Uint8Array(image.data)], {
 				type: "image/jpeg"
 			});
 
-			image.src = URL.createObjectURL(imageBlob);
+			const src = URL.createObjectURL(imageBlob);
+
+			slider.append(MySlider.addSlide(src, data.name));
 		})
 
 	} catch (err) {
@@ -73,7 +74,7 @@ buttonRating.onclick = async function() {
 	if (!checked) {
 		return console.log('error!');
 	}
-	console.log(checked);
+
 	try {
 		let responce = await fetch(`${config.SHOP_URL}:${config.PORT}/product/updateratingproduct`, {
 			method: 'PUT',
