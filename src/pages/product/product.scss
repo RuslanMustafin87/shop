@@ -13,6 +13,7 @@
 }
 
 .product__name {
+	font-size: 2rem;
 	margin-bottom: 1.25rem;
 }
 
@@ -26,103 +27,10 @@
 	@include button_shop;
 }
 
-.rating {
+.product__rating{
 	margin: 0 0 0.625rem 0;
-	padding: 0;
-	border: none;
-	position: relative;
-
-	&__caption {
-		margin: 0 0 0.625rem 0;
-		padding: 0;
-		font-size: 1rem;
-	}
-
-	&__group {
-		width: 100%;
-		position: relative;
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: flex-end;
-
-		&_no-clickable {
-			pointer-events: none;
-		}
-
-		&_clickable {
-			cursor: pointer;
-		}
-	}
-
-	&__input {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-
-		&:checked+.rating__star {
-			background-image: url(../../images/icons/star-on.svg);
-		}
-
-		&:checked~.rating__star {
-			background-image: url(../../images/icons/star-on.svg);
-		}
-	}
-
-	&__star {
-		cursor: pointer;
-		width: 1.25rem;
-		height: 1.25rem;
-		background-image: url(../../images/icons/star-off.svg);
-		background-size: 1.875rem;
-		background-repeat: no-repeat;
-		padding: 0;
-		margin: 0 .625rem 0 0;
-
-		&_no-clickable {
-			pointer-events: none;
-			cursor: none;
-		}
-
-		// &:hover {
-		// 	background-image: url(../../images/icons/star-on.svg);
-		// }
-		// &:hover:not(:hover ~ .rating__star) {
-		// 	background-image: url(../../images/icons/star-on.svg);
-		// }
-		&:nth-of-type(1) {
-			left: 0;
-		}
-
-		&:nth-of-type(2) {
-			left: 2.5rem;
-		}
-
-		&:nth-of-type(3) {
-			left: 5rem;
-		}
-
-		&:nth-of-type(4) {
-			left: 7.5rem;
-
-		}
-
-		&:nth-of-type(5) {
-			left: 10rem;
-
-		}
-
-	}
 }
 
-.product__review {
-
-	clear: both;
-
-}
-
-.product__button-review {
-
-	@include button_shop;
+.product__review{
+	clear:both;
 }

@@ -66,11 +66,11 @@ function isCheck(name) {
     return document.querySelector(`input[name="${name}"]:checked`);
 }
 
-let buttonRating = document.querySelector('.product__button-review');
+let buttonReview = document.getElementById('review-button');
 
-buttonRating.onclick = async function() {
+buttonReview.onclick = async function() {
 	let checked = isCheck('review');
-
+	console.log('ji');
 	if (!checked) {
 		return console.log('error!');
 	}

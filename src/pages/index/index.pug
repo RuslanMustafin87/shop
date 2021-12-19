@@ -21,11 +21,12 @@ block content
             // TODO линивая загрузка
             ul.main-index__products.products
                 each item in products
-                    li.products__item.product(data-id=item._id  data-name=item.name data-price=item.price data-category=item.category)
-                        a.product__link(href= `product?id=${item._id}`)
-                            img.product__image(alt=`${item.category} ${item.name}`)
-                        .product__rating
+                    li.products__item.product-card(data-id=item._id  data-name=item.name data-price=item.price data-category=item.category)
+                        a.product-card__link(href= `product?id=${item._id}`)
+                            img.product-card__image(alt=`${item.category} ${item.name}`)
+                        .product-card__rating
+                            - var ratingCheck = item.rating.roundedRating
                             include ../../components/blocks/rating-star/rating-star.pug
-                        h1.product__name= item.name
-                        span.product__price= item.price
-                        button.product__button Добавить
+                        h1.product-card__name= item.name
+                        span.product-card__price= item.price
+                        button.product-card__button Добавить

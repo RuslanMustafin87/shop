@@ -11,18 +11,10 @@ block content
             .my-slider#my-slider
         h1.product__name= name
         p.product__price= price
-        fieldset.product__rating.rating
-            legend.rating__caption Рейтинг
-            .rating__group.rating__group-no-clickable
-                input.rating__input(type="radio" name='rating' id='rating-1' value='5' checked=rating.roundedRating  == 5 ? 'checked' : undefined)
-                label.rating__star.rating__star_no-clickable(for='rating-1')
-                input.rating__input(type="radio" name='rating' id='rating-2' value='4' checked=rating.roundedRating  == 4 ? 'checked' : undefined)
-                label.rating__star.rating__star_no-clickable(for='rating-2')
-                input.rating__input(type="radio" name='rating' id='rating-3' value='3' checked=rating.roundedRating  == 3 ? 'checked' : undefined)
-                label.rating__star.rating__star_no-clickable(for='rating-3')
-                input.rating__input(type="radio" name='rating' id='rating-4' value='2' checked=rating.roundedRating  == 2 ? 'checked' : undefined)
-                label.rating__star.rating__star_no-clickable(for='rating-4')
-                input.rating__input(type="radio" name='rating' id='rating-5' value='1' checked=rating.roundedRating  == 1 ? 'checked' : undefined)
-                label.rating__star.rating__star_no-clickable(for='rating-5')
+        .product__rating
+            - var ratingCheck = rating.roundedRating
+            include ../../components/blocks/rating-star/rating-star.pug
         button.product__button-add Добавить в корзину
-        
+        .product__review
+            include ../../components/blocks/review-star/review-star.pug
+

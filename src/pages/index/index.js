@@ -31,7 +31,7 @@ let listProductsInContainer = null;
 
 	if (data) {
 		insertImageInProducts(data);
-		listProducts = listProductsInContainer = Array.from(document.querySelectorAll('.product'));
+		listProducts = listProductsInContainer = Array.from(document.querySelectorAll('.product-card'));
 	};
 })();
 
@@ -45,7 +45,7 @@ function insertElemOfProduct(products) {
 // функция вставки картинок в контейнер с продуктами
 function insertImageInProducts(data) {
 
-	let products = document.querySelectorAll('.product__image');
+	let products = document.querySelectorAll('.product-card__image');
 
 	for (let i = 0; i < products.length; i++) {
 
@@ -61,11 +61,11 @@ function insertImageInProducts(data) {
 containerProducts.addEventListener('mousedown', function(event) {
 	event.preventDefault();
 
-	let elem = event.target.closest('.product__button');
+	let elem = event.target.closest('.product-card__button');
 	if (!elem) return;
 	if (!containerProducts.contains(elem)) return;
 
-	let elemParent = elem.closest('.products__item');
+	let elemParent = elem.closest('.products-card__item');
 
 	basket.addProductInBasket(elemParent.dataset.id);
 });
