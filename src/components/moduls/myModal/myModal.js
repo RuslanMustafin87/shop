@@ -2,7 +2,7 @@
 let modalContainer = document.createElement('div');
 let modal = document.createElement('div');
 let modalText = document.createElement('div');
-let modalClose = document.createElement('img');
+let modalClose = document.createElement('button');
 
 modalContainer.classList.add('modal');
 modal.classList.add('modal__window');

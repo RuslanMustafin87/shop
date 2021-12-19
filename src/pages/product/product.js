@@ -70,9 +70,9 @@ let buttonReview = document.getElementById('review-button');
 
 buttonReview.onclick = async function() {
 	let checked = isCheck('review');
-	console.log('ji');
+
 	if (!checked) {
-		return console.log('error!');
+		return modal.start('Нет оценки');;
 	}
 
 	try {

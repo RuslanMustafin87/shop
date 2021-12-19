@@ -24,15 +24,16 @@
 	justify-content: center;
 	align-items: center;
 }
-// TODO добавить крест
+
 .modal__cross {
-	height: 1.2rem;
-	width: 1.2rem;
+	height: .8rem;
+	width: .8rem;
 	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	top: 0.625rem;
+	right: 0.625rem;
 	cursor: pointer;
-	background: url(../images/icons/cross.svg) center no-repeat;
+	border: none;
+	background: url(../images/icons/cross.svg) center / .8rem no-repeat;
 	@include desktop {
 		height: 1.5rem;
 		width: 1.5rem;
