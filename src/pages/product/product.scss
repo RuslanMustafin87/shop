@@ -1,8 +1,17 @@
 @import '../../css/mixin.scss';
 
 .product-page {
-	padding-top: 1.875rem;
-	padding-left: 3.75rem;
+	padding: 0.9375rem 0 0.9375rem 0;
+	width: 85%;
+	max-width: 1200px;
+	margin: auto;
+
+	@media (max-width: 600px) {
+	}
+
+	@include phone {
+		width: 75%;
+	}
 }
 
 .product__slider {
@@ -10,6 +19,13 @@
 	height: 31.25rem;
 	float: left;
 	margin: 0 3.75rem 1rem 0;
+
+	@include phone {
+		float: none;
+		width: 75vw;
+		height: 75vmin;
+		margin: 0 auto 1rem auto;
+	}
 }
 
 .product__name {
@@ -24,13 +40,14 @@
 
 .product__button-add {
 	height: 1.875rem;
+	margin-bottom: 0.625rem;
 	@include button_shop;
 }
 
-.product__rating{
+.product__rating {
 	margin: 0 0 0.625rem 0;
 }
 
-.product__review{
-	clear:both;
+.product__review {
+	clear: both;
 }

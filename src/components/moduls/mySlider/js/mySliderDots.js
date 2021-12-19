@@ -21,12 +21,12 @@ export default function(options) {
 
 	dotsItems.forEach((item, index) => {
 		item.addEventListener('click', function() {
-			console.log('s');
 			let pos = options.infinite ? index + 1 : index;
 			containerSlides.style.left = `${pos * -100}%`;
 			dotsItems.forEach((item) => {
 				item.classList.remove('dots__item--active');
 			});
+			console.log('s');
 			this.classList.add('dots__item--active');
 		});
 	});
@@ -37,7 +37,7 @@ export default function(options) {
 	function findIndexElemAtEdge(containerSlides) {
 		let childrenList = Array.from(containerSlides.children);
 		for (let i = 0; i < childrenList.length; i++) {
-			if (Math.abs(containerSlides.offsetLeft) < childrenList[i].offsetLeft + childrenList[i].offsetWidth) {
+			if (Math.abs(containerSlides.offsetLeft) + 1 < childrenList[i].offsetLeft + childrenList[i].offsetWidth) {
 				return i;
 			}
 		}

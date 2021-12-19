@@ -1,16 +1,16 @@
 @import '../../css/mixin.scss';
-
+// TODO сетка
 .main-index {
-	&__wrapper {
-		padding: 0.9375rem 0 0 0;
+		padding: 0.9375rem 0 0.9375rem 0;
 		width: 85%;
 		max-width: 1200px;
 		margin: auto;
-
 		@media (max-width: 600px) {
 			width: 95%;
 		}
-	}
+		@media (min-width: 1200px){
+
+		}
 
 	&__sort {
 		margin: 0 .625rem .625rem 0;

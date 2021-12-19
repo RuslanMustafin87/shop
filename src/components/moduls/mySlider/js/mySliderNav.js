@@ -1,3 +1,4 @@
+/* eslint-disable no-inner-declarations */
 export default function(options) {
 
 	const slider = document.querySelector('.my-slider');
@@ -7,10 +8,14 @@ export default function(options) {
 	const buttonLeft = document.createElement('button');
 
 	buttonRight.classList.add('my-slider__button', 'my-slider__button--right');
+	buttonRight.id = 'button-right';
 	buttonLeft.classList.add('my-slider__button', 'my-slider__button--left');
+	buttonLeft.id = 'button-left';
 	slider.append(buttonRight, buttonLeft);
 
-	if (!options.infinite) {buttonLeft.hidden = true;} // скрываем левую кнопку при небесконечном слайдере
+	if (!options.infinite) {
+		buttonLeft.hidden = true;
+	} // скрываем левую кнопку при небесконечном слайдере
 
 	// вычисляем разницу в ширине между контейнером для слайдов и outer для
 	// слежения за тем, когда контейнер достигнет конца
@@ -24,22 +29,17 @@ export default function(options) {
 	function findElemAtEdge(containerSlides) {
 		let childrenList = Array.from(containerSlides.children);
 		for (let i = 0; i < childrenList.length; i++) {
-			if (Math.abs(containerSlides.offsetLeft) < childrenList[i].offsetLeft + childrenList[i].offsetWidth) {
-				return childrenList[i];
+			if (Math.abs(containerSlides.offsetLeft) + 1 < childrenList[i].offsetLeft + childrenList[i].offsetWidth) {
+				// console.log(Math.abs(containerSlides.offsetLeft), childrenList[i].offsetLeft, childrenList[i].offsetWidth);
+				// console.log(childrenList[i]);
+				// console.log(i);
+				return i;
 			}
 		}
 	}
 
 	// событие нажатия на правую кнопку и перемещение слайдера вправо
 	buttonRight.addEventListener('click', function() {
-		this.dispatchEvent(
-			new CustomEvent('push-button-right', {
-				bubbles: true,
-				detail: {
-					name: 'right'
-				}
-			})
-		);
 		if (!isMove) {
 			isMove = true;
 		} else {
@@ -50,26 +50,19 @@ export default function(options) {
 			isMove = false;
 		}, options.animateTime * 1000);
 
-		let elemAtEdge = findElemAtEdge(containerSlides);
-		let containerLeft = elemAtEdge.nextElementSibling.offsetLeft;
+		let indexElemAtEdge = findElemAtEdge(containerSlides);
+		// console.log(indexElemAtEdge);
+		let containerLeft = indexElemAtEdge + 1;
 
 		if (!options.infinite && containerLeft < maxScroll) {
 			containerLeft = maxScroll;
 		}
-
-		containerSlides.style.left = -containerLeft + 'px';
+		// console.log(containerLeft);
+		containerSlides.style.left = `-${containerLeft}00%`;
 	});
 
 	// событие нажатия на левую кнопку и перемещение слайдера влево
 	buttonLeft.addEventListener('click', function() {
-		this.dispatchEvent(
-			new CustomEvent('push-button-left', {
-				bubbles: true,
-				detail: {
-					name: 'left'
-				}
-			})
-		);
 		if (!isMove) {
 			isMove = true;
 		} else {
@@ -80,31 +73,30 @@ export default function(options) {
 			isMove = false;
 		}, options.animateTime * 1000);
 
-		let elemAtEdge = findElemAtEdge(containerSlides);
-		let containerLeft = elemAtEdge.previousElementSibling.offsetLeft;
-
-		// if (!options.infinite) {
-		// 	if (containerLeft > 0) {
-		// 		containerLeft = '0%';
-		// 	}
-		// }
-
-		containerSlides.style.left = -containerLeft + 'px';
+		let indexElemAtEdge = findElemAtEdge(containerSlides);
+		let containerLeft = indexElemAtEdge - 1;
+		console.log(containerLeft);
+		containerSlides.style.left = `-${containerLeft}00%`;
 	});
-
-	// функция появление и скрытия кнопок для перемещения слайдера
-	function toggleButtons() {
-		let containerLeft = containerSlides.offsetLeft;
-
-		buttonRight.hidden = false;
-		buttonLeft.hidden = false;
-		if (containerLeft === maxScroll) {buttonRight.hidden = true;}
-		if (containerLeft === 0) {buttonLeft.hidden = true;}
-	}
 
 	// событие слежения за окончанием перемещения слайдера
 	if (!options.infinite) {
+		// функция появление и скрытия кнопок для перемещения слайдера
+		function toggleButtons() {
+			let containerLeft = containerSlides.offsetLeft;
+
+			buttonRight.hidden = false;
+			buttonLeft.hidden = false;
+			if (containerLeft === maxScroll) {
+				buttonRight.hidden = true;
+			}
+			if (containerLeft === 0) {
+				buttonLeft.hidden = true;
+			}
+		}
+
 		containerSlides.addEventListener('transitionend', function() {
+			console.log('jijk');
 			toggleButtons();
 		});
 	}

@@ -4,11 +4,12 @@ export default function(options) {
 
 	let duration = null; // направление перемещения слайдера число
 	let direction = null; // направление перемещения слайдера
-
+	const buttonRight = document.getElementById('button-right');
+	const buttonLeft = document.getElementById('button-left');
 	// вычисляем разницу в ширине между контейнером для слайдов и outer для
 	// слежения за тем, когда контейнер достигнет конца
 	let maxScroll = containerSlides.offsetParent.clientWidth - containerSlides.clientWidth;
-	
+
 	// функция перемещения слайдер с помощью дропа
 	function moveList(e) {
 		e.preventDefault();
@@ -66,7 +67,7 @@ export default function(options) {
 		let childrenList = Array.from(containerSlides.children);
 		for (let i = 0; i < childrenList.length; i++) {
 			if (Math.abs(containerSlides.offsetLeft) < childrenList[i].offsetLeft + childrenList[i].offsetWidth) {
-				return childrenList[i];
+				return i;
 			}
 		}
 	}
@@ -76,7 +77,7 @@ export default function(options) {
 	function moveSlider() {
 		if (!direction) {return;}
 
-		let elemAtEdge = findElemAtEdge(containerSlides);
+		let indexElemAtEdge = findElemAtEdge(containerSlides);
 
 		// if (containerSlides.offsetLeft > 0) {
 		// 	containerSlides.style.left = '0px';
@@ -89,9 +90,9 @@ export default function(options) {
 		// }
 
 		if (direction === 'right') {
-			containerSlides.style.left = -elemAtEdge.nextElementSibling.offsetLeft + 'px';
+			containerSlides.style.left = `-${indexElemAtEdge + 1}00%`;
 		} else if (direction === 'left') {
-			containerSlides.style.left = -elemAtEdge.offsetLeft + 'px';
+			containerSlides.style.left = `-${indexElemAtEdge}00%`;
 		}
 		direction = undefined;
 	}
@@ -124,22 +125,22 @@ export default function(options) {
 		containerSlides.style.transition = 'none';
 		containerSlides.addEventListener('touchmove', moveList);
 	});
-	
+
 	document.addEventListener('touchend', function(e) {
 		containerSlides.style.transition = `left ${options.animateTime}s linear`;
 		moveSlider(e);
 		containerSlides.removeEventListener('touchmove', moveList);
 	});
 
-	// пользовательское событие нажатие кнопки направо чтобы установить направление движения 
+	// событие нажатие кнопки направо чтобы установить направление движения
 	// (само событие определено в модуле навигации и всплывает до document)
-	document.addEventListener('push-button-right', () => {
-		direction = event.detail.name;
+	buttonRight.addEventListener('click', () => {
+		direction = 'right';
 	});
 
-	// пользовательское событие нажатие кнопки налево чтобы установить направление движения 
-	document.addEventListener('push-button-left', () => {
-		direction = event.detail.name;
+	// событие нажатие кнопки налево чтобы установить направление движения
+	buttonLeft.addEventListener('click', () => {
+		direction = 'left';
 	});
 }
 
