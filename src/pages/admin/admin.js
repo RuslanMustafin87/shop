@@ -58,7 +58,7 @@ addProduct.onsubmit = async function(event) {
 
 	let response;
 	try {
-		response = await fetch(`${config.SHOP_URL}:${config.PORT}/admin/addproduct`, {
+		response = await fetch(`${config.URL}:${config.PORT}/admin/addproduct`, {
 			method: 'POST',
 			body: formProduct
 		});
@@ -94,7 +94,7 @@ deleteProduct.onsubmit = async function(event) {
 
 	let response;
 	try {
-		response = await fetch(`${config.SHOP_URL}:${config.PORT}/api/products/deleteproduct?id=${this.id.value}`, {
+		response = await fetch(`${config.URL}:${config.PORT}/api/products/deleteproduct?id=${this.id.value}`, {
 			method: 'DELETE',
 		});
 	} catch {
@@ -128,7 +128,7 @@ updateProduct.onsubmit = async function(event) {
 
 	let response;
 	try {
-		response = await fetch(`${config.SHOP_URL}:${config.PORT}/admin/updateproduct`, {
+		response = await fetch(`${config.URL}:${config.PORT}/admin/updateproduct`, {
 			method: 'POST',
 			body: formProduct
 		});

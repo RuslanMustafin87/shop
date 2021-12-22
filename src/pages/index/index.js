@@ -7,7 +7,7 @@ import config from '../../../config.json';
 import Sort from '../../js/sort';
 import Basket from '../../components/moduls/myBasket/myBasket';
 import '../../js/addProductInBasket';
-import '../../js/openPageBasket';
+// import '../../js/openPageBasket';
 
 const sort = new Sort();
 const basket = new Basket();
@@ -21,7 +21,7 @@ let listProductsInContainer = null;
 (async function getDataFromServer() {
 	let data = null;
 	try {
-		let result = await fetch(`${config.SHOP_URL}:${config.PORT}/api/products`);
+		let result = await fetch(`${config.URL}:${config.PORT}/api/products`);
 
 		data = await result.json();
 
@@ -66,7 +66,7 @@ containerProducts.addEventListener('mousedown', function(event) {
 	if (!containerProducts.contains(elem)) return;
 
 	let elemParent = elem.closest('.products-card__item');
-
+	console.log( elemParent.dataset.id );
 	basket.addProductInBasket(elemParent.dataset.id);
 });
 
@@ -133,7 +133,7 @@ sortProductsByCategory.onchange = function(event) {
 // 		parametrs += `productId-${index}=${item.id}&`;
 // 	});
 
-// 	fetch(`${config.SHOP_URL}:${config.PORT}/basket?${ parametrs }`)
+// 	fetch(`${config.URL}:${config.PORT}/basket?${ parametrs }`)
 // 		.then((response) => {
 // 			console.log( response );
 // 		});

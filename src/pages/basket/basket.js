@@ -4,6 +4,7 @@ import './basket.scss';
 import config from '../../../config.json';
 
 import Basket from '../../components/moduls/myBasket/myBasket';
+import formOrder from '../../components/blocks/form-order/form-order';
 
 const basket = new Basket();
 
@@ -99,7 +100,7 @@ async function addProductIntoBasket(newValue) {
 	let data;
 
 	try {
-		let result = await fetch(`${config.SHOP_URL}:${config.PORT}/basket/getimages`, {
+		let result = await fetch(`${config.URL}:${config.PORT}/basket/getimages`, {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json'
@@ -167,7 +168,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 	let products = [];
 
 	try {
-		let result = await fetch(`${config.SHOP_URL}:${config.PORT}/basket/getimages`, {
+		let result = await fetch(`${config.URL}:${config.PORT}/basket/getimages`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

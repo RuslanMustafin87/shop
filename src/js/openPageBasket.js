@@ -14,7 +14,7 @@ basketLink.onclick = function(event) {
 		parametrs += `productId-${index}=${item.id}&`;
 	});
 	console.log('hh');
-	fetch(`${config.SHOP_URL}:${config.PORT}/basket?${ parametrs }`, {
+	fetch(`${config.URL}:${config.PORT}/basket?${ parametrs }`, {
 		method: 'GET',
 	});
 		// .then((response) => {

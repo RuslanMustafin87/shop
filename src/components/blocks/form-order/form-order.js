@@ -1,5 +1,9 @@
 import Basket from '../../moduls/myBasket/myBasket';
-import modal from '../../moduls/myModal/myModal';
+import Modal from '../../moduls/myModal/myModal';
+
+import config from '../../../../config.json';
+
+const modal = new Modal();
 
 let basket = new Basket();
 
@@ -18,17 +22,14 @@ formOrder.addEventListener('submit', function(event) {
 
 	let productsInBasket = 	Array.from(document.querySelectorAll('.product'));
 	let productList = [];
-	let sum = 0;
+	let total = 0;
 
 	productsInBasket.forEach((item) => {
-		sum += parseInt(item.dataset.price);
+		total += parseInt(item.dataset.price.replace(/\D/g, ''));
+		productList.push(item.dataset.id);
 	});
-
-	productsInBasket.forEach((item, index) => {
-		productList[index] = new Product(item.dataset.id, item.dataset.name, item.dataset.price);
-	});
-
-	fetch('http://127.0.0.1:3007/api/clients', {
+	console.log( productList);
+	fetch(`${config.URL}:${config.PORT}/api/orders/addorder`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json; charset=utf-8',
@@ -36,19 +37,17 @@ formOrder.addEventListener('submit', function(event) {
 		body: JSON.stringify({
 			name: formOrder.name.value,
 			phone: formOrder.phone.value,
-			sum: sum,
+			total: total,
 			productList: productList
 		})
 	}).then(
 		res => {
-			return res.json();
-		},
-		err => {
-			modal.start('Сервер не доступен');
+			res.json();
+			formOrder.reset();
 		}
 	).then(
-		body => {
-			modal.start(body.status);
-		}
+		body => modal.start(body.message)
+	).catch(
+		err => modal.start(err.message)
 	);
 });

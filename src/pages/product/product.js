@@ -19,7 +19,7 @@ let data = null;
 // получение картинок с сервера
 (async function getProduct() {
 	try {
-		let responce = await fetch(`${config.SHOP_URL}:${config.PORT}/api/products/getproduct?id=${idProduct}`);
+		let responce = await fetch(`${config.URL}:${config.PORT}/api/products/getproduct?id=${idProduct}`);
 
 		data = await responce.json();
 
@@ -76,7 +76,7 @@ buttonReview.onclick = async function() {
 	}
 
 	try {
-		let responce = await fetch(`${config.SHOP_URL}:${config.PORT}/product/updateratingproduct`, {
+		let responce = await fetch(`${config.URL}:${config.PORT}/product/updateratingproduct`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json;charset=utf-8'

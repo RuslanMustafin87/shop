@@ -13,7 +13,7 @@
 // 	}
 
 // 	try {
-// 		let responce = await fetch(`${config.SHOP_URL}:${config.PORT}/product/updateratingproduct`, {
+// 		let responce = await fetch(`${config.URL}:${config.PORT}/product/updateratingproduct`, {
 // 			method: 'PUT',
 // 			headers: {
 // 				'Content-Type': 'application/json;charset=utf-8'
