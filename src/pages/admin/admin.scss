@@ -11,7 +11,7 @@
 .admin__form-add {
 	float: left;
 	margin-right: 2.5rem;
-	@include tablet {
+	@include phone {
 		margin: 0;
 		float: none;
 	}
@@ -74,7 +74,7 @@
 	float: left;
 	margin-right: 2.5rem;
 
-	@include tablet {
+	@include phone {
 		margin: 0;
 		float: none;
 	}
@@ -117,8 +117,8 @@
 	float: left;
 
 	@include tablet {
-		width: 100%;
 		float: none;
+		clear: both;
 	}
 }
 

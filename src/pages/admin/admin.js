@@ -6,27 +6,18 @@ import config from '../../../config.json';
 
 const modal =  new Modal();
 
-let formatter = new Intl.NumberFormat("ru", {
-	style: 'currency',
-	currency: 'RUB',
-	useGrouping: true,
-	maximumFractionDigits: 0
-});
-
 // функция форматирования формы для добавления товара
 function formaterForm(form) {
 	let price = form.get('price');
 	let name = form.get('name');
 
-	price = parseInt(price);
+	price = parseInt(price.replace(/\s+/g, ''));
 	name = name.trim();
 	name = name[0].toUpperCase() + name.slice(1).toLowerCase();
 
 	if (isNaN(price)) {
 		return modal.start('Введите цену в формате числа');
 	}
-
-	price = formatter.format(price);
 
 	form.set('price', price);
 	form.set('name', name);

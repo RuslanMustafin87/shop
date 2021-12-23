@@ -122,7 +122,7 @@ async function addProductIntoBasket(newValue) {
 
 	containerProducts.append(product);
 
-	blockSum.innerHTML = formatter.format(+blockSum.innerHTML.replace(/\D/g, '') + +data[0].price.replace(/\D/g, ''));
+	blockSum.innerHTML = formatter.format(+blockSum.innerHTML.replace(/\D/g, '') + +data[0].price);
 }
 
 // событие удаления товара из корзины

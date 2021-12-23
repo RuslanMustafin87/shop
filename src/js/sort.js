@@ -1,13 +1,13 @@
 export default class Sort {
 	sortByIncrease(arr) {
 		arr.sort((a, b) => {
-			return a.dataset.price.replace(/\D/g, '') - b.dataset.price.replace(/\D/g, '');
+			return a.dataset.price - b.dataset.price;
 		});
 	}
-	
+
 	sortByDecrease(arr) {
 		arr.sort((a, b) => {
-			return b.dataset.price.replace(/\D/g, '') - a.dataset.price.replace(/\D/g, '');
+			return b.dataset.price - a.dataset.price;
 		});
 	}
 

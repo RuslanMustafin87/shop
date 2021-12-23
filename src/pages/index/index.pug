@@ -21,7 +21,7 @@ block content
             // TODO линивая загрузка
             ul.main-index__products.products
                 each item in products
-                    - var { _id, name, price, category, rating } = item
+                    - var { _id, name, price, priceIntl, category, rating } = item
                     li.products__item.product-card(data-id=_id  data-name=name data-price=price data-category=category)
                         a.product-card__link(href= `product?id=${_id}`)
                             img.product-card__image(alt=`${category} ${name}`)
@@ -30,5 +30,5 @@ block content
                             include ../../components/blocks/rating-star/rating-star.pug
                         h1.product-card__name= name
                         // TODO интенацилизация при загрузке страницы
-                        span.product-card__price= price
+                        span.product-card__price= priceIntl
                         button.product-card__button Добавить

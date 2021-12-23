@@ -64,9 +64,8 @@ containerProducts.addEventListener('mousedown', function(event) {
 	let elem = event.target.closest('.product-card__button');
 	if (!elem) return;
 	if (!containerProducts.contains(elem)) return;
+	let elemParent = elem.closest('.product-card');
 
-	let elemParent = elem.closest('.products-card__item');
-	console.log( elemParent.dataset.id );
 	basket.addProductInBasket(elemParent.dataset.id);
 });
 

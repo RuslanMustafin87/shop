@@ -5,17 +5,7 @@ import config from '../../../../config.json';
 
 const modal = new Modal();
 
-let basket = new Basket();
-
 let formOrder = document.forms.formOrder;
-
-class Product {
-	constructor(id, name, price){
-		this.id = id;
-		this.name = name;
-		this.price = price;
-	}
-}
 
 formOrder.addEventListener('submit', function(event) {
 	event.preventDefault();
@@ -28,7 +18,7 @@ formOrder.addEventListener('submit', function(event) {
 		total += parseInt(item.dataset.price.replace(/\D/g, ''));
 		productList.push(item.dataset.id);
 	});
-	console.log( productList);
+
 	fetch(`${config.URL}:${config.PORT}/api/orders/addorder`, {
 		method: 'POST',
 		headers: {
