@@ -8,6 +8,7 @@ import Basket from '../../components/moduls/myBasket/myBasket';
 import Modal from '../../components/moduls/myModal/myModal';
 
 const modal = new Modal();
+const mySlider = new MySlider();
 
 const basket = new Basket();
 const idProduct = new URL(window.location.href).searchParams.get('id');
@@ -37,7 +38,7 @@ let data = null;
 
 			const src = URL.createObjectURL(imageBlob);
 
-			slider.append(MySlider.addSlide(src, data.name));
+			slider.append(mySlider.addSlide(src, data.name));
 		})
 
 	} catch (err) {
@@ -45,7 +46,7 @@ let data = null;
 		buttonAdd.disabled = true;
 	}
 
-	MySlider.init({
+	mySlider.init({
 		nav: true,
 		drop: true,
 		dots: true,

@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 		console.log(err);
 	}
 
-	createListGoods(products);
+	// createListGoods(products);
 });
 
 // событие изменения в локальном хранилище и добавление товара в корзину
@@ -198,7 +198,7 @@ function sumProducts(list) {
 	list = Array.from(list);
 
 	list.forEach((item) => {
-		sum += +item.price.replace(/\D/g, '');
+		sum += +item.price;
 	});
 
 	return formatter.format(sum);

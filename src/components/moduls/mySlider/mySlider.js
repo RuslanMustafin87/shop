@@ -5,9 +5,8 @@ import mySliderInit from './js/mySliderInit';
 import mySliderNav from './js/mySliderNav';
 import mySliderDrop from './js/mySliderDrop';
 import mySliderDots from './js/mySliderDots';
-import mySliderAddSlide from './js/mySliderAddSlide';
-// TODO сделать классом
-export default {
+
+export default class MySlider {
 
 	init(options) {
 
@@ -44,6 +43,19 @@ export default {
 				infinite: infinite
 			});
 		}
-	},
-	addSlide: mySliderAddSlide
-};
+	}
+	addSlide(imgSrc, imgAlt) {
+		const slide = document.createElement('li');
+		const img = document.createElement('img');
+
+		slide.classList.add('my-slider__slide');
+		img.classList.add('my-slider__image');
+
+		img.src = imgSrc;
+		img.alt = imgAlt;
+
+		slide.appendChild(img);
+
+		return slide;
+	}
+}

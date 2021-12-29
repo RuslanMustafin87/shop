@@ -119,6 +119,15 @@ sortProductsByCategory.onchange = function(event) {
 	filterProductsByCategory(listProducts, event.target.value);
 }
 
+const basketLink = document.getElementById('basket-link');
+const productsInBasket = basket.getProductsFromBasket();
+let urlBasket = '';
+
+productsInBasket.forEach( (item, index) => {
+	urlBasket += `product-${ index }=${ item.id }&`;
+})
+
+basketLink.href = 'basket?' + urlBasket;
 // ------------
 // const basketLink = document.getElementById('basket-link');
 

@@ -11,6 +11,10 @@ if (localStorage.getItem('listProducts')) {
 }
 
 class Basket {
+	_count = 0
+
+	constructor(){
+	}
 	getProductsFromBasket() {
 		return JSON.parse(localStorage.getItem('listProducts'));
 	}
@@ -38,7 +42,7 @@ class Basket {
 				return true;
 			}
 		});
-		
+
 		listProductsInBasket.splice(indexProduct, 1);
 		count = listProductsInBasket.length;
 		if (count === 0) {

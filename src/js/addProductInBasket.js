@@ -11,7 +11,7 @@ document.addEventListener('mousedown', function() {
 	if (event.which === 1) { // проверка какая кнопка мыши нажата
 		let basketMain = document.querySelector('.basket');
 		let elem = target.cloneNode(true);
-		
+
 		elem.ondragstart = function() {
 			return false;
 		};
@@ -34,11 +34,15 @@ document.addEventListener('mousedown', function() {
 			elem.hidden = true;
 			let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
 			elem.hidden = false;
-
-			if (!elemBelow) {return;}
+			// console.log('hih');
+			console.log( elemBelow);
+			if (!elemBelow) {
+				console.log('u');
+				return;}
 
 			elemBelow = elemBelow.closest('.basket');
 			if (elemBelow) {
+				console.log('hih2');
 				elemBelow.style.transform = 'scale(1.5) translateY(-50%)';
 				mouseBasketAbove = true;
 				return;
