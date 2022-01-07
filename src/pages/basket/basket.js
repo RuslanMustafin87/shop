@@ -8,14 +8,6 @@ import formOrder from '../../components/blocks/form-order/form-order';
 
 const basket = new Basket();
 
-// форматирование в формат валюты для итоговой суммы
-let formatter = new Intl.NumberFormat("ru", {
-	style: 'currency',
-	currency: 'RUB',
-	useGrouping: true,
-	maximumFractionDigits: 0
-});
-
 let buttonResetBusket = document.getElementById('button-reset');
 let containerProducts = document.getElementById('products');
 let blockSum = document.getElementById('total-sum');
@@ -39,7 +31,7 @@ function createListGoods(data) {
 
 // функция создания элемента товара и заполнение его данными
 function createProduct(data) {
-	console.log( data );
+
 	let product = document.createElement('li');
 	product.classList.add('product', 'products__item');
 	product.dataset.id = data._id;
@@ -63,12 +55,11 @@ function createProduct(data) {
 			<li class='rating__star' data-rating='${ data.rating.roundedRating == 1 ? true : undefined }'> \
 		</ul> \
 		<h1 class='product__name'>${ data.name }</h1> \
-		<span class='product__price'>${ data.price }</span> \
+		<span class='product__price'>${ data.priceIntl }</span> \
 		<button class='product__button-delete'>Удалить</button>`);
 
 	return product;
 }
-
 
 // функция добавление товара в корзину
 async function addProductIntoBasket(newValue) {
@@ -76,9 +67,15 @@ async function addProductIntoBasket(newValue) {
 	let products = JSON.parse(newValue);
 	let lastProduct = products[products.length - 1];
 	let data;
-	console.log( lastProduct );
+
 	try {
-		let result = await fetch(`${config.URL}:${config.PORT}/basket/getproducts?id=${ lastProduct.id }`);
+		let result = await fetch(`${config.URL}:${config.PORT}/basket/getproducts`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify( [lastProduct] )
+		});
 
 		data = await result.json();
 
@@ -94,7 +91,13 @@ async function addProductIntoBasket(newValue) {
 
 	containerProducts.append(product);
 
-	blockSum.innerHTML = formatter.format(+blockSum.innerHTML.replace(/\D/g, '') + +data[0].price);
+	blockSum.innerHTML = (+blockSum.innerHTML.replace(/\D/g, '') + +data[0].price).toLocaleString('ru-RU', {
+		style: 'currency',
+		currency: 'RUB',
+		useGrouping: true,
+		maximumFractionDigits: 0,
+		minimumFractionDigits: 0
+	})
 }
 
 // событие удаления товара из корзины
@@ -108,7 +111,13 @@ containerProducts.addEventListener('click', function(event) {
 
 	basket.deleteProductFromBasket(buttonParent.dataset.id);
 
-	blockSum.innerHTML = formatter.format(blockSum.innerHTML.replace(/\D/g, '') - buttonParent.dataset.price);
+	blockSum.innerHTML = (blockSum.innerHTML.replace(/\D/g, '') - buttonParent.dataset.price).toLocaleString('ru-RU', {
+		style: 'currency',
+		currency: 'RUB',
+		useGrouping: true,
+		maximumFractionDigits: 0,
+		minimumFractionDigits: 0
+	});
 
 	buttonParent.remove();
 	if (!containerProducts.firstChild) {
@@ -173,6 +182,12 @@ function sumProducts(list) {
 		sum += +item.price;
 	});
 
-	return formatter.format(sum);
+	return sum.toLocaleString('ru-RU', {
+		style: 'currency',
+		currency: 'RUB',
+		useGrouping: true,
+		maximumFractionDigits: 0,
+		minimumFractionDigits: 0
+	});
 }
 
