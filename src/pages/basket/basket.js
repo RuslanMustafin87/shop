@@ -39,58 +39,36 @@ function createListGoods(data) {
 
 // функция создания элемента товара и заполнение его данными
 function createProduct(data) {
-	// TODO перевести создание товара на сервере
+	console.log( data );
 	let product = document.createElement('li');
-	let link = document.createElement('a');
-	let img = document.createElement('img');
-	let rating = document.createElement('ul');
-	let star = document.createElement('li');
-	let name = document.createElement('h1');
-	let price = document.createElement('span');
-	let button = document.createElement('button');
-
 	product.classList.add('product', 'products__item');
-	link.classList.add('product__link');
-	img.classList.add('product__image');
-	rating.classList.add('product__rating', 'rating');
-	star.classList.add('rating__star');
-	name.classList.add('product__name');
-	price.classList.add('product__price');
-	button.classList.add('product__button-delete');
-	button.innerHTML = 'Удалить';
-
-	let imageBlob = new Blob([new Uint8Array(data.image.data)], {
-		type: "image/jpeg"
-	});
-
-	img.src = URL.createObjectURL(imageBlob);
-
-	link.href = `/product?id=${data._id}`;
-
-	for (let i = 0; i < 5; i++) {
-		rating.append(star.cloneNode(true));
-	}
-
-	if (data.rating.roundedRating) {
-		Array.from(rating.children)[5 - data.rating.roundedRating].setAttribute('data-rating', 'true');
-	}
-
-	name.innerHTML = data.name;
-	price.innerHTML = data.price;
-
 	product.dataset.id = data._id;
 	product.dataset.name = data.name;
 	product.dataset.price = data.price;
 
-	link.append(img);
-	product.append(link);
-	product.append(rating);
-	product.append(name);
-	product.append(price);
-	product.append(button);
+	let imageBlob = new Blob([new Uint8Array(data.image.data)], {
+		type: "image/jpeg"
+	});
+	let imgSrc = URL.createObjectURL(imageBlob);
+
+	product.insertAdjacentHTML('beforeend',
+		`<a class='product__link' href='/product?id=${data._id}'> \
+			<img class='product__image' src='${imgSrc}'> \
+		</a> \
+		<ul class='product__rating rating'> \
+			<li class='rating__star' data-rating='${ data.rating.roundedRating == 5 ? true : undefined }'> \
+			<li class='rating__star' data-rating='${ data.rating.roundedRating == 4 ? true : undefined }'> \
+			<li class='rating__star' data-rating='${ data.rating.roundedRating == 3 ? true : undefined }'> \
+			<li class='rating__star' data-rating='${ data.rating.roundedRating == 2 ? true : undefined }'> \
+			<li class='rating__star' data-rating='${ data.rating.roundedRating == 1 ? true : undefined }'> \
+		</ul> \
+		<h1 class='product__name'>${ data.name }</h1> \
+		<span class='product__price'>${ data.price }</span> \
+		<button class='product__button-delete'>Удалить</button>`);
 
 	return product;
 }
+
 
 // функция добавление товара в корзину
 async function addProductIntoBasket(newValue) {
@@ -98,15 +76,9 @@ async function addProductIntoBasket(newValue) {
 	let products = JSON.parse(newValue);
 	let lastProduct = products[products.length - 1];
 	let data;
-
+	console.log( lastProduct );
 	try {
-		let result = await fetch(`${config.URL}:${config.PORT}/basket/getimages`, {
-			method: "POST",
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify([lastProduct])
-		});
+		let result = await fetch(`${config.URL}:${config.PORT}/basket/getproducts?id=${ lastProduct.id }`);
 
 		data = await result.json();
 
@@ -136,7 +108,7 @@ containerProducts.addEventListener('click', function(event) {
 
 	basket.deleteProductFromBasket(buttonParent.dataset.id);
 
-	blockSum.innerHTML = formatter.format(blockSum.innerHTML.replace(/\D/g, '') - buttonParent.dataset.price.replace(/\D/g, ''));
+	blockSum.innerHTML = formatter.format(blockSum.innerHTML.replace(/\D/g, '') - buttonParent.dataset.price);
 
 	buttonParent.remove();
 	if (!containerProducts.firstChild) {
@@ -168,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 	let products = [];
 
 	try {
-		let result = await fetch(`${config.URL}:${config.PORT}/basket/getimages`, {
+		let result = await fetch(`${config.URL}:${config.PORT}/basket/getproducts`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -182,7 +154,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 		console.log(err);
 	}
 
-	// createListGoods(products);
+	createListGoods(products);
 });
 
 // событие изменения в локальном хранилище и добавление товара в корзину

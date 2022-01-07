@@ -28,6 +28,7 @@
 		"css-loader": "^6.5.0",
 		"css-mqpacker": "^7.0.0",
 		"cssnano": "^5.0.8",
+		"doiuse": "^4.4.1",
 		"eslint": "^8.1.0",
 		"favicons-webpack-plugin": "0.0.9",
 		"file-loader": "^6.0.0",
@@ -57,7 +58,6 @@
 	"dependencies": {
 		"@babel/runtime": "^7.14.6",
 		"axios": "^0.24.0",
-		"node-fetch": "^3.1.0",
 		"normalize.css": "^8.0.1"
 	},
 	"browserslist": [

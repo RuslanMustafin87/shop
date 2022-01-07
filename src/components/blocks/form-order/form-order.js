@@ -19,7 +19,7 @@ formOrder.addEventListener('submit', function(event) {
 		productList.push(item.dataset.id);
 	});
 
-	fetch(`${config.URL}:${config.PORT}/api/orders/addorder`, {
+	fetch(`${config.URL}:${config.PORT}/basket/addorder`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json; charset=utf-8',

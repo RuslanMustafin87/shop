@@ -1,16 +1,17 @@
 @import '../../css/mixin.scss';
+
 // TODO сетка
 .main-index {
-		padding: 1.25rem 0 1.25rem 0;
-		width: 85%;
-		max-width: 1200px;
-		margin: auto;
-		@media (max-width: 600px) {
-			width: 95%;
-		}
-		@media (min-width: 1200px){
+	padding: 1.25rem 0 1.25rem 0;
+	width: 85%;
+	max-width: 1200px;
+	margin: auto;
 
-		}
+	@media (max-width: 600px) {
+		width: 95%;
+	}
+
+	@media (min-width: 1200px) {}
 
 	&__sort {
 		margin: 0 .625rem .625rem 0;
@@ -83,9 +84,12 @@
 		width: 6.25rem;
 		@include button_shop;
 	}
-	&:hover{
-		border-radius: 6px;
-		box-shadow: 0 0 13px 1px #bccfd1;
+
+	&:hover {
+		@include hover {
+			border-radius: 6px;
+			box-shadow: 0 0 13px 1px #bccfd1;
+		}
 	}
 }
 

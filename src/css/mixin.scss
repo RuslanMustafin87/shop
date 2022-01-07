@@ -30,6 +30,13 @@
 	}
 }
 
+// для экранов с ховером
+@mixin hover {
+	@media only screen and (hover) {
+		@content;
+	}
+}
+
 // миксины для адаптивности фоновых картинок
 
 @mixin retina {
@@ -64,9 +71,11 @@
 	color: var(--color-text-light);
 
 	&:hover {
-		transform: scale(1.05);
-		background-color: var(--color-hover);
-		box-shadow: 0 2px 8px 0 var(--color-hover);
+		@include hover {
+			transform: scale(1.05);
+			background-color: var(--color-hover);
+			box-shadow: 0 2px 8px 0 var(--color-hover);
+		}
 	}
 }
 

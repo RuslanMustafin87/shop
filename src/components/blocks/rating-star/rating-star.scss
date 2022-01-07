@@ -18,7 +18,7 @@
 			background-image: url(../images/icons/star-on.svg);
 		}
 
-		&[data-rating=true]~.rating__star {
+		&[data-rating=true] ~ .rating__star {
 			background-image: url(../images/icons/star-on.svg);
 		}
 	}

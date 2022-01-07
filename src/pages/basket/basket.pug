@@ -10,16 +10,16 @@ block content
         .main-basket__wrapper
             button.main-basket__button-reset#button-reset Очистить корзину
             ul.main-basket__products.products#products
-                each item in products
-                    - var { _id, name, price, priceIntl, category, rating } = item
-                    li.products__item.product(data-id=item._id  data-name=item.name data-price=item.price data-category=item.category)
-                        a.product__link(href= `product?id=${item._id}`)
-                            img.product__image(alt=`${item.category} ${item.name}`)
-                        .product__rating
-                            include ../../components/blocks/rating-star/rating-star.pug
-                        h1.product__name= item.name
-                        span.product__price= item.priceIntl
-                        button.product__button-delete Удалить
+                //- each item in products
+                //-     - var { _id, name, price, priceIntl, category, rating } = item
+                //-     li.products__item.product(data-id=_id  data-name=name data-price=price data-category=category)
+                //-         a.product__link(href= `product?id=${_id}`)
+                //-             img.product__image(alt=`${category} ${name}`)
+                //-         .product__rating
+                //-             include ../../components/blocks/rating-star/rating-star.pug
+                //-         h1.product__name= name
+                //-         span.product__price= priceIntl
+                //-         button.product__button-delete Удалить
             .main-basket__form-order
                 include ../../components/blocks/form-order/form-order
             .main-basket__total.total
