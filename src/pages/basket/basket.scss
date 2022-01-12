@@ -2,7 +2,7 @@
 
 .main-basket {
 	&__wrapper {
-		padding: 0.9375rem 0 0 0;
+		padding: 1.5625rem 0 1.25rem 0;
 		width: 85%;
 		max-width: 1200px;
 		margin: auto;
@@ -52,7 +52,7 @@
 .product {
 	position: relative;
 	overflow: hidden;
-	padding: 0.625rem;
+	padding: 0.625rem 0.625rem 1.5625rem 0.625rem;
 
 	&__link {
 		cursor: pointer;

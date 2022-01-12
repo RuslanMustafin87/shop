@@ -18,6 +18,11 @@ module.exports = {
 					display: 'swap'
 				},
 			}
-		]
+		],
+		// ['postcss-assets',
+		// 	{
+		// 		loadPath: './src/images'
+		// 	}
+		// ]
 	]
 };

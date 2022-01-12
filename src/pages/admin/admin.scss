@@ -5,7 +5,7 @@
 }
 
 .admin {
-	padding: 1.25rem 1.25rem 0 1.25rem;
+	padding: 1.5625rem 1.25rem 1.25rem 1.25rem;
 }
 
 .admin__form-add {
@@ -20,10 +20,13 @@
 .form-add-product {
 	display: flex;
 	flex-direction: column;
+	& > * {
+
+		margin-bottom: 0.9375rem;
+	}
 
 	&__title {
 		font-size: 1.5rem;
-		margin-bottom: 0.625rem;
 		width: 15.625rem;
 	}
 
@@ -47,7 +50,7 @@
 	}
 
 	&__add-pic {
-		margin-bottom: 0.625rem;
+		// margin-bottom: 0.9375rem;
 	}
 
 	&__category {
@@ -57,7 +60,6 @@
 
 	&__submit {
 		@include button_shop;
-		margin-bottom: 0.625rem;
 		width: 100%;
 		cursor: pointer;
 	}

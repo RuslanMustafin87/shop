@@ -2,7 +2,7 @@
 
 // TODO сетка
 .main-index {
-	padding: 1.25rem 0 1.25rem 0;
+	padding: 1.5625rem 0 1.25rem 0;
 	width: 85%;
 	max-width: 1200px;
 	margin: auto;
@@ -43,8 +43,9 @@
 
 .product-card {
 	position: relative;
-	padding: 0.625rem;
+	padding: 0.625rem 0.625rem 1.5625rem 0.625rem;
 	overflow: hidden;
+	border-radius: 6px;
 
 	&__link {
 		display: block;
@@ -87,8 +88,8 @@
 
 	&:hover {
 		@include hover {
-			border-radius: 6px;
-			box-shadow: 0 0 13px 1px #bccfd1;
+			box-shadow: 15px 15px 40px #bebebe,
+				-15px -15px 40px #ffffff
 		}
 	}
 }

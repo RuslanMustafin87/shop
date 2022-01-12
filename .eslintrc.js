@@ -13,7 +13,7 @@ module.exports = {
 		'semi': ['error', 'always'],
 		'quotes': ['error', 'single'],
 		'eqeqeq': 'error',
-		'curly': 'error',
+		'curly': ['error', 'multi'],
 		'array-element-newline': ['error', 'consistent'],
 		'array-bracket-spacing': 'error',
 		'indent': ['error', 'tab', {
