@@ -52,14 +52,11 @@ window.addEventListener('DOMContentLoaded', function() {
 		if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
 
 		else if (elem.createTextRange) {
-
 			var range = elem.createTextRange();
-
 			range.collapse(true);
 			range.moveEnd('character', pos);
 			range.moveStart('character', pos);
 			range.select();
-
 		}
 
 	}
@@ -83,7 +80,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	}
 
-	var input = document.getElementById('phone');
+	let input = document.getElementById('phone');
 	input.addEventListener('input', mask, false);
 	input.addEventListener('focus', mask, false);
 	input.addEventListener('blur', mask, false);

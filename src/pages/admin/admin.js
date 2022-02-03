@@ -4,32 +4,47 @@ import Modal from '../../components/moduls/myModal/myModal';
 
 import config from '../../../config.json';
 
-const modal =  new Modal();
+const modal = new Modal();
 
 // функция форматирования формы для добавления товара
 function formaterForm(form) {
-	let price = form.get('price');
-	let name = form.get('name');
 
-	price = parseInt(price.replace(/\s+/g, ''));
-	name = name.trim();
-	name = name[0].toUpperCase() + name.slice(1).toLowerCase();
-
-	if (isNaN(price)) {
-		return modal.start('Введите цену в формате числа');
+	if (form.has('name')) {
+		let name = form.get('name');
+		name = name.trim();
+		name = name[0].toUpperCase() + name.slice(1).toLowerCase();
+		form.set('name', name);
 	}
 
-	form.set('price', price);
-	form.set('name', name);
+	if (form.has('price')){
+		let price = form.get('price');
+		if (!validationPrice(price)) {
+			return;
+		}
+		price = parseInt(price.replace(/\s+/g, ''));
+		form.set('price', price);
+	}
 
 	return form;
 }
 
+// функция валидации поля цены
+function validationPrice(price) {
+
+	price = parseInt(price.replace(/\s+/g, ''));
+
+	if (isNaN(price)) {
+		modal.start('Введите цену в формате числа');
+		return false;
+	}
+	return true;
+}
+
 // функция добавления множества картинок в formData
-function addImagesIntoForm(input, form){
-	for(var i = 0; i < input.files.length; i++){
-        form.append(`image_${i}`, input.files[i], input.files[i].name);
-    }
+function addImagesIntoForm(input, form) {
+	for (var i = 0; i < input.files.length; i++) {
+		form.append(`image_${i}`, input.files[i], input.files[i].name);
+	}
 }
 
 // отправка формы с новым товаром
@@ -43,6 +58,7 @@ addProduct.onsubmit = async function(event) {
 	let formProduct = new FormData(this);
 
 	formProduct = formaterForm(formProduct);
+	if (formProduct === undefined) return;
 
 	formProduct.delete('image');
 	addImagesIntoForm(addImage, formProduct);
@@ -115,7 +131,11 @@ updateProduct.onsubmit = async function(event) {
 		return;
 	}
 
+	if (formProduct.get('name') === '') formProduct.delete('name');
+	if (formProduct.get('price') === '') formProduct.delete('price');
+
 	formProduct = formaterForm(formProduct);
+	if (formProduct === undefined) return;
 
 	let response;
 	try {
@@ -123,9 +143,11 @@ updateProduct.onsubmit = async function(event) {
 			method: 'POST',
 			body: formProduct
 		});
-	} catch {
-		modal.start('Ошибка');
+	} catch (err) {
+		modal.start(err);
+		return
 	}
+
 	let data = await response.json();
 
 	modal.start(data.message);
@@ -148,4 +170,3 @@ updateImage.onchange = function(event) {
 updateProduct.onreset = function() {
 	updateImageSpan.innerHTML = 'Файл не выбран';
 }
-

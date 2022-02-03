@@ -20,6 +20,7 @@ const devServer = require('./webpack/devServer');
 const devtool = require('./webpack/devtool');
 const CopyPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 // const RuntimeAnalyzerPlugin = require('webpack-runtime-analyzer');
 
 const PATHS = {
@@ -62,7 +63,7 @@ const conf = merge([{
 				'common'
 			],
 			template: PATHS.source + '/pages/index/index.pug',
-			favicon: './src/images/fav-furniture.png'
+			// favicon: './src/images/fav-furniture.png'
 		}),
 		new HtmlWebpackPlugin({
 			filename: 'basket.html',
@@ -70,7 +71,7 @@ const conf = merge([{
 				'common'
 			],
 			template: PATHS.source + '/pages/basket/basket.pug',
-			favicon: './src/images/fav-furniture.png'
+			// favicon: './src/images/fav-furniture.png'
 		}),
 		new HtmlWebpackPlugin({
 			filename: 'product.html',
@@ -78,7 +79,7 @@ const conf = merge([{
 				'common'
 			],
 			template: PATHS.source + '/pages/product/product.pug',
-			favicon: './src/images/fav-furniture.png'
+			// favicon: './src/images/fav-furniture.png'
 		}),
 		new HtmlWebpackPlugin({
 			filename: 'admin.html',
@@ -86,7 +87,7 @@ const conf = merge([{
 				'common'
 			],
 			template: PATHS.source + '/pages/admin/admin.pug',
-			favicon: './src/images/fav-furniture.png'
+			// favicon: './src/images/fav-furniture.png'
 
 		}),
 		new CopyPlugin({
@@ -108,7 +109,7 @@ font(),
 ]);
 
 module.exports = function(env, argv) {
-	if (argv.mode === 'production') {
+	if (argv.mode === 'production')
 		return merge([
 			conf,
 			{
@@ -119,8 +120,8 @@ module.exports = function(env, argv) {
 			extractCSS(),
 			TerserJS()
 		]);
-	}
-	if (argv.mode === 'development') {
+
+	if (argv.mode === 'development')
 
 		return merge([
 			conf,
@@ -143,7 +144,7 @@ module.exports = function(env, argv) {
 				],
 			}
 		]);
-	}
+
 	return merge([
 		conf,
 		extractCSS(),

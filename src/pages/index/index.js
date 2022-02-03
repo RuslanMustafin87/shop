@@ -48,6 +48,7 @@ function insertImageInProducts(data) {
 	let products = document.querySelectorAll('.product-card__image');
 
 	for (let i = 0; i < products.length; i++) {
+		if (!data[i].images[0]) continue;
 
 		let imageBlob = new Blob([new Uint8Array(data[i].images[0].data)], {
 			type: "image/jpeg"

@@ -21,12 +21,7 @@ let data = null;
 (async function getProduct() {
 	try {
 		let responce = await fetch(`${config.URL}:${config.PORT}/api/products/getproduct?id=${idProduct}`);
-
 		data = await responce.json();
-
-		if (!responce.ok){
-			throw new Error(data.status)
-		}
 
         let listImages = data.images;
 

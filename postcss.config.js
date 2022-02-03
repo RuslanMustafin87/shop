@@ -19,10 +19,5 @@ module.exports = {
 				},
 			}
 		],
-		// ['postcss-assets',
-		// 	{
-		// 		loadPath: './src/images'
-		// 	}
-		// ]
 	]
 };
