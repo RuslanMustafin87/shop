@@ -3,9 +3,10 @@ import './product.scss';
 
 import config from '../../../config.json';
 
-import MySlider from '../../components/moduls/mySlider/mySlider';
-import Basket from '../../components/moduls/myBasket/myBasket';
-import Modal from '../../components/moduls/myModal/myModal';
+import MySlider from '../../components/components/mySlider/mySlider';
+import Basket from '../../components/components/myBasket/myBasket';
+import Modal from '../../components/components/myModal/myModal';
+import '../../components/components/myLogin/mylogin';
 
 const modal = new Modal();
 const mySlider = new MySlider();

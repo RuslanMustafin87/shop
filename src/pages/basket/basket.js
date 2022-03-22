@@ -3,7 +3,8 @@ import './basket.scss';
 
 import config from '../../../config.json';
 
-import Basket from '../../components/moduls/myBasket/myBasket';
+import Basket from '../../components/components/myBasket/myBasket';
+import '../../components/components/myLogin/mylogin';
 import formOrder from '../../components/blocks/form-order/form-order';
 
 const basket = new Basket();

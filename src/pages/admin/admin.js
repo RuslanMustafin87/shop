@@ -1,6 +1,6 @@
 import '../../css/main.scss';
 import './admin.scss';
-import Modal from '../../components/moduls/myModal/myModal';
+import Modal from '../../components/components/myModal/myModal';
 
 import config from '../../../config.json';
 
@@ -140,7 +140,7 @@ updateProduct.onsubmit = async function(event) {
 	let response;
 	try {
 		response = await fetch(`${config.URL}:${config.PORT}/admin/updateproduct`, {
-			method: 'POST',
+			method: 'PUT',
 			body: formProduct
 		});
 	} catch (err) {

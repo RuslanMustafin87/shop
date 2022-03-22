@@ -1,5 +1,5 @@
 import config from '../../config.json';
-import Basket from '../components/moduls/myBasket/myBasket';
+import Basket from '../components/components/myBasket/myBasket';
 let basket = new Basket();
 
 const basketLink = document.getElementById('basket-link');

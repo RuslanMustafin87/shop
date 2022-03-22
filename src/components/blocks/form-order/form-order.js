@@ -1,5 +1,5 @@
-import Basket from '../../moduls/myBasket/myBasket';
-import Modal from '../../moduls/myModal/myModal';
+import Basket from '../../components/myBasket/myBasket';
+import Modal from '../../components/myModal/myModal';
 
 import config from '../../../../config.json';
 

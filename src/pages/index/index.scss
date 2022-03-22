@@ -1,6 +1,5 @@
 @import '../../css/mixin.scss';
 
-// TODO сетка
 .main-index {
 	padding: 1.5625rem 0 1.25rem 0;
 	width: 85%;
@@ -33,7 +32,7 @@
 
 	&__item {
 		height: auto;
-		z-index: 1001;
+		z-index: 100;
 	}
 
 	@include phone {
