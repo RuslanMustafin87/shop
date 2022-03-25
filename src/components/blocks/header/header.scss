@@ -3,16 +3,42 @@
 	background-color: var(--color-main);
 	position: relative;
 	box-shadow: 0 10px 20px #b6b4b4;
+
 	&__basket {
 		position: absolute;
 		right: 7.5%;
 		top: 50%;
 		transform: translateY(-50%);
-		@media (max-width: 600px){
+
+		@media (max-width: 600px) {
 			right: 2.5%;
 		}
 
 	}
+
+	&__sign {
+		border: none;
+		background: none;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 15%;
+		padding: 0;
+		color: var(--color-text-light);
+		cursor: pointer;
+		font-family: inherit;
+		font-weight: inherit;
+		letter-spacing: inherit;
+		font-size: inherit;
+	}
+
+
+	&__login {
+		@extend .header__sign;
+		right: 11%;
+
+	}
+
 	&__link-home {
 		position: absolute;
 		left: 7.5%;
@@ -20,27 +46,31 @@
 		transform: translateY(-50%);
 		cursor: pointer;
 		color: var(--color-text-light);
-		@media (max-width: 600px){
+
+		@media (max-width: 600px) {
 			left: 2.5%;
 		}
 	}
-	&__link{
+
+	&__link {
 		color: inherit;
 	}
-	&__link-logo{
+
+	&__link-logo {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		z-index: 100;
 		height: 80%;
+
 		@media (max-width: 600px) {
 			height: 65%;
 		}
 	}
 }
 
-.logo-furniture{
+.logo-furniture {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;

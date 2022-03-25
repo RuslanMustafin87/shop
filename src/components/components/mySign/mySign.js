@@ -1,14 +1,14 @@
 import config from '../../../../config.json';
 
-const linkAdmin = document.getElementById('link-admin');
-const loginAdmin = document.getElementById('login-admin');
-const buttonCrossClose = document.getElementById('cross-close');
-const loginError = document.getElementById('login-error');
-const formLogin = document.forms.formLogin;
+const buttonSign = document.getElementById('button-sign');
+const signBlock = document.getElementById('sign-block');
+const buttonCrossClose = document.getElementById('sign-cross-close');
+const signError = document.getElementById('sign-error');
+const formSign = document.forms.formSign;
 
-linkAdmin.onclick = function(event) {
+buttonSign.onclick = function(event) {
 	event.preventDefault();
-	loginAdmin.style.display = 'block';
+	signBlock.style.display = 'block';
 };
 
 // функция удаления параметра урл с сообщением ошибки
@@ -19,8 +19,8 @@ function delUrlParamMsg() {
 }
 
 buttonCrossClose.onclick = function() {
-	loginAdmin.style.display = 'none';
-	loginError.innerHTML = '';
+	signBlock.style.display = 'none';
+	signError.innerHTML = '';
 
 	delUrlParamMsg();
 };
@@ -29,22 +29,22 @@ window.onload = function() {
 	let params = (new URL(document.location.href)).searchParams;
 
 	if (params.get('msg')) {
-		loginAdmin.style.display = 'block';
-		loginError.innerHTML = params.get('msg');
+		signBlock.style.display = 'block';
+		signError.innerHTML = params.get('msg');
 
 		delUrlParamMsg();
 	}
 };
 
-formLogin.login.onfocus = function () {
-	loginError.innerHTML = '';
+formSign.login.onfocus = function () {
+	signError.innerHTML = '';
 };
 
-formLogin.password.onfocus = function () {
-	loginError.innerHTML = '';
+formSign.password.onfocus = function () {
+	signError.innerHTML = '';
 };
 
-// formLogin.onsubmit = function(event) {
+// formSign.onsubmit = function(event) {
 // 	event.preventDefault();
 
 // 	let data = {
@@ -52,7 +52,7 @@ formLogin.password.onfocus = function () {
 // 		password: this.password.value
 // 	};
 
-// 	fetch(`${config.URL}:${config.PORT}/users/validuser`, {
+// 	fetch(`${config.URL}:${config.PORT}/users/adduser`, {
 // 		method: 'POST',
 // 		headers: {
 // 			'Content-Type': 'application/json',

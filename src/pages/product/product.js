@@ -23,7 +23,7 @@ let data = null;
 	try {
 		let responce = await fetch(`${config.URL}:${config.PORT}/api/products/getproduct?id=${idProduct}`);
 		data = await responce.json();
-
+		
         let listImages = data.images;
 
 		listImages.forEach((image, index) => {
@@ -94,6 +94,7 @@ buttonReview.onclick = async function() {
 		}
 
 	} catch (err) {
+		modal.start(err.message);
 		console.log('Ошибка ' + err.message);
 	}
 };

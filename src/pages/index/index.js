@@ -7,6 +7,7 @@ import config from '../../../config.json';
 import Sort from '../../js/sort';
 import Basket from '../../components/components/myBasket/myBasket';
 import '../../components/components/myLogin/mylogin';
+import '../../components/components/mySign/mySign';
 import '../../js/addProductInBasket';
 // import '../../js/openPageBasket';
 

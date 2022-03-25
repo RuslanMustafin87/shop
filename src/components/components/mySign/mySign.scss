@@ -1,0 +1,82 @@
+.sign {
+	display: none;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	background-color: rgba(113, 111, 120, .5);
+
+	&__window {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		// transform: translate(-50%, -50%) scale(0);
+		transform: translate(-50%, -50%);
+		width: 300px;
+		background-color: #fff;
+		border-radius: .3rem;
+	}
+
+	&__cross-close {
+		height: .8rem;
+		width: .8rem;
+		position: absolute;
+		top: 0.625rem;
+		right: 0.625rem;
+		cursor: pointer;
+		border: none;
+		background: url(../images/icons/cross.svg) center / .8rem no-repeat;
+
+		@include desktop {
+			height: 1.5rem;
+			width: 1.5rem;
+		}
+
+		@include tablet {
+			height: 1.8rem;
+			width: 1.8rem;
+		}
+	}
+
+	&__form {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		align-items: center;
+		flex-direction: column;
+		padding: 0.625rem 0.625rem 0.625rem 0.625rem;
+		box-sizing: border-box;
+		row-gap: 0.625rem;
+	}
+
+	&__caption {
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
+
+	&__name {
+		@include input_shop;
+
+	}
+
+	&__email {
+		@include input_shop;
+
+	}
+
+	&__password {
+		@include input_shop;
+
+	}
+
+	&__error {
+		color: red;
+		text-align: center;
+	}
+
+	&__submit {
+		@include button_shop;
+	}
+}

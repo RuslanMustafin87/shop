@@ -1,0 +1,11 @@
+.sign(id='sign-block')
+    .sign__window
+        // TODO валидация полей
+        button.sign__cross-close(id='sign-cross-close')
+        form.sign__form(name='formSign' method='POST' action='/users/adduser')
+            h1.sign__caption Регистрация
+            input.sign__name(type="text" name='name' placeholder='Имя')
+            input.sign__email(type="email" name='email' placeholder='e-mail')
+            input.sign__password(type="password" name='password' placeholder='Пароль')
+            .sign__error(id='sign-error') kkk
+            input.sign__submit(type='submit' name='submit' id='signSubmit' value='Отправить')
