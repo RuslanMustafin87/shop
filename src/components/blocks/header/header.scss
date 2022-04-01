@@ -4,16 +4,42 @@
 	position: relative;
 	box-shadow: 0 10px 20px #b6b4b4;
 
+	&__menu-button {
+		display: none;
+		position: absolute;
+		right: 2.5%;
+		top: 50%;
+		transform: translateY(-50%);
+		height: 2.1875rem;
+		width: 2.1875rem;
+		transition: transform 0.2s;
+		background: url(../images/icons/menu.svg) no-repeat 0 0;
+		background-size: cover;
+		border: none;
+		@include phone {
+			display: block;
+		}
+	}
+
+	&__menu--close {
+		background: url(../images/icons/cross-light.svg) no-repeat 0 0;
+	}
+
 	&__basket {
 		position: absolute;
 		right: 7.5%;
 		top: 50%;
 		transform: translateY(-50%);
 
-		@media (max-width: 600px) {
+		@media (max-width: 600px) {}
+
+		@include tablet {
 			right: 2.5%;
 		}
 
+		@include phone {
+			display: none;
+		}
 	}
 
 	&__sign {
@@ -30,13 +56,23 @@
 		font-weight: inherit;
 		letter-spacing: inherit;
 		font-size: inherit;
-	}
 
+		@include phone {
+			display: none;
+		}
+	}
 
 	&__login {
 		@extend .header__sign;
 		right: 11%;
 
+		@include tablet {
+			right: 8.5%;
+		}
+
+		@include phone {
+			display: none;
+		}
 	}
 
 	&__link-home {
@@ -47,7 +83,7 @@
 		cursor: pointer;
 		color: var(--color-text-light);
 
-		@media (max-width: 600px) {
+		@include tablet {
 			left: 2.5%;
 		}
 	}

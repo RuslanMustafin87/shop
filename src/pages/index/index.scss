@@ -6,11 +6,10 @@
 	max-width: 1200px;
 	margin: auto;
 
-	@media (max-width: 600px) {
+
+	@include tablet {
 		width: 95%;
 	}
-
-	@media (min-width: 1200px) {}
 
 	&__sort {
 		margin: 0 .625rem .625rem 0;
@@ -88,8 +87,8 @@
 
 	&:hover {
 		@include hover {
-			box-shadow: 15px 15px 40px #bebebe,
-				-15px -15px 40px #ffffff
+			box-shadow: 13px 13px 40px #bebebe,
+				-13px -13px 40px #ffffff
 		}
 	}
 }

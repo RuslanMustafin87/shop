@@ -36,7 +36,11 @@ window.onload = function() {
 	}
 };
 
-formSign.login.onfocus = function () {
+formSign.name.onfocus = function () {
+	signError.innerHTML = '';
+};
+
+formSign.email.onfocus = function () {
 	signError.innerHTML = '';
 };
 

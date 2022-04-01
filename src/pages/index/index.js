@@ -3,12 +3,13 @@ import './index.scss';
 import '../../images/logo-light.png'
 
 import config from '../../../config.json';
-
+// TODO исправить появление ошибки регистрации и авторизации
 import Sort from '../../js/sort';
 import Basket from '../../components/components/myBasket/myBasket';
-import '../../components/components/myLogin/mylogin';
 import '../../components/components/mySign/mySign';
+import '../../components/components/myLogin/mylogin';
 import '../../js/addProductInBasket';
+import '../../components/components/menu/menu';
 // import '../../js/openPageBasket';
 
 const sort = new Sort();

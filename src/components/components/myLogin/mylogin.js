@@ -36,7 +36,7 @@ window.onload = function() {
 	}
 };
 
-formLogin.login.onfocus = function () {
+formLogin.email.onfocus = function () {
 	loginError.innerHTML = '';
 };
 

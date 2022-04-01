@@ -3,7 +3,7 @@
         button.login__cross-close(id='cross-close')
         form.login__form(name='formLogin' method='POST' action='/users/validuser')
             h1.login__caption Авторизация
-            input.login__login(type="text" name='login' placeholder='Логин')
-            input.login__password(type="password" name='password' placeholder='Пароль')
+            input.login__email(type="email" name='email' placeholder='e-mail' required)
+            input.login__password(type="password" name='password' placeholder='Пароль' required)
             .login__error(id='login-error')
             input.login__submit(type='submit' name='login-submit' id='loginSubmit' value='Отправить')
