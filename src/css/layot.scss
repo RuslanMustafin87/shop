@@ -34,21 +34,23 @@ h1{
 	color: var(--color-text-dark);
 }
 
-main{
-	padding: 0 0 1.25rem 0;
+.main{
 	flex: 1 1 auto;
+	width: 100%;
+	position: relative;
 }
 
 .wrapper {
+	position: relative;
 	width: 100%;
 	min-height: 100vh;
-	position: relative;
 	display: flex;
 	flex-direction: column;
+	overflow-x: hidden;
 }
 
 .clearfix::after {
-	content: '';
 	display: block;
+	content: '';
 	clear: both;
 }

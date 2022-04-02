@@ -6,10 +6,11 @@ import config from '../../../config.json';
 // TODO исправить появление ошибки регистрации и авторизации
 import Sort from '../../js/sort';
 import Basket from '../../components/components/myBasket/myBasket';
-import '../../components/components/mySign/mySign';
-import '../../components/components/myLogin/mylogin';
-import '../../js/addProductInBasket';
+import '../../js/showWindowLoginAndSign';
+import '../../components/blocks/header/header';
+import '../../components/blocks/footer/footer';
 import '../../components/components/menu/menu';
+import '../../js/addProductInBasket';
 // import '../../js/openPageBasket';
 
 const sort = new Sort();

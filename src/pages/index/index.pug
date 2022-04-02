@@ -6,28 +6,27 @@ block var
     - var products = []
     - var rating = {roundedRating: 5}
 block content
-    main.main-index
-        .main-index__wrapper
-            select.main-index__sort.sort-products(name='sort-products')
-                option(value='sortIncreasedPrice' ) По возростающей цене
-                option(value='sortDecreasedPrice' ) По убывающей цене
-                option(value='sortAlphabet') По алфавиту
-            select.main-index__sort-by-category.sort-products-by-category(name='category' placeholder='категория')
-                option(value="all") Все категории
-                option(value="sofa") Диван
-                option(value="dresser") Комод
-                option(value="wardrobe") Шкаф
-                option(value="table") Стол
-            // TODO линивая загрузка
-            ul.main-index__products.products
-                each item in products
-                    - var { _id, name, price, priceIntl, category, rating } = item
-                    li.products__item.product-card(data-id=_id  data-name=name data-price=price data-category=category)
-                        a.product-card__link(href= `product?id=${_id}`)
-                            img.product-card__image(loading="lazy" alt=`${category} ${name}`)
-                        .product-card__rating
-                            - var ratingCheck = rating.roundedRating
-                            include ../../components/blocks/rating-star/rating-star.pug
-                        h1.product-card__name= name
-                        span.product-card__price= priceIntl
-                        button.product-card__button Добавить
+    .main-index
+        select.main-index__sort.sort-products(name='sort-products')
+            option(value='sortIncreasedPrice' ) По возростающей цене
+            option(value='sortDecreasedPrice' ) По убывающей цене
+            option(value='sortAlphabet') По алфавиту
+        select.main-index__sort-by-category.sort-products-by-category(name='category' placeholder='категория')
+            option(value="all") Все категории
+            option(value="sofa") Диван
+            option(value="dresser") Комод
+            option(value="wardrobe") Шкаф
+            option(value="table") Стол
+        // TODO линивая загрузка
+        ul.main-index__products.products
+            each item in products
+                - var { _id, name, price, priceIntl, category, rating } = item
+                li.products__item.product-card(data-id=_id  data-name=name data-price=price data-category=category)
+                    a.product-card__link(href= `product?id=${_id}`)
+                        img.product-card__image(loading="lazy" alt=`${category} ${name}`)
+                    .product-card__rating
+                        - var ratingCheck = rating.roundedRating
+                        include ../../components/blocks/rating-star/rating-star.pug
+                    h1.product-card__name= name
+                    span.product-card__price= priceIntl
+                    button.product-card__button Добавить

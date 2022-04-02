@@ -1,5 +1,15 @@
-const menuButton = document.getElementById('menu-button');
+import Basket from '../myBasket/myBasket';
+import {
+	showSignWindow
+} from '../mySign/mySign';
 
-menuButton.onclick = function() {
-	this.classList.toggle('header__menu--close');
+const menu = document.getElementById('menu');
+const buttonMenuSign = document.getElementById('buttonMenuSign');
+
+export function showMenu() {
+	menu.classList.toggle('menu--close');
+}
+
+buttonMenuSign.onclick = function() {
+	showSignWindow();
 };

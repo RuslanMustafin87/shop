@@ -1,16 +1,17 @@
 @import '../../css/mixin.scss';
 
 .main-basket {
-	&__wrapper {
-		padding: 1.5625rem 0 1.25rem 0;
-		width: 85%;
-		max-width: 1200px;
-		margin: auto;
 
-		@media (max-width: 600px) {
-			width: 95%;
-		}
+	padding: 1.5625rem 0 1.25rem 0;
+	width: 85%;
+	height: 100%;
+	max-width: 1200px;
+	margin: auto;
+
+	@media (max-width: 600px) {
+		width: 95%;
 	}
+
 
 	&__button-reset {
 		width: 12.5rem;
@@ -91,7 +92,8 @@
 		width: 6.25rem;
 		@include button_shop;
 	}
-	&:hover{
+
+	&:hover {
 		border-radius: 6px;
 		box-shadow: 0 0 13px 1px #bccfd1;
 	}

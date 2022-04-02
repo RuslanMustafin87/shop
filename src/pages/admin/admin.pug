@@ -6,7 +6,7 @@ block var
     - var page = 'admin'
 
 block content
-    main.admin.clearfix
+    .main-admin.clearfix
         form.admin__form-add.form-add-product(action="http://localhost:3007/products/addproduct" method='post' name='addProduct' enctype='multipart/form-data')
             h1.form-add-product__title Добавление товара
             input.form-add-product__name(type='text' name='name' placeholder='название' required)

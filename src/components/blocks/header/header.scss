@@ -19,11 +19,11 @@
 		@include phone {
 			display: block;
 		}
+		&--close {
+			background: url(../images/icons/cross-light.svg) no-repeat 0 0;
+		}
 	}
 
-	&__menu--close {
-		background: url(../images/icons/cross-light.svg) no-repeat 0 0;
-	}
 
 	&__basket {
 		position: absolute;

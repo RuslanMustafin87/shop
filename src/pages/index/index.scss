@@ -4,6 +4,8 @@
 	padding: 1.5625rem 0 1.25rem 0;
 	width: 85%;
 	max-width: 1200px;
+	height: 100%;
+
 	margin: auto;
 
 
@@ -31,7 +33,7 @@
 
 	&__item {
 		height: auto;
-		z-index: 100;
+		z-index: 10;
 	}
 
 	@include phone {

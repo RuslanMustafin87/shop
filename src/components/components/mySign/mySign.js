@@ -1,15 +1,8 @@
-import config from '../../../../config.json';
-
-const buttonSign = document.getElementById('button-sign');
+// const buttonSign = document.getElementById('button-sign');
 const signBlock = document.getElementById('sign-block');
 const buttonCrossClose = document.getElementById('sign-cross-close');
 const signError = document.getElementById('sign-error');
 const formSign = document.forms.formSign;
-
-buttonSign.onclick = function(event) {
-	event.preventDefault();
-	signBlock.style.display = 'block';
-};
 
 // функция удаления параметра урл с сообщением ошибки
 function delUrlParamMsg() {
@@ -25,50 +18,25 @@ buttonCrossClose.onclick = function() {
 	delUrlParamMsg();
 };
 
-window.onload = function() {
-	let params = (new URL(document.location.href)).searchParams;
-
-	if (params.get('msg')) {
-		signBlock.style.display = 'block';
-		signError.innerHTML = params.get('msg');
-
-		delUrlParamMsg();
-	}
-};
-
-formSign.name.onfocus = function () {
+formSign.name.onfocus = function() {
 	signError.innerHTML = '';
 };
 
-formSign.email.onfocus = function () {
+formSign.email.onfocus = function() {
 	signError.innerHTML = '';
 };
 
-formSign.password.onfocus = function () {
+formSign.password.onfocus = function() {
 	signError.innerHTML = '';
 };
 
-// formSign.onsubmit = function(event) {
-// 	event.preventDefault();
+export function showSignWindow() {
+	signBlock.style.display = 'block';
+}
 
-// 	let data = {
-// 		login: this.login.value,
-// 		password: this.password.value
-// 	};
+export function showSignWindowError(err) {
+	signBlock.style.display = 'block';
+	signError.innerHTML = err;
 
-// 	fetch(`${config.URL}:${config.PORT}/users/adduser`, {
-// 		method: 'POST',
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 		},
-// 		body: JSON.stringify(data)
-// 	})
-// 		.then(
-// 			response => response.json()
-// 		)
-// 		.then(
-// 			data => {
-// 				console.log(data);
-// 			}
-// 		);
-// };
+	delUrlParamMsg();
+}

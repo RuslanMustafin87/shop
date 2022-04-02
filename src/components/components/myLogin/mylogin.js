@@ -1,15 +1,7 @@
-import config from '../../../../config.json';
-
-const linkAdmin = document.getElementById('link-admin');
 const loginAdmin = document.getElementById('login-admin');
 const buttonCrossClose = document.getElementById('cross-close');
 const loginError = document.getElementById('login-error');
 const formLogin = document.forms.formLogin;
-
-linkAdmin.onclick = function(event) {
-	event.preventDefault();
-	loginAdmin.style.display = 'block';
-};
 
 // функция удаления параметра урл с сообщением ошибки
 function delUrlParamMsg() {
@@ -25,46 +17,21 @@ buttonCrossClose.onclick = function() {
 	delUrlParamMsg();
 };
 
-window.onload = function() {
-	let params = (new URL(document.location.href)).searchParams;
-
-	if (params.get('msg')) {
-		loginAdmin.style.display = 'block';
-		loginError.innerHTML = params.get('msg');
-
-		delUrlParamMsg();
-	}
-};
-
-formLogin.email.onfocus = function () {
+formLogin.email.onfocus = function() {
 	loginError.innerHTML = '';
 };
 
-formLogin.password.onfocus = function () {
+formLogin.password.onfocus = function() {
 	loginError.innerHTML = '';
 };
 
-// formLogin.onsubmit = function(event) {
-// 	event.preventDefault();
+export function showLoginWindow() {
+	loginAdmin.style.display = 'block';
+}
 
-// 	let data = {
-// 		login: this.login.value,
-// 		password: this.password.value
-// 	};
+export function showLoginWindowError(err) {
+	loginAdmin.style.display = 'block';
+	loginError.innerHTML = err;
 
-// 	fetch(`${config.URL}:${config.PORT}/users/validuser`, {
-// 		method: 'POST',
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 		},
-// 		body: JSON.stringify(data)
-// 	})
-// 		.then(
-// 			response => response.json()
-// 		)
-// 		.then(
-// 			data => {
-// 				console.log(data);
-// 			}
-// 		);
-// };
+	delUrlParamMsg();
+}

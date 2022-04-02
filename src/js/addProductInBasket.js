@@ -34,15 +34,11 @@ document.addEventListener('mousedown', function() {
 			elem.hidden = true;
 			let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
 			elem.hidden = false;
-			// console.log('hih');
-			console.log( elemBelow);
-			if (!elemBelow) {
-				console.log('u');
-				return;}
+
+			if (!elemBelow) return;
 
 			elemBelow = elemBelow.closest('.basket');
 			if (elemBelow) {
-				console.log('hih2');
 				elemBelow.style.transform = 'scale(1.5) translateY(-50%)';
 				mouseBasketAbove = true;
 				return;
