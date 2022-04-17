@@ -1,11 +1,13 @@
 header.header
-    // TODO бургер меню в моб. версии
     button.header__menu-button#button-menu
     .header__basket.basket
         a.basket__link(href='basket.html' id='basket-link')
             .basket__count
-    button.header__sign#button-sign Регистрация
-    button.header__login#button-login Вход
+    if userName
+        p.header__user-name= userName
+    else
+        button.header__sign#button-sign Регистрация
+        button.header__login#button-login Вход
     a.header__link-logo(href='/')
         img.header__logo.logo-furniture(src="./images/logo-light.png" alt='My furniture')
     .header__link-home

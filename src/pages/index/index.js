@@ -3,7 +3,6 @@ import './index.scss';
 import '../../images/logo-light.png'
 
 import config from '../../../config.json';
-// TODO исправить появление ошибки регистрации и авторизации
 import Sort from '../../js/sort';
 import Basket from '../../components/components/myBasket/myBasket';
 import '../../js/showWindowLoginAndSign';

@@ -1,5 +1,6 @@
 // const buttonSign = document.getElementById('button-sign');
 const signBlock = document.getElementById('sign-block');
+const signSuccessfully = document.getElementById('sign-successfully');
 const buttonCrossClose = document.getElementById('sign-cross-close');
 const signError = document.getElementById('sign-error');
 const formSign = document.forms.formSign;
@@ -12,6 +13,7 @@ function delUrlParamMsg() {
 }
 
 buttonCrossClose.onclick = function() {
+	signSuccessfully.style.display = 'none';
 	signBlock.style.display = 'none';
 	signError.innerHTML = '';
 
@@ -31,6 +33,7 @@ formSign.password.onfocus = function() {
 };
 
 export function showSignWindow() {
+	// signSuccessfully.hidden = true;
 	signBlock.style.display = 'block';
 }
 
@@ -39,4 +42,9 @@ export function showSignWindowError(err) {
 	signError.innerHTML = err;
 
 	delUrlParamMsg();
+}
+
+export function showSignWindowSuccessfully(){
+	signBlock.style.display = 'block';
+	signSuccessfully.style.display = 'flex';
 }

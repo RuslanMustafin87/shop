@@ -1,0 +1,9 @@
+.login-user#login-user-admin
+    .login-user__window
+        button.login-user__cross-close#cross-close-login-user
+        form.login-user__form(name='formLoginUser' method='POST' action=`/users/authuser`)
+            h1.login-user__caption Вход
+            input.login-user__email(type="email" name='email' placeholder='e-mail' required)
+            input.login-user__password(type="password" name='password' placeholder='Пароль' required)
+            .login-user__error#login-user-error
+            input.login-user__submit(type='submit' name='login-user-submit' id='loginUserSubmit' value='Войти')

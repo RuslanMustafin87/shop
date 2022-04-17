@@ -75,6 +75,20 @@
 		}
 	}
 
+	&__user-name{
+		@extend .header__sign;
+		right: 11%;
+
+		@include tablet {
+			right: 8.5%;
+		}
+
+		@include phone {
+			display: none;
+		}
+		color: var(--color-text-light);
+	}
+
 	&__link-home {
 		position: absolute;
 		left: 7.5%;
