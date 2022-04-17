@@ -1,0 +1,9 @@
+.menu-nav
+        if userName
+            p.menu-nav__user-name= userName
+        else
+            button.menu-nav__sign#button-sign Регистрация
+            button.menu-nav__login#button-login Вход
+        .menu-nav__basket.basket
+            a.basket__link(href='basket.html' id='basket-link')
+                .basket__count

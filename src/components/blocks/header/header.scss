@@ -4,91 +4,6 @@
 	position: relative;
 	box-shadow: 0 10px 20px #b6b4b4;
 
-	&__menu-button {
-		display: none;
-		position: absolute;
-		right: 2.5%;
-		top: 50%;
-		transform: translateY(-50%);
-		height: 2.1875rem;
-		width: 2.1875rem;
-		transition: transform 0.2s;
-		background: url(../images/icons/menu.svg) no-repeat 0 0;
-		background-size: cover;
-		border: none;
-		@include phone {
-			display: block;
-		}
-		&--close {
-			background: url(../images/icons/cross-light.svg) no-repeat 0 0;
-		}
-	}
-
-
-	&__basket {
-		position: absolute;
-		right: 7.5%;
-		top: 50%;
-		transform: translateY(-50%);
-
-		@media (max-width: 600px) {}
-
-		@include tablet {
-			right: 2.5%;
-		}
-
-		@include phone {
-			display: none;
-		}
-	}
-
-	&__sign {
-		border: none;
-		background: none;
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		right: 15%;
-		padding: 0;
-		color: var(--color-text-light);
-		cursor: pointer;
-		font-family: inherit;
-		font-weight: inherit;
-		letter-spacing: inherit;
-		font-size: inherit;
-
-		@include phone {
-			display: none;
-		}
-	}
-
-	&__login {
-		@extend .header__sign;
-		right: 11%;
-
-		@include tablet {
-			right: 8.5%;
-		}
-
-		@include phone {
-			display: none;
-		}
-	}
-
-	&__user-name{
-		@extend .header__sign;
-		right: 11%;
-
-		@include tablet {
-			right: 8.5%;
-		}
-
-		@include phone {
-			display: none;
-		}
-		color: var(--color-text-light);
-	}
-
 	&__link-home {
 		position: absolute;
 		left: 7.5%;
@@ -116,6 +31,28 @@
 
 		@media (max-width: 600px) {
 			height: 65%;
+		}
+	}
+
+	&__menu-button {
+		display: none;
+		position: absolute;
+		right: 2.5%;
+		top: 50%;
+		transform: translateY(-50%);
+		height: 2.1875rem;
+		width: 2.1875rem;
+		transition: transform 0.2s;
+		background: url(../images/icons/menu.svg) no-repeat 0 0;
+		background-size: cover;
+		border: none;
+
+		&--close {
+			background: url(../images/icons/cross-light.svg) no-repeat 0 0;
+		}
+
+		@media (max-width: 700px) {
+			display: block;
 		}
 	}
 }

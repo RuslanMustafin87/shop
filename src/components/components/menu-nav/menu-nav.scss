@@ -1,0 +1,54 @@
+.menu-nav {
+	position: absolute;
+	right: 7.5%;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: space-around;
+
+	@include tablet {
+		right: 2.5%;
+	}
+
+	@media (max-width: 700px) {
+		display: none;
+	}
+
+	&__basket {
+		margin-left: 0.625rem;
+
+		@include phone {
+			display: none;
+		}
+	}
+
+	&__sign {
+		border: none;
+		margin: 0 0.625rem;
+		padding: 0;
+		color: var(--color-text-light);
+		cursor: pointer;
+		background: none;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		letter-spacing: inherit;
+
+		@include phone {
+			display: none;
+		}
+	}
+
+	&__login {
+		margin-right: 0.625rem;
+		@extend .menu-nav__sign;
+	}
+
+	&__user-name {
+		@extend .menu-nav__sign;
+		color: var(--color-text-light);
+	}
+
+
+
+}

@@ -1,13 +1,7 @@
 header.header
     button.header__menu-button#button-menu
-    .header__basket.basket
-        a.basket__link(href='basket.html' id='basket-link')
-            .basket__count
-    if userName
-        p.header__user-name= userName
-    else
-        button.header__sign#button-sign Регистрация
-        button.header__login#button-login Вход
+    .header__menu-nav
+        include ../../components/menu-nav/menu-nav
     a.header__link-logo(href='/')
         img.header__logo.logo-furniture(src="./images/logo-light.png" alt='My furniture')
     .header__link-home
