@@ -7,7 +7,6 @@
 
 // buttonRating.onclick = async function() {
 // 	let checked = isCheck('review');
-// 	console.log('ji');
 // 	if (!checked) {
 // 		return console.log('error!');
 // 	}

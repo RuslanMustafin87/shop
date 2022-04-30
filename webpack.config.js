@@ -34,6 +34,7 @@ const conf = merge([{
 		'basket': PATHS.source + '/pages/basket/basket.js',
 		'product': PATHS.source + '/pages/product/product.js',
 		'admin': PATHS.source + '/pages/admin/admin.js',
+		'error': PATHS.source + '/pages/error/error.js',
 	},
 	output: {
 		path: PATHS.build,
@@ -87,6 +88,15 @@ const conf = merge([{
 				'common'
 			],
 			template: PATHS.source + '/pages/admin/admin.pug',
+			// favicon: './src/images/fav-furniture.png'
+
+		}),
+		new HtmlWebpackPlugin({
+			filename: 'error.html',
+			chunks: ['error',
+				'common'
+			],
+			template: PATHS.source + '/pages/error/error.pug',
 			// favicon: './src/images/fav-furniture.png'
 
 		}),

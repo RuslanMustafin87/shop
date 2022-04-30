@@ -30,9 +30,6 @@ export default function(options) {
 		let childrenList = Array.from(containerSlides.children);
 		for (let i = 0; i < childrenList.length; i++) {
 			if (Math.abs(containerSlides.offsetLeft) + 1 < childrenList[i].offsetLeft + childrenList[i].offsetWidth) {
-				// console.log(Math.abs(containerSlides.offsetLeft), childrenList[i].offsetLeft, childrenList[i].offsetWidth);
-				// console.log(childrenList[i]);
-				// console.log(i);
 				return i;
 			}
 		}
@@ -51,13 +48,11 @@ export default function(options) {
 		}, options.animateTime * 1000);
 
 		let indexElemAtEdge = findElemAtEdge(containerSlides);
-		// console.log(indexElemAtEdge);
 		let containerLeft = indexElemAtEdge + 1;
 
 		if (!options.infinite && containerLeft < maxScroll) {
 			containerLeft = maxScroll;
 		}
-		// console.log(containerLeft);
 		containerSlides.style.left = `-${containerLeft}00%`;
 	});
 
@@ -75,7 +70,6 @@ export default function(options) {
 
 		let indexElemAtEdge = findElemAtEdge(containerSlides);
 		let containerLeft = indexElemAtEdge - 1;
-		console.log(containerLeft);
 		containerSlides.style.left = `-${containerLeft}00%`;
 	});
 

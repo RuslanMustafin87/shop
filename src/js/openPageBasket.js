@@ -13,7 +13,6 @@ basketLink.onclick = function(event) {
 	listProductsInBasket.forEach((item, index) => {
 		parametrs += `productId-${index}=${item.id}&`;
 	});
-	console.log('hh');
 	fetch(`${config.URL}:${config.PORT}/basket?${ parametrs }`, {
 		method: 'GET',
 	});

@@ -8,6 +8,7 @@ const formSign = document.forms.formSign;
 // функция удаления параметра урл с сообщением ошибки
 function delUrlParamMsg() {
 	let url = document.location.href;
+	if (url.indexOf('?') === -1) return;
 	let newUrl = url.slice(0, url.indexOf('?'));
 	window.history.replaceState(null, null, newUrl);
 }

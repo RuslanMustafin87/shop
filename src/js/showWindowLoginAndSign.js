@@ -20,4 +20,5 @@ window.onload = function() {
 
 	if (params.get('msgLoginError')) showLoginUserWindowError(params.get('msgLoginError'));
 
+	if (params.get('msgLoginAdminError')) showLoginWindowError(params.get('msgLoginAdminError'));
 };

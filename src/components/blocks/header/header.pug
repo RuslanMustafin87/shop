@@ -1,7 +1,8 @@
 header.header
     button.header__menu-button#button-menu
-    .header__menu-nav
-        include ../../components/menu-nav/menu-nav
+    if (!(page == 'admin'))
+        .header__menu-nav
+            include ../../components/menu-nav/menu-nav
     a.header__link-logo(href='/')
         img.header__logo.logo-furniture(src="./images/logo-light.png" alt='My furniture')
     .header__link-home

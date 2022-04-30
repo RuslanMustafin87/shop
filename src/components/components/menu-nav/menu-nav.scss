@@ -1,8 +1,5 @@
 .menu-nav {
-	position: absolute;
-	right: 7.5%;
-	top: 50%;
-	transform: translateY(-50%);
+	
 	display: flex;
 	justify-content: space-around;
 
@@ -48,7 +45,4 @@
 		@extend .menu-nav__sign;
 		color: var(--color-text-light);
 	}
-
-
-
 }

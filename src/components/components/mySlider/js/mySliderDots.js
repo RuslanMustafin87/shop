@@ -26,7 +26,7 @@ export default function(options) {
 			dotsItems.forEach((item) => {
 				item.classList.remove('dots__item--active');
 			});
-			console.log('s');
+
 			this.classList.add('dots__item--active');
 		});
 	});

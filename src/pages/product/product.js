@@ -2,11 +2,14 @@ import '../../css/main.scss';
 import './product.scss';
 
 import config from '../../../config.json';
-
 import MySlider from '../../components/components/mySlider/mySlider';
 import Basket from '../../components/components/myBasket/myBasket';
 import Modal from '../../components/components/myModal/myModal';
 import '../../components/components/myLogin/mylogin';
+import '../../js/showWindowLoginAndSign';
+import '../../components/blocks/header/header';
+import '../../components/blocks/footer/footer';
+import '../../components/components/menu/menu';
 
 const modal = new Modal();
 const mySlider = new MySlider();
@@ -23,7 +26,7 @@ let data = null;
 	try {
 		let responce = await fetch(`${config.URL}:${config.PORT}/api/products/getproduct?id=${idProduct}`);
 		data = await responce.json();
-		
+
         let listImages = data.images;
 
 		listImages.forEach((image, index) => {
@@ -38,7 +41,6 @@ let data = null;
 		})
 
 	} catch (err) {
-		console.log(err.message);
 		buttonAdd.disabled = true;
 	}
 
@@ -98,3 +100,4 @@ buttonReview.onclick = async function() {
 		console.log('Ошибка ' + err.message);
 	}
 };
+
