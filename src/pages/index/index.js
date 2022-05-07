@@ -5,6 +5,7 @@ import '../../images/logo-light.png'
 import config from '../../../config.json';
 import Sort from '../../js/sort';
 import Basket from '../../components/components/myBasket/myBasket';
+
 import '../../js/addProductInBasket';
 import '../../js/showWindowLoginAndSign';
 import '../../components/blocks/header/header';

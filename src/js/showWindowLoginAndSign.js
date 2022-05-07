@@ -11,8 +11,8 @@ import {
 } from '../components/components/loginUser/loginUser';
 
 window.onload = function() {
-
-	let params = (new URL(document.location.href)).searchParams;
+	let url = new URL(document.location.href);
+	let params = url.searchParams;
 
 	if (params.get('msgSignSuccessfully')) showSignWindowSuccessfully();
 
@@ -21,4 +21,5 @@ window.onload = function() {
 	if (params.get('msgLoginError')) showLoginUserWindowError(params.get('msgLoginError'));
 
 	if (params.get('msgLoginAdminError')) showLoginWindowError(params.get('msgLoginAdminError'));
+
 };

@@ -5,10 +5,14 @@ const formLoginUser = document.forms.formLoginUser;
 
 // функция удаления параметра урл с сообщением ошибки
 function delUrlParamMsg() {
-	let url = document.location.href;
-	if (url.indexOf('?') === -1) return;
-	let newUrl = url.slice(0, url.indexOf('?'));
-	window.history.replaceState(null, null, newUrl);
+	let url = new URL(document.location.href);
+
+	url.searchParams.forEach((value, name) => {
+		if (name === 'id') return;
+		url.searchParams.delete(name);
+	});
+
+	window.history.replaceState(null, null, url.toString());
 }
 
 buttonCloseLoginUser.onclick = function() {

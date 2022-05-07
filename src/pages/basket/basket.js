@@ -4,9 +4,13 @@ import './basket.scss';
 import config from '../../../config.json';
 
 import Basket from '../../components/components/myBasket/myBasket';
+
 import '../../components/blocks/header/header';
 import '../../components/blocks/footer/footer';
 import '../../components/components/menu/menu';
+import '../../js/showWindowLoginAndSign';
+import '../../components/components/myLogin/mylogin';
+
 import formOrder from '../../components/blocks/form-order/form-order';
 
 const basket = new Basket();

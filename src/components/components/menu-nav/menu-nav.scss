@@ -1,7 +1,8 @@
 .menu-nav {
-	
+
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 
 	@include tablet {
 		right: 2.5%;
@@ -37,12 +38,19 @@
 	}
 
 	&__login {
-		margin-right: 0.625rem;
 		@extend .menu-nav__sign;
+		margin-right: 0.625rem;
+	}
+
+	&__logout {
+		@extend .menu-nav__sign;
+		margin-right: 0.625rem;
 	}
 
 	&__user-name {
 		@extend .menu-nav__sign;
 		color: var(--color-text-light);
+		height: auto;
+		cursor: none;
 	}
 }

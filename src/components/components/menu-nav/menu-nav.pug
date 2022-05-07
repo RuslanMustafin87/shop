@@ -1,6 +1,7 @@
 .menu-nav
         if userName
             p.menu-nav__user-name= userName
+            button.menu-nav__logout#button-logout Выход
         else
             button.menu-nav__sign#button-sign Регистрация
             button.menu-nav__login#button-login Вход

@@ -2,14 +2,16 @@ import '../../css/main.scss';
 import './product.scss';
 
 import config from '../../../config.json';
+
 import MySlider from '../../components/components/mySlider/mySlider';
 import Basket from '../../components/components/myBasket/myBasket';
 import Modal from '../../components/components/myModal/myModal';
-import '../../components/components/myLogin/mylogin';
-import '../../js/showWindowLoginAndSign';
+
 import '../../components/blocks/header/header';
 import '../../components/blocks/footer/footer';
 import '../../components/components/menu/menu';
+import '../../js/showWindowLoginAndSign';
+import '../../components/components/myLogin/mylogin';
 
 const modal = new Modal();
 const mySlider = new MySlider();
