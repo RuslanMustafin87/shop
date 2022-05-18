@@ -1,5 +1,5 @@
-let countProducts = document.querySelector('.basket__count');
-let countMenu = document.getElementById('menu-count');
+let countProducts = document.getElementById('basket-count');
+let countMenu = document.getElementById('menu-basket-count');
 let listProductsInBasket = [];
 let count = 0;
 
@@ -7,14 +7,15 @@ let count = 0;
 if (localStorage.getItem('listProducts')) {
 	listProductsInBasket = JSON.parse(localStorage.getItem('listProducts'));
 	count = listProductsInBasket.length;
-	countProducts.innerHTML = count;
-	countMenu.innerHTML = count;
-	countProducts.style.display = 'block';
+	if (countProducts) {
+		countProducts.innerHTML = count;
+		countProducts.style.display = 'block';
+	}
+	if (countMenu) countMenu.innerHTML = count;
 }
 
 class Basket {
-	constructor(){
-	}
+	constructor() {}
 	getProductsFromBasket() {
 		return JSON.parse(localStorage.getItem('listProducts'));
 	}

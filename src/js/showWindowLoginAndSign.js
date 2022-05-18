@@ -14,11 +14,11 @@ window.onload = function() {
 	let url = new URL(document.location.href);
 	let params = url.searchParams;
 
-	if (params.get('msgSignSuccessfully')) showSignWindowSuccessfully();
+	if (params.get('msgSignSuccessfully')) return showSignWindowSuccessfully();
 
-	if (params.get('msgSignError')) showSignWindowError(params.get('msgSignError'));
+	if (params.get('msgSignError')) return showSignWindowError();(params.get('msgSignError'));
 
-	if (params.get('msgLoginError')) showLoginUserWindowError(params.get('msgLoginError'));
+	if (params.get('msgLoginError')) return showLoginUserWindowError(params.get('msgLoginError'));
 
 	if (params.get('msgLoginAdminError')) showLoginWindowError(params.get('msgLoginAdminError'));
 

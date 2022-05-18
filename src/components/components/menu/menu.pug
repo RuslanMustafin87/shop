@@ -1,9 +1,15 @@
 .menu#menu
     ul.menu__list
-        li.menu__item
-            button.menu__button-sign#buttonMenuSign Регистрация
-        li.menu__item
-            button.menu__button-login#buttonMenuLogin Вход
+        if userName
+            li.menu__item
+                button.menu__button-sign#buttonMenuSign Регистрация
+            li.menu__item
+                button.menu__button-login#buttonMenuLogin Вход
+        else
+            li.menu__item
+                button.menu__name-sign= userName
+            li.menu__item
+                button.menu__button-logout#buttonMenuLogout Выход
         li.menu__item
             a.menu__link-admin#linkMenuAdmin(href='/basket') Корзина
             .menu__basket-count

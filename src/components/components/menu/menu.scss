@@ -10,7 +10,8 @@
 	transition: transform 0.2s linear;
 	background-color: var(--color-main);
 
-	&--close {
+	&--no-close {
+		display: block;
 		transform: translateX(0%);
 	}
 

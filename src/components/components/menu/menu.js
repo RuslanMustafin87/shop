@@ -10,13 +10,9 @@ const buttonMenuSign = document.getElementById('buttonMenuSign');
 const buttonMenuLoginUser = document.getElementById('buttonMenuLogin');
 
 export function showMenu() {
-	menu.classList.toggle('menu--close');
+	menu.classList.toggle('menu--no-close');
 }
 
-buttonMenuSign.onclick = function() {
-	showSignWindow();
-};
+buttonMenuSign.onclick = () => showSignWindow();
 
-buttonMenuLoginUser.onclick = function() {
-	showLoginUserWindow();
-};
+buttonMenuLoginUser.onclick = () => showLoginUserWindow();
