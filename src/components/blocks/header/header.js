@@ -1,6 +1,6 @@
 import {
 	showSignWindow
-} from '../../components/mySign/mySign';
+} from '../../components/sign-user/sign-user';
 import {
 	showMenu
 } from '../../components/menu/menu';

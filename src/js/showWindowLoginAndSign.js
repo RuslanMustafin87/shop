@@ -4,7 +4,7 @@ import {
 import {
 	showSignWindowSuccessfully,
 	showSignWindowError
-} from '../components/components/mySign/mySign';
+} from '../components/components/sign-user/sign-user';
 import {
 	// showLoginUserWindow,
 	showLoginUserWindowError
@@ -16,7 +16,7 @@ window.onload = function() {
 
 	if (params.get('msgSignSuccessfully')) return showSignWindowSuccessfully();
 
-	if (params.get('msgSignError')) return showSignWindowError();(params.get('msgSignError'));
+	if (params.get('msgSignError')) return showSignWindowError(params.get('msgSignError'));
 
 	if (params.get('msgLoginError')) return showLoginUserWindowError(params.get('msgLoginError'));
 

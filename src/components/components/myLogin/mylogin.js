@@ -2,6 +2,7 @@ const loginAdmin = document.getElementById('login-admin');
 const buttonCrossClose = document.getElementById('cross-close');
 const loginError = document.getElementById('login-error');
 const formLogin = document.forms.formLogin;
+// TODO сменить названия файлов с верним регистром на тире
 
 // функция удаления параметра урл с сообщением ошибки
 function delUrlParamMsg() {

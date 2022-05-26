@@ -39,12 +39,12 @@ document.addEventListener('mousedown', function() {
 
 			elemBelow = elemBelow.closest('.basket');
 			if (elemBelow) {
-				elemBelow.style.transform = 'scale(1.5) translateY(-50%)';
+				elemBelow.style.transform = 'scale(1.5)';
 				mouseBasketAbove = true;
 				return;
 			}
 
-			basketMain.style.transform = 'scale(1) translateY(-50%)';
+			basketMain.style.transform = 'scale(1)';
 			mouseBasketAbove = false;
 		}
 
@@ -69,7 +69,7 @@ document.addEventListener('mousedown', function() {
 			// если курсор над корзиной добовляем товар
 			if (mouseBasketAbove) {
 				basket.addProductInBasket(elem.dataset.id);
-				basketMain.style.transform = 'scale(1) translateY(-50%)';
+				basketMain.style.transform = 'scale(1)';
 				mouseBasketAbove = false;
 			}
 			// удаляем все лишнее после отжатия кнопки мыши
