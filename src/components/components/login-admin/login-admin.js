@@ -2,7 +2,6 @@ const loginAdmin = document.getElementById('login-admin');
 const buttonCrossClose = document.getElementById('cross-close');
 const loginError = document.getElementById('login-error');
 const formLogin = document.forms.formLogin;
-// TODO сменить названия файлов с верним регистром на тире
 
 // функция удаления параметра урл с сообщением ошибки
 function delUrlParamMsg() {
@@ -32,11 +31,11 @@ formLogin.password.onfocus = function() {
 	loginError.innerHTML = '';
 };
 
-export function showLoginWindow() {
+export function showLoginAdminWindow() {
 	loginAdmin.style.display = 'block';
 }
 
-export function showLoginWindowError(err) {
+export function showLoginAdminWindowError(err) {
 	loginAdmin.style.display = 'block';
 	loginError.innerHTML = err;
 

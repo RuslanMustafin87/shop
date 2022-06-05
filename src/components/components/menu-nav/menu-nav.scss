@@ -1,56 +1,47 @@
+@import '../../../css/mixin.scss';
+
 .menu-nav {
 
 	display: flex;
-	justify-content: space-around;
 	align-items: center;
 
 	@include tablet {
-		right: 2.5%;
+		flex-direction: column;
+		align-items: flex-start;
+		font-size: 1.5rem;
 	}
 
-	@media (max-width: 720px) {
-		display: none;
-	}
-
-	&__basket {
-		margin-left: 0.625rem;
-
-		@include phone {
-			display: none;
-		}
-	}
-
-	&__sign {
-		border: none;
+	&__item {
 		margin: 0 0.625rem;
-		padding: 0;
-		color: var(--color-text-light);
-		cursor: pointer;
-		background: none;
-		font-family: inherit;
-		font-size: inherit;
-		font-weight: inherit;
-		letter-spacing: inherit;
 
-		@include phone {
-			display: none;
+		@include tablet {
+			margin: 0 0 1.25rem 0;
 		}
-	}
-
-	&__login {
-		@extend .menu-nav__sign;
-		margin-right: 0.625rem;
-	}
-
-	&__logout {
-		@extend .menu-nav__sign;
-		margin-right: 0.625rem;
 	}
 
 	&__user-name {
-		@extend .menu-nav__sign;
-		color: var(--color-text-light);
-		height: auto;
-		cursor: none;
+		@include button_shop-menu;
 	}
+
+	&__button-logout {
+		@include button_shop-menu;
+	}
+
+	&__button-sign {
+		@include button_shop-menu;
+	}
+
+	&__button-login {
+		@include button_shop-menu;
+	}
+
+	&__basket {
+
+	}
+
+
+
+
+
+
 }

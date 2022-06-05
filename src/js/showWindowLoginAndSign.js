@@ -1,6 +1,6 @@
 import {
-	showLoginWindowError
-} from '../components/components/myLogin/mylogin';
+	showLoginAdminWindowError
+} from '../components/components/login-admin/login-admin';
 import {
 	showSignWindowSuccessfully,
 	showSignWindowError
@@ -20,6 +20,6 @@ window.onload = function() {
 
 	if (params.get('msgLoginError')) return showLoginUserWindowError(params.get('msgLoginError'));
 
-	if (params.get('msgLoginAdminError')) showLoginWindowError(params.get('msgLoginAdminError'));
+	if (params.get('msgLoginAdminError')) showLoginAdminWindowError(params.get('msgLoginAdminError'));
 
 };

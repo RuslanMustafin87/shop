@@ -1,10 +1,16 @@
-.menu-nav
-        if userName
+ul.menu-nav#menu-nav
+    if userName
+        li.menu-nav__item
             p.menu-nav__user-name= userName
-            button.menu-nav__logout#button-logout Выход
-        else
-            button.menu-nav__sign#button-sign Регистрация
-            button.menu-nav__login#button-login Вход
+        li.menu-nav__item
+            form.menu-nav__form-logout(action=`${url}/logout`)
+                button.menu-nav__button-logout#button-logout(type='submit') Выход
+    else
+        li.menu-nav__item
+            button.menu-nav__button-sign#button-sign Регистрация
+        li.menu-nav__item
+            button.menu-nav__button-login#button-login Вход
+    li.menu-nav__item
         .menu-nav__basket.basket
             a.basket__link(href='/basket' id='basket-link')
             .basket__count#basket-count

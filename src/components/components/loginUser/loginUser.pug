@@ -1,7 +1,7 @@
 .login-user#login-user-admin
     .login-user__window
         button.login-user__cross-close#cross-close-login-user
-        form.login-user__form(name='formLoginUser' method='POST' action=`/users/authuser`)
+        form.login-user__form(name='formLoginUser' method='POST' action=`${url}/authuser`)
             h1.login-user__caption Вход
             input.login-user__email(type="email" name='email' placeholder='e-mail' required)
             input.login-user__password(type="password" name='password' placeholder='Пароль' required)

@@ -92,3 +92,13 @@
             inset -3px -3px 6px #ffffff;
 	outline: none;
 }
+
+@mixin button_shop-menu {
+	padding: 0;
+	border: none;
+	font-size: inherit;
+	color: var(--color-text-light);
+	background: transparent;
+	cursor: pointer;
+	
+}

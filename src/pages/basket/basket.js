@@ -3,13 +3,13 @@ import './basket.scss';
 
 import config from '../../../config.json';
 
+import '../../components/components/menu-nav/menu-nav';
+
 import Basket from '../../components/components/myBasket/myBasket';
 
 import '../../components/blocks/header/header';
 import '../../components/blocks/footer/footer';
-import '../../components/components/menu/menu';
 import '../../js/showWindowLoginAndSign';
-import '../../components/components/myLogin/mylogin';
 
 import formOrder from '../../components/blocks/form-order/form-order';
 

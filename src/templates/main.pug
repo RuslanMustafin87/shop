@@ -17,9 +17,10 @@ html(lang="en")
             include ../components/blocks/header/header
             main.main
                 block content
-                include ../components/components/menu/menu
+                .main__menu-nav.menu-hamburger#menu-hamburger
+                        include ../components/components/menu-nav/menu-nav
             include ../components/blocks/footer/footer
-            include ../components/components/myLogin/mylogin
+            include ../components/components/login-admin/login-admin
             include ../components/components/sign-user/sign-user
             include ../components/components/loginUser/loginUser
         script(src=`/assets/js/common.js`)

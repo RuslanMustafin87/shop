@@ -2,6 +2,8 @@ import '../../css/main.scss';
 import './index.scss';
 import '../../images/logo-light.png'
 
+import '../../components/components/menu-nav/menu-nav';
+
 import config from '../../../config.json';
 import Sort from '../../js/sort';
 import Basket from '../../components/components/myBasket/myBasket';
@@ -10,8 +12,6 @@ import '../../js/addProductInBasket';
 import '../../js/showWindowLoginAndSign';
 import '../../components/blocks/header/header';
 import '../../components/blocks/footer/footer';
-import '../../components/components/menu/menu';
-// import '../../js/openPageBasket';
 
 const sort = new Sort();
 const basket = new Basket();

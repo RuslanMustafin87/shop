@@ -1,32 +1,8 @@
 import {
-	showSignWindow
-} from '../../components/sign-user/sign-user';
-import {
 	showMenu
-} from '../../components/menu/menu';
-import {
-	showLoginUserWindow
-} from '../../components/loginUser/loginUser';
+} from '../../components/menu-hamburger/menu-hamburger';
 
-const buttonSign = document.getElementById('button-sign');
-const buttonLoginUser = document.getElementById('button-login');
-const buttonMenu = document.getElementById('button-menu');
-
-// eslint-disable-next-line curly
-if (buttonSign) {
-	buttonSign.onclick = function(event) {
-		event.preventDefault();
-		showSignWindow();
-	};
-}
-
-// eslint-disable-next-line curly
-if (buttonLoginUser) {
-	buttonLoginUser.onclick = function(event) {
-		event.preventDefault();
-		showLoginUserWindow();
-	};
-}
+const buttonMenu = document.getElementById('button-menu-hamburger');
 
 buttonMenu.onclick = function() {
 	this.classList.toggle('header__menu-button--close');

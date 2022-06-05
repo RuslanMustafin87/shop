@@ -1,5 +1,4 @@
 let countProducts = document.getElementById('basket-count');
-let countMenu = document.getElementById('menu-basket-count');
 let listProductsInBasket = [];
 let count = 0;
 
@@ -11,7 +10,6 @@ if (localStorage.getItem('listProducts')) {
 		countProducts.innerHTML = count;
 		countProducts.style.display = 'block';
 	}
-	if (countMenu) countMenu.innerHTML = count;
 }
 
 class Basket {
@@ -28,7 +26,7 @@ class Basket {
 		count++;
 		countProducts.style.display = 'block';
 		countProducts.innerHTML = count;
-		countMenu.innerHTML = count;
+		// countMenu.innerHTML = count;
 		listProductsInBasket.push({
 			id: id
 		});
@@ -54,14 +52,14 @@ class Basket {
 		}
 		localStorage.setItem('listProducts', JSON.stringify(listProductsInBasket));
 		countProducts.innerHTML = count;
-		countMenu.innerHTML = count;
+		// countMenu.innerHTML = count;
 	}
 
 	changeProductsInBasket() {
 		listProductsInBasket = JSON.parse(localStorage.getItem('listProducts'));
 		count = listProductsInBasket.length;
 		countProducts.innerHTML = count;
-		countMenu.innerHTML = count;
+		// countMenu.innerHTML = count;
 		countProducts.style.display = 'block';
 	}
 
@@ -70,7 +68,7 @@ class Basket {
 		listProductsInBasket = [];
 		localStorage.removeItem('listProducts');
 		countProducts.style.display = 'none';
-		countMenu.innerHTML = '';
+		// countMenu.innerHTML = '';
 	}
 }
 

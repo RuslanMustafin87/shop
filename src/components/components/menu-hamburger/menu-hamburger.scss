@@ -1,0 +1,21 @@
+.menu-hamburger {
+	display: none;
+	padding: 1.25rem 0 0 1.25rem;
+	position: absolute;
+	z-index: 15;
+	top: 0%;
+	right: 0%;
+	width: 50%;
+	height: 100%;
+	transform: translateX(100%);
+	transition: transform 0.2s linear;
+	background-color: var(--color-main);
+
+	&--no-close {
+		transform: translateX(0%);
+	}
+
+	@include tablet {
+		display: block;
+	}
+}
