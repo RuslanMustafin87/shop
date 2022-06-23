@@ -22,9 +22,9 @@ block content
         ul.main-index__products.products
             each item in products
                 - var { _id, name, price, priceIntl, category, rating } = item
-                li.products__item.product-card(data-id=_id  data-name=name data-price=price data-category=category)
+                li.products__item.product-card(data-id=_id  data-name=name data-price=price data-category=category.furniture)
                     a.product-card__link(href= `product?id=${_id}`)
-                        img.product-card__image(loading="lazy" alt=`${category} ${name}`)
+                        img.product-card__image(loading="lazy" alt=`${category.furniture} ${name}`)
                     .product-card__rating
                         - var ratingCheck = rating.roundedRating
                         include ../../components/blocks/rating-star/rating-star.pug

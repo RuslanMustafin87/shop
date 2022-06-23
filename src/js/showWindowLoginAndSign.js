@@ -14,12 +14,14 @@ window.onload = function() {
 	let url = new URL(document.location.href);
 	let params = url.searchParams;
 
-	if (params.get('msgSignSuccessfully')) return showSignWindowSuccessfully();
+	url.pathname = url.pathname.replace(/authuser|adduser/, '');
+	window.history.replaceState(null, null, url.toString());
 
-	if (params.get('msgSignError')) return showSignWindowError(params.get('msgSignError'));
+	if (params.has('msgSignSuccessfully')) return showSignWindowSuccessfully();
 
-	if (params.get('msgLoginError')) return showLoginUserWindowError(params.get('msgLoginError'));
+	if (params.has('msgSignError')) return showSignWindowError(params.get('msgSignError'));
 
-	if (params.get('msgLoginAdminError')) showLoginAdminWindowError(params.get('msgLoginAdminError'));
+	if (params.has('msgLoginError')) return showLoginUserWindowError(params.get('msgLoginError'));
 
+	if (params.has('msgLoginAdminError')) showLoginAdminWindowError(params.get('msgLoginAdminError'));
 };

@@ -1,0 +1,41 @@
+// TODO  стилизовать табы
+.block-tabs {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	&__pages {
+		flex-grow: 1;
+	}
+
+	&__page {
+		display: none;
+		overflow: hidden;
+	}
+    &__page:first-child {
+        display: block;
+    }
+}
+
+.tabs {
+    // height: 4.375rem;
+    display: flex;
+	&__tab {
+        padding: 0.625rem 0 0.625rem 0;
+		flex-grow: 1;
+		cursor: pointer;
+        text-align: center;
+
+	}
+}
+
+.orders {
+	&__products-list {
+		display: flex;
+		flex-direction: column;
+	}
+    &__product {
+        margin-bottom: 0.625rem;
+    }
+}

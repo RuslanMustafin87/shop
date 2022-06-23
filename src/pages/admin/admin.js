@@ -3,6 +3,7 @@ import './admin.scss';
 import Modal from '../../components/components/myModal/myModal';
 
 import config from '../../../config.json';
+import '../../components/components/block-tabs/block-tabs'
 
 const modal = new Modal();
 

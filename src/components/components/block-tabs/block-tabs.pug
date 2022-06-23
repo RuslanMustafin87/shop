@@ -1,0 +1,67 @@
+- var orders = []
+- var productList = []
+- var users = []
+.block-tabs
+    ul.block-tabs__tabs.tabs#tabs
+       li.tabs__tab Редактирование товаров
+       li.tabs__tab Список пользователей
+       li.tabs__tab Список заказов
+    ul.block-tabs__pages#block-tabs-pages
+        li.block-tabs__page
+            form.admin__form-add.form-add-product(action="http://localhost:3007/products/addproduct" method='post' name='addProduct' enctype='multipart/form-data')
+                h1.form-add-product__title Добавление товара
+                input.form-add-product__name(type='text' name='name' placeholder='название' required)
+                input.form-add-product__price(type='text' name='price' placeholder='цена' required)
+                select.form-add-product__category(name='category' placeholder='категория')
+                    option(value="sofa") Диван
+                    option(value="dresser") Комод
+                    option(value="wardrobe") Шкаф
+                    option(value="table") Стол
+                input.form-add-product__image(type='file' name='image' id='addImageProduct' multiple)
+                .form-add-product__add-pic.add-pic
+                    label.add-pic__label(for="addImageProduct" )
+                    span.add-pic__span(id='addImageProductSpan') Файл не выбран
+                input.form-add-product__submit(type='submit')
+                input.form-add-product__reset(type='reset')
+            form.admin__form-delete-product.form-delete-product(action="http://localhost:3007/api/products/deleteproduct" method='get' name='deleteProduct')
+                h1.form-delete-product__title Удаление товара
+                input.form-delete-product__id(type='text' name='id' placeholder='id')
+                input.form-delete-product__submit(type='submit')
+                input.form-delete-product__reset(type='reset')
+            form.admin__form-update-product.form-update-product(action="http://localhost:3007/admin/updateproduct" method='post' name='updateProduct' enctype='multipart/form-data')
+                h1.form-update-product__title Изменение товара
+                input.form-update-product__id(type='text' name='id' placeholder='введите id товара' required)
+                input.form-update-product__name(type='text' name='name' placeholder='название')
+                input.form-update-product__price(type='text' name='price' placeholder='цена')
+                input.add-pic__image(type='file' id='updateImageProduct' name='image' multiple)
+                .form-update-product__add-pic.add-pic
+                    label.add-pic__label(for="updateImageProduct")
+                    span.add-pic__span(id='updateImageProductSpan') Файл не выбран
+                input.form-update-product__submit(type='submit')
+                input.form-update-product__reset(type='reset')
+        li.block-tabs__page
+            ul.users
+                each item in users
+                    - var { name, email } = item
+                    li.users__item
+                        p.users__name Имя: #{name}
+                        p.users__email E-mail: #{email}
+                    hr
+        li.block-tabs__page
+            ul.orders
+                each item in orders
+                    - var { customer, phone, total, productList } = item
+                    li.orders__item
+                        p.orders__customer Имя клиента: #{customer}
+                        p.orders__phone Телефон: #{phone}
+                        p.orders__total Общая сумма заказа: #{total}
+                        h3.orders__product-title Список покупок:
+                        ul.orders__products-list
+                            each itemProduct in productList
+                                - var { _id, name, category, priceIntl } = itemProduct
+                                li.orders__product
+                                    p.orders__product-name Название товара:
+                                        a.orders__product-link(href=`/product?id=${_id}`) #{name}
+                                    p.orders__product-category Катаегория: #{category.furniture}
+                                    p.orders__product-priceIntl Цена: #{priceIntl}
+                    hr
