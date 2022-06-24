@@ -50,7 +50,7 @@
         li.block-tabs__page
             ul.orders
                 each item in orders
-                    - var { customer, phone, total, productList } = item
+                    - var { customer, phone, total, productList, datecreate } = item
                     li.orders__item
                         p.orders__customer Имя клиента: #{customer}
                         p.orders__phone Телефон: #{phone}
@@ -60,8 +60,9 @@
                             each itemProduct in productList
                                 - var { _id, name, category, priceIntl } = itemProduct
                                 li.orders__product
-                                    p.orders__product-name Название товара:
+                                    p.orders__product-name Название товара: 
                                         a.orders__product-link(href=`/product?id=${_id}`) #{name}
                                     p.orders__product-category Катаегория: #{category.furniture}
                                     p.orders__product-priceIntl Цена: #{priceIntl}
+                                    p.orders__product-datecreate Дата создания заказа: #{datecreate}
                     hr
